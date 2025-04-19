@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-</head>
-<body>
-    <h1>Welcome to the Learning App!</h1>
-    <button onclick="startLearning()">Start Learning</button>
+{% extends "layout.html" %}
+{% block content %}
 
-    <script src="{{ url_for('static', filename='main.js') }}"></script>
-</body>
-</html>
+<div class="container py-5 px-4 px-lg-5 mt-5">
+    <!-- Page Title -->
+    <h1>Welcome to the Learning App!</h1>
+    <div class="text-center mt-2">
+        <img src="static/Title.png" class="d-block mx-auto mb-2" width="800px" ></img>
+    </div>
+    <button onclick="startLearning()">Start Learning</button>
+</div>
+
+{% endblock %}

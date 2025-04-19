@@ -104,9 +104,9 @@ body {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: rgb(35, 34, 34);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* ✅ Subtle shadow */
-    padding: 0.5rem 1rem; /* ✅ Consistent spacing */
+    /* background-color: rgb(35, 34, 34); */
+    border-bottom: #2e4b2c solid 2px;
+    padding: 0.5rem 1rem; /* Consistent spacing */
   }
   
   .navbar-brand {
@@ -117,13 +117,14 @@ body {
   }
   
   .navbar-brand:hover {
-    color: skyblue;
+    color: white;
   }
   
   .navbar-nav {
     font-size: 1.25rem;
-    color: white;
+    color: lightslategray;
     text-decoration: none;
+    padding-right: 30px;
   }
   
   .nav-pills .nav-link.active {
@@ -137,6 +138,8 @@ body {
   } */
   
   .navbar-nav:hover {
-    color: skyblue;
+    color: white;
   }
   
+
+/* ----- Layout ----- */
