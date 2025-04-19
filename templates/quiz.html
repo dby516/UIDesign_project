@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mahjong Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="table-container">
+        <div class="player north">
+            <img src="/static/avatar_n.png">
+            <div class="tiles hidden"></div>
+            <div class="label">N</div>
+        </div>
+        <div class="player west">
+            <img src="/static/avatar_w.png">
+            <div class="tiles hidden"></div>
+            <div class="label">W</div>
+        </div>
+        <div class="player east">
+            <img src="/static/avatar_e.png">
+            <div class="tiles hidden"></div>
+            <div class="label">E</div>
+        </div>
+        <div class="player south you">
+            <img src="/static/avatar_you.png">
+            <div class="tiles">
+                <!-- TODO: Replace with real hand tiles -->
+                <img src="/static/mahjong_tiles/bamboo2.png" class="tile">
+                <img src="/static/mahjong_tiles/bamboo3.png" class="tile">
+                <img src="/static/mahjong_tiles/character_east.png" class="tile">
+                <img src="/static/mahjong_tiles/dot5.png" class="tile">
+            </div>
+            <div class="label">S - You</div>
+        </div>
+
+        <div class="center">
+            <div class="discard-info">
+                He discards: <img src="/static/mahjong_tiles/character_east.png" class="tile discard">
+                <p>What should you do?</p>
+            </div>
+            <div class="options">
+                <button>Chi</button>
+                <button>Pong</button>
+                <button>Hu!</button>
+                <button>Pass</button>
+            </div>
+        </div>
