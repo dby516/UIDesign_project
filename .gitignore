@@ -1,0 +1,43 @@
+# VSCode settings
+.vscode/
+
+# Python virtual environments
+.venv/
+venv/
+
+# macOS system files
+.DS_Store
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Node modules (if using npm)
+node_modules/
+
+# Environment files
+.env
+.env.*
+
+# Logs and dumps
+*.log
+
+# Compiled files
+*.so
+*.dll
+*.exe
+*.out
+*.a
+*.o
+
+# Coverage/test reports
+htmlcov/
+.coverage
+coverage.xml
+*.cover
+*.py,cover
+
+# Misc
+*.swp
+.idea/
