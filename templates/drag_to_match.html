@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container py-5 px-4 px-lg-5 mt-5">
+    <!-- Row 1: Drag to match header -->
+    <div class="h1 text-center mt-5 mb-2">Drag to Match!</div>
+
+    <!-- Row 2: Draggable tiles -->
+    <div id="tile-drag-section" class="d-flex flex-wrap gap-3 my-4">
+        <!-- JS will populate this dynamically from a JSON array, the tile-type pairs should appear randomly, 4 pairs each step  -->
+    </div>
+
+    <!-- Row 3: Droppable type names -->
+    <div class="mt-3">
+        <!-- JS will populate this dynamically from a JSON array -->
+    </div>
+
+    <!-- Row 3: Navigation buttons -->
+    <div style="margin-top: 30px;">
+        {% if step>1 %}
+            <a href="{{ url_for('drag_to_match', step=step - 1) }}">← Previous</a>
+        {% endif %}
+        {% if step<3 %}
+            <a href="{{ url_for('drag_to_match', step=step + 1) }}" style="float: right;">Next →</a>
+        {% else %}
+        <a href="{{ url_for('learn_tiles_end', step=1) }}" style="float: right;">Next →</a>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    const tilePairs = {{ pairs | tojson }};
+
+    if (step === 1) {
+        localStorage.setItem('drag_correct', 0);
+        localStorage.setItem('drag_wrong', 0);
+    }
+</script>
+    
+<script src="{{ url_for('static', filename='drag_to_match.js') }}"></script>
+
+{% endblock %}
