@@ -76,6 +76,31 @@ const rounds = [
         }
     },
     {
+        text: "",
+        buttons: ["Next"],
+        action: () => {
+            setMessage("");
+        }
+    },
+    {
+        text: "North player turn\n He played:",
+        card: "/static/mahjong_tiles/5_tong.png",
+        buttons: ["Chi", "Pong", "Hu!", "Pass"],
+        buttonActions: {
+            "Chi": () => setMessage("❌ You can't chi"),
+            "Pong": () => setMessage("⭕️ You can pong"),
+            "Hu!": () => setMessage("❌ You can't hu"),
+            "Pass": () => {
+                setMessage("✅ All you can do is pass");
+                roundCounter++;
+                renderRound();
+            }
+        },
+        action: () => {
+            setMessage("Select your action");
+        }
+    },
+    {
         text: "TODO",
         buttons: ["TODO"],
         card: "/static/mahjong_tiles/9_million.png",
