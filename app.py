@@ -64,15 +64,19 @@ def result():
 #-------------Game procedure step 1---------------
 @app.route("/winning-hands/<int:step>")
 def winning_hands(step):
-    # Reset tile order only on step 1
-    if "tile_order" not in session or step == 1:
+    if step == 1:
+        # Shuffle on first visit
         tile_order = CORRECT_ORDER[:]
         random.shuffle(tile_order)
         session["tile_order"] = tile_order
-    else:
-        tile_order = session["tile_order"]
+        return render_template("winning_hands.html", step=step, tile_images=tile_order)
 
-    return render_template("winning_hands.html", step=step, tile_images=tile_order)
+    elif step == 2:
+        # Fixed correct order for teaching overlays
+        return render_template("winning_hands.html", step=step, tile_images=CORRECT_ORDER)
+
+    else:
+        return render_template("winning_hands.html", step=step, tile_images=[])
 
 @app.route("/check-tile-order", methods=["POST"])
 def check_tile_order():
