@@ -1,6 +1,8 @@
 let roundCounter = 0;
 
 const playerHand = [
+    "/static/mahjong_tiles/6_tong.png",
+    "/static/mahjong_tiles/7_tong.png",
     "/static/mahjong_tiles/1_million.png",
     "/static/mahjong_tiles/2_million.png",
     "/static/mahjong_tiles/3_million.png",
@@ -14,28 +16,26 @@ const rounds = [
         text: "Tiles are dealt! Check your hand!",
         buttons: ["Start Turn"],
         action: () => {
-            setMessage("");
         }
     },
     {
-        text: "Grab a card",
-        card: "/static/mahjong_tiles/back.png",
+        text: "",
+        card: "/static/mahjong_tiles/9_million.png",
         buttons: ["Grab"],
         action: () => {
             playerHand.push("/static/mahjong_tiles/9_million.png");
             renderHand(); 
-            setMessage("You drew a tile!");
         }
     },
     {
         text: "Pick one to discard.",
         buttons: [],
         allowTileClick: true,
-        correctTileIndex: 3,
+        correctTileIndex: 5,
         action: (clickedIndex) => {
             if (clickedIndex === rounds[roundCounter].correctTileIndex) {
                 setMessage("✅ Correct discard!");
-                playerHand.splice(clickedIndex, 1);  // 移除正確那張
+                playerHand.splice(clickedIndex, 1); 
                 roundCounter++;
                 renderRound();
             } else {
@@ -51,8 +51,34 @@ const rounds = [
         }
     },
     {
+        text: "",
+        buttons: ["Next"],
+        action: () => {
+            setMessage("");
+        }
+    },
+    {
+        text: "East player turn\n He played:",
+        card: "/static/mahjong_tiles/8_tong.png",
+        buttons: ["Chi", "Pong", "Hu!", "Pass"],
+        buttonActions: {
+            "Chi": () => setMessage("❌ You can't chi"),
+            "Pong": () => setMessage("⭕️ You can pong"),
+            "Hu!": () => setMessage("❌ You can't hu"),
+            "Pass": () => {
+                setMessage("✅ All you can do is pass");
+                roundCounter++;
+                renderRound();
+            }
+        },
+        action: () => {
+            setMessage("Select your action");
+        }
+    },
+    {
         text: "TODO",
         buttons: ["TODO"],
+        card: "/static/mahjong_tiles/9_million.png",
         action: () => {
             // Do nothing
         }
@@ -87,9 +113,13 @@ function renderRound() {
         const btn = document.createElement("button");
         btn.textContent = label;
         btn.onclick = () => {
-            if (current.action) current.action(); 
-            roundCounter++;
-            renderRound();
+            if (current.buttonActions && current.buttonActions[label]) {
+                current.buttonActions[label]();  // 執行對應動作
+            } else if (current.action) {
+                current.action();
+                roundCounter++;
+                renderRound();
+            }
         };
         options.appendChild(btn);
     });
