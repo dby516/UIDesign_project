@@ -1,0 +1,42 @@
+[
+    { "id": "0", "name": "1_million", "image": "../mahjong_tiles/1_million.png", "audio": "../mahjong_tiles/audio/1_million.mp3" },
+    { "id": "1", "name": "2_million", "image": "../mahjong_tiles/2_million.png", "audio": "../mahjong_tiles/audio/2_million.mp3" },
+    { "id": "2", "name": "3_million", "image": "../mahjong_tiles/3_million.png", "audio": "../mahjong_tiles/audio/3_million.mp3" },
+    { "id": "3", "name": "4_million", "image": "../mahjong_tiles/4_million.png", "audio": "../mahjong_tiles/audio/4_million.mp3" },
+    { "id": "4", "name": "5_million", "image": "../mahjong_tiles/5_million.png", "audio": "../mahjong_tiles/audio/5_million.mp3" },
+    { "id": "5", "name": "6_million", "image": "../mahjong_tiles/6_million.png", "audio": "../mahjong_tiles/audio/6_million.mp3" },
+    { "id": "6", "name": "7_million", "image": "../mahjong_tiles/7_million.png", "audio": "../mahjong_tiles/audio/7_million.mp3" },
+    { "id": "7", "name": "8_million", "image": "../mahjong_tiles/8_million.png", "audio": "../mahjong_tiles/audio/8_million.mp3" },
+    { "id": "8", "name": "9_million", "image": "../mahjong_tiles/9_million.png", "audio": "../mahjong_tiles/audio/9_million.mp3" },
+    
+    { "id": "9",  "name": "1_flower", "image": "../mahjong_tiles/1_flower.png", "audio": "../mahjong_tiles/audio/1_flower.mp3" },
+    { "id": "10", "name": "2_flower", "image": "../mahjong_tiles/2_flower.png", "audio": "../mahjong_tiles/audio/2_flower.mp3" },
+    { "id": "11", "name": "3_flower", "image": "../mahjong_tiles/3_flower.png", "audio": "../mahjong_tiles/audio/3_flower.mp3" },
+    { "id": "12", "name": "4_flower", "image": "../mahjong_tiles/4_flower.png", "audio": "../mahjong_tiles/audio/4_flower.mp3" },
+    { "id": "13", "name": "5_flower", "image": "../mahjong_tiles/5_flower.png", "audio": "../mahjong_tiles/audio/5_flower.mp3" },
+    { "id": "14", "name": "6_flower", "image": "../mahjong_tiles/6_flower.png", "audio": "../mahjong_tiles/audio/6_flower.mp3" },
+    { "id": "15", "name": "7_flower", "image": "../mahjong_tiles/7_flower.png", "audio": "../mahjong_tiles/audio/7_flower.mp3" },
+    { "id": "16", "name": "8_flower", "image": "../mahjong_tiles/8_flower.png", "audio": "../mahjong_tiles/audio/8_flower.mp3" },
+    { "id": "17", "name": "9_flower", "image": "../mahjong_tiles/9_flower.png", "audio": "../mahjong_tiles/audio/9_flower.mp3" },
+  
+    { "id": "18", "name": "1_tong", "image": "../mahjong_tiles/1_tong.png", "audio": "../mahjong_tiles/audio/1_tong.mp3" },
+    { "id": "19", "name": "2_tong", "image": "../mahjong_tiles/2_tong.png", "audio": "../mahjong_tiles/audio/2_tong.mp3" },
+    { "id": "20", "name": "3_tong", "image": "../mahjong_tiles/3_tong.png", "audio": "../mahjong_tiles/audio/3_tong.mp3" },
+    { "id": "21", "name": "4_tong", "image": "../mahjong_tiles/4_tong.png", "audio": "../mahjong_tiles/audio/4_tong.mp3" },
+    { "id": "22", "name": "5_tong", "image": "../mahjong_tiles/5_tong.png", "audio": "../mahjong_tiles/audio/5_tong.mp3" },
+    { "id": "23", "name": "6_tong", "image": "../mahjong_tiles/6_tong.png", "audio": "../mahjong_tiles/audio/6_tong.mp3" },
+    { "id": "24", "name": "7_tong", "image": "../mahjong_tiles/7_tong.png", "audio": "../mahjong_tiles/audio/7_tong.mp3" },
+    { "id": "25", "name": "8_tong", "image": "../mahjong_tiles/8_tong.png", "audio": "../mahjong_tiles/audio/8_tong.mp3" },
+    { "id": "26", "name": "9_tong", "image": "../mahjong_tiles/9_tong.png", "audio": "../mahjong_tiles/audio/9_tong.mp3" },
+  
+    { "id": "27", "name": "1_stripe", "image": "../mahjong_tiles/1_stripe.png", "audio": "../mahjong_tiles/audio/1_stripe.mp3" },
+    { "id": "28", "name": "2_stripe", "image": "../mahjong_tiles/2_stripe.png", "audio": "../mahjong_tiles/audio/2_stripe.mp3" },
+    { "id": "29", "name": "3_stripe", "image": "../mahjong_tiles/3_stripe.png", "audio": "../mahjong_tiles/audio/3_stripe.mp3" },
+    { "id": "30", "name": "4_stripe", "image": "../mahjong_tiles/4_stripe.png", "audio": "../mahjong_tiles/audio/4_stripe.mp3" },
+    { "id": "31", "name": "5_stripe", "image": "../mahjong_tiles/5_stripe.png", "audio": "../mahjong_tiles/audio/5_stripe.mp3" },
+    { "id": "32", "name": "6_stripe", "image": "../mahjong_tiles/6_stripe.png", "audio": "../mahjong_tiles/audio/6_stripe.mp3" },
+    { "id": "33", "name": "7_stripe", "image": "../mahjong_tiles/7_stripe.png", "audio": "../mahjong_tiles/audio/7_stripe.mp3" },
+    { "id": "34", "name": "8_stripe", "image": "../mahjong_tiles/8_stripe.png", "audio": "../mahjong_tiles/audio/8_stripe.mp3" },
+    { "id": "35", "name": "9_stripe", "image": "../mahjong_tiles/9_stripe.png", "audio": "../mahjong_tiles/audio/9_stripe.mp3" }
+]
+  
