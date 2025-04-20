@@ -1,4 +1,42 @@
 {% extends "layout.html" %}
 {% block content %}
 
+<div class="container py-5 px-4 px-lg-5 mt-5">
+    <!-- Row 1: Lesson text block 1 -->
+    <div class="learn_text">{{ lesson.text }}</div>
+
+    <!-- Row 2: Interactive block -->
+    <!-- Types -->
+    <!-- Interactive tiles, can dynamically insert via learn_tiles.js -->
+    <div id="tile-learn-section" class="d-flex flex-wrap gap-3 my-4">
+        <!-- Example tile; real ones will be injected by JS -->
+        <!-- JS will populate this dynamically from a JSON array -->
+    </div>
+
+    <!-- Row 3: Optional notice text -->
+    {% if lesson.notice %}
+        <div class="alert alert-info mt-3" role="alert">
+            {{ lesson.notice }}
+        </div>
+    {% endif %}
+
+    <!-- Row 3: Navigation buttons -->
+    <div style="margin-top: 30px;">
+        {% if step>1 %}
+            <a href="{{ url_for('learn_tiles', step=step - 1) }}">← Previous</a>
+        {% endif %}
+        {% if step<=3 %}
+            <a href="{{ url_for('learn_tiles', step=step + 1) }}" style="float: right;">Next →</a>
+        {% else %}
+        <a href="{{ url_for('drag_to_match', step=1) }}" style="float: right;">Next →</a>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    const tileTypes = {{ lesson.types|tojson }};
+</script>
+
+<script src="{{ url_for('static', filename='learn_tiles.js') }}"></script>
+
 {% endblock %}

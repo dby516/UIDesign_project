@@ -141,5 +141,49 @@ body {
     color: white;
   }
   
+/* ----- Tile cards in Tile Learning Module ----- */
+.learn_text {
+    font-size: 2rem;
+    line-height: 1.6;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: #2e4b2c;
+}
+
+.tile_learn {
+    position: relative;
+    display: inline-block;
+    margin: 5px;
+    width: 80px;
+    cursor: pointer;
+}
+
+.tile_learn img {
+    width: 100%;
+    display: block;
+    transition: filter 0.2s ease;
+}
+
+.tile_learn:hover img {
+    filter: brightness(0.5);
+}
+
+.tile_label {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.tile_learn:hover .tile_label {
+    opacity: 1;
+}
+
 
 /* ----- Layout ----- */
