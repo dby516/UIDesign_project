@@ -1,7 +1,11 @@
 {% extends "layout.html" %}
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='winning_hands.css') }}">
-<script src="{{ url_for('static', filename='drag_tiles.js') }}" defer></script>
+{% if step == 1 %}
+    <script src="{{ url_for('static', filename='drag_tiles.js') }}" defer></script>
+{% elif step == 2 %}
+    <script src="{{ url_for('static', filename='overlays.js') }}" defer></script>
+{% endif %}
 
 <div class="winning-hands-container">
     {% if step == 1 %}
@@ -16,6 +20,37 @@
                      data-filename="{{ tile }}">
             {% endfor %}
         </div>
+
+    {% elif step == 2 %}
+        <h2>This is a Winning Hand!</h2>
+        <p>Hover over each meld and click the info button for details.</p>
+
+        <div class="melds-grid">
+            {% set groups = [[0,1,2], [3,4,5], [6,7,8], [9,10,11], [12,13]] %}
+            {% for meld in groups %}
+                <div class="meld">
+              <div class="info-btn" data-meld-index="{{ loop.index0 }}">
+                <div class="meld-label">{{ ["Straight", "Triplet", "Straight", "Straight", "Pair"][loop.index0] }}</div>
+              </div>
+            
+              {% for idx in meld %}
+                <img src="{{ url_for('static', filename='mahjong_tiles/' ~ tile_images[idx]) }}"
+                     class="tile no-drag"
+                     draggable="false">
+              {% endfor %}
+</div>
+
+            {% endfor %}
+        </div>
+
+        <!-- Modal -->
+        <div id="explanationModal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <div id="modal-text"></div>
+                <img id="modal-img" src="" alt="Meld example">
+            </div>
+        </div>
     {% endif %}
 
     <div class="progress-wrapper">
@@ -25,7 +60,9 @@
     </div>
 
     {% if step < 4 %}
-        <a id="nextBtn" class="next-button disabled" href="{{ url_for('winning_hands', step=step+1) }}" onclick="return false;">NEXT</a>
+        <a id="nextBtn" class="next-button {% if step==1 %}disabled{% endif %}" 
+           href="{{ url_for('winning_hands', step=step+1) }}" 
+           {% if step==1 %} onclick="return false;"{% endif %}>NEXT</a>
     {% endif %}
 </div>
 {% endblock %}
