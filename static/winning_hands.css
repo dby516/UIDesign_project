@@ -1,0 +1,81 @@
+.winning-hands-container {
+    background-color: #c2d5c2;
+    padding: 60px 40px;
+    text-align: center;
+}
+
+.winning-hands-container h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.winning-hands-container p {
+    font-size: 20px;
+    color: #444;
+    margin-bottom: 30px;
+}
+
+.tile-hand {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.tile {
+    width: 60px;
+    height: auto;
+    cursor: grab;
+    transition: transform 0.2s;
+}
+
+.tile:active {
+    transform: scale(1.1);
+}
+
+.progress-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    width: 300px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 5px;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #2c4b2c;
+    border-radius: 5px;
+}
+
+.next-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: white;
+    border: 2px solid #333;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.next-button:hover {
+    background-color: #ddd;
+}
+.tile.incorrect {
+    border: 3px solid red;
+    border-radius: 8px;
+}
+
+.next-button.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}

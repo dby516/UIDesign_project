@@ -1,4 +1,44 @@
 {% extends "layout.html" %}
 {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='game_procedure.css') }}">
 
+<div class="procedure-container">
+    <h2 class="procedure-title">How Mahjong is Played: From Start to Win</h2>
+    <p class="procedure-subtitle">
+        Learn the key steps to play, win,<br>
+        and react with special moves like Chi and Pong.
+    </p>
+
+    <div class="step-buttons">
+        <!-- STEP 1 -->
+        <div class="step">
+            <p class="step-label">STEP 1</p>
+            <a href="{{ url_for('winning_hands', step=1) }}">
+                <button class="step-button">
+                    Winning<br>Hands<br><span>Straights & Triplets</span>
+                </button>
+            </a>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="step">
+            <p class="step-label">STEP 2</p>
+            <a href="{{ url_for('calling_tiles') }}">
+                <button class="step-button">
+                    Calling Tiles<br><span>Chi & Pong</span>
+                </button>
+            </a>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="step">
+            <p class="step-label">STEP 3</p>
+            <a href="{{ url_for('play_round') }}">
+                <button class="step-button">
+                    Play a Round<br><span>Step-by-Step</span>
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
 {% endblock %}
