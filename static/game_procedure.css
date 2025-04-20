@@ -1,0 +1,52 @@
+.procedure-container {
+    text-align: center;
+    padding: 60px 40px 40px;
+    background-color: #c2d5c2;
+}
+
+.procedure-title {
+    font-size: 32px;
+    color: #333;
+    margin-top: 40px;
+}
+
+.procedure-subtitle {
+    font-size: 18px;
+    color: #555;
+    margin-top: 10px;
+}
+
+.step-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+
+.step {
+    text-align: center;
+}
+
+.step-label {
+    font-size: 24px;
+    color: #2c4b2c;
+    margin-bottom: 10px;
+}
+
+.step-button {
+    background-color: #f0cf5b;
+    border: none;
+    border-radius: 24px;
+    padding: 30px 40px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    line-height: 1.5;
+}
+
+.step-button span {
+    font-weight: normal;
+    font-size: 16px;
+}

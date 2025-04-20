@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='winning_hands.css') }}">
+<script src="{{ url_for('static', filename='drag_tiles.js') }}" defer></script>
+
+<div class="winning-hands-container">
+    {% if step == 1 %}
+        <h2>How to Win? – Get <strong>4 melds</strong> and <strong>1 pair!</strong></h2>
+        <p>After the deal, your hand will be unordered.<br>Rearranging the tiles helps you spot potential melds and plan your strategy.</p>
+
+        <div class="tile-hand" id="tileContainer">
+            {% for tile in tile_images %}
+                <img src="{{ url_for('static', filename='mahjong_tiles/' ~ tile) }}" 
+                     class="tile" 
+                     draggable="true" 
+                     data-filename="{{ tile }}">
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="progress-wrapper">
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: {{ step * 25 }}%;"></div>
+        </div>
+    </div>
+
+    {% if step < 4 %}
+        <a id="nextBtn" class="next-button disabled" href="{{ url_for('winning_hands', step=step+1) }}" onclick="return false;">NEXT</a>
+    {% endif %}
+</div>
+{% endblock %}
