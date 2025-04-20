@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container py-5 px-4 px-lg-5 mt-5 text-center">
+    <h1 class="mb-4">🎉 You Finished Tile Learning!</h1>
+
+    <p class="lead">Great job! Here’s how you did during the "Drag to Match" game:</p>
+
+    <div class="my-4">
+        <p><strong>✅ Correct Matches:</strong> <span id="correct-count">0</span></p>
+        <p><strong>❌ Incorrect Matches:</strong> <span id="wrong-count">0</span></p>
+    </div>
+
+    <a id="finish-btn" href="{{ url_for('home') }}" class="btn btn-success btn-lg mt-4">Finish Learning</a>
+
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let correct = localStorage.getItem('drag_correct') || 0;
+        let wrong = localStorage.getItem('drag_wrong') || 0;
+    
+        document.getElementById('correct-count').textContent = correct;
+        document.getElementById('wrong-count').textContent = wrong;
+    
+        console.log("Retrieved from localStorage:", correct, wrong); // DEBUG
+    });
+</script>
+
+<script src="{{ url_for('static', filename='drag_to_match.js') }}"></script>
+
+{% endblock %}

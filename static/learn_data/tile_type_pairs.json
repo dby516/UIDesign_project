@@ -1,0 +1,154 @@
+[
+  {
+    "tile": "1_million",
+    "type": "million"
+  },
+  {
+    "tile": "1_tong",
+    "type": "tong"
+  },
+  {
+    "tile": "1_stripe",
+    "type": "stripe"
+  },
+  {
+    "tile": "2_million",
+    "type": "million"
+  },
+  {
+    "tile": "2_tong",
+    "type": "tong"
+  },
+  {
+    "tile": "2_stripe",
+    "type": "stripe"
+  },
+  {
+    "tile": "3_million",
+    "type": "million"
+  },
+  {
+    "tile": "3_tong",
+    "type": "tong"
+  },
+  {
+    "tile": "3_stripe",
+    "type": "stripe"
+  },
+  {
+    "tile": "4_million",
+    "type": "million"
+  },
+  {
+    "tile": "4_tong",
+    "type": "tong"
+  },
+  {
+    "tile": "4_stripe",
+    "type": "stripe"
+  },
+  {
+    "tile": "5_million",
+    "type": "million"
+  },
+  {
+    "tile": "5_tong",
+    "type": "tong"
+  },
+  {
+    "tile": "5_stripe",
+    "type": "stripe"
+  },
+  {
+    "tile": "6_million",
+    "type": "million"
+  },
+  {
+    "tile": "6_tong",
+    "type": "tong"
+  },
+  {
+    "tile": "6_stripe",
+    "type": "stripe"
+  },
+  {
+    "tile": "7_million",
+    "type": "million"
+  },
+  {
+    "tile": "7_tong",
+    "type": "tong"
+  },
+  {
+    "tile": "7_stripe",
+    "type": "stripe"
+  },
+  {
+    "tile": "8_million",
+    "type": "million"
+  },
+  {
+    "tile": "8_tong",
+    "type": "tong"
+  },
+  {
+    "tile": "8_stripe",
+    "type": "stripe"
+  },
+  {
+    "tile": "9_million",
+    "type": "million"
+  },
+  {
+    "tile": "9_tong",
+    "type": "tong"
+  },
+  {
+    "tile": "9_stripe",
+    "type": "stripe"
+  },
+  {
+    "tile": "east",
+    "type": "wind"
+  },
+  {
+    "tile": "south",
+    "type": "wind"
+  },
+  {
+    "tile": "west",
+    "type": "wind"
+  },
+  {
+    "tile": "north",
+    "type": "wind"
+  },
+  {
+    "tile": "middle",
+    "type": "dragon"
+  },
+  {
+    "tile": "rich",
+    "type": "dragon"
+  },
+  {
+    "tile": "blank",
+    "type": "dragon"
+  },
+  {
+    "tile": "1_flower",
+    "type": "flower"
+  },
+  {
+    "tile": "2_flower",
+    "type": "flower"
+  },
+  {
+    "tile": "3_flower",
+    "type": "flower"
+  },
+  {
+    "tile": "4_flower",
+    "type": "flower"
+  }
+]
