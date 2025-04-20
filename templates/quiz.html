@@ -24,28 +24,20 @@
         </div>
         <div class="player south you">
             <img src="/static/avatar_you.png">
-            <div class="tiles">
-                <!-- TODO: Replace with real hand tiles -->
-                <img src="/static/mahjong_tiles/1_million.png" class="tile">
-                <img src="/static/mahjong_tiles/2_million.png" class="tile">
-                <img src="/static/mahjong_tiles/2_million.png" class="tile">
-                <img src="/static/mahjong_tiles/2_million.png" class="tile">
-            </div>
+            <div class="tiles" id="player-hand"></div>
             <div class="label">S - You</div>
         </div>
 
         <div class="center">
             <div class="discard-info">
-                He discards: <img src="/static/mahjong_tiles/2_million.png" class="tile discard">
-                <p>What should you do?</p>
+                <img class="tile discard" style="display: none;">
+                <p></p> 
             </div>
             <div class="options">
-                <button>Chi</button>
-                <button>Pong</button>
-                <button>Hu!</button>
-                <button>Pass</button>
             </div>
+            <div id="message-box"></div>
         </div>
+
 
         <script src="{{ url_for('static', filename='quiz.js') }}"></script>
 
