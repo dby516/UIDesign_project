@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, request, jsonify, abort
+from flask import Flask, render_template, session, request, jsonify, abort, redirect, url_for
 import json
 import random
 
@@ -17,6 +17,12 @@ CORRECT_ORDER = [ "1_million.png", "2_million.png", "3_million.png",
                  "4_stripe.png", "5_stripe.png", "rich.png",  
                  "5_tong.png", "6_tong.png", "7_tong.png",   
                  "west.png", "west.png"    ]
+
+CALLING_TILES_HAND = [ "1_million.png", "2_million.png", "3_million.png",  
+                    "1_stripe.png", "1_stripe.png", "1_stripe.png", 
+                    "4_stripe.png", "5_stripe.png", "6_stripe.png",
+                    "5_tong.png", "6_tong.png", "7_tong.png",   
+                    "west.png", "west.png"    ]
 
 with open("static/learn_data/tile_type_pairs.json") as f:
     tile_type_pairs = json.load(f)
@@ -85,10 +91,74 @@ def check_tile_order():
     result = [user_order[i] == CORRECT_ORDER[i] for i in range(len(CORRECT_ORDER))]
     is_correct = all(result)
     return jsonify({"result": result, "valid": is_correct})
-#-------------Game procedure step 2---------------
-@app.route('/calling-tiles')
-def calling_tiles():
-    return render_template('calling_tiles.html')
+#------------- Game procedure step 2: Calling Tiles ---------------
+
+@app.route('/calling-tiles/')
+def calling_tiles_root():
+    # redirect bare URL to step 1
+    return redirect(url_for('calling_tiles', step=1))
+
+
+@app.route('/calling-tiles/<int:step>')
+def calling_tiles(step):
+    # constrain step into 1..4
+    # if step < 1 or step > 4:
+    #     abort(404)
+
+
+    order = CALLING_TILES_HAND[:]
+    # use ordered hands in every step
+    # Step 1: Chi Question
+    if step == 1:
+        discard = order.pop(7)
+        order.insert(7, "Empty.png")
+
+
+    # Step 2: 
+    if step == 2:
+        order.pop(2)
+        discard = "9_million.png"
+        order.insert(2, "Empty.png")
+        
+    
+
+    # Step 3: 
+    if step == 3:
+        order.pop(3)
+        discard = "4_million.png"
+        order.insert(3, "Empty.png")
+
+    if step == 4:
+        discard = order.pop(4)
+        order.insert(3, "Empty.png")
+    # on step 1 (or first ever), shuffle and store the "hand"
+    # if step == 1 or 'calling_tiles_order' not in session:
+    #     order = CORRECT_ORDER[:]          # use your existing CORRECT_ORDER
+    #     #random.shuffle(order)
+    #     session['calling_tiles_order'] = order
+    # else:
+    #     order = session['calling_tiles_order']
+
+    # # pop off one tile as the discarded tile
+    # if order:
+    #     discard = order.pop(5)
+    #     session['calling_tiles_order'] = order
+    # else:
+    #     discard = CORRECT_ORDER[-1]
+
+
+
+    # render with exactly the same context your template expects:
+    return render_template(
+        'calling_tiles.html',
+        step=step,
+        hand_tiles=order,
+        discard_tile=discard,
+        placeholder_index=len(order),    # dashed slot at end of hand
+        progress=step * (100 / 4),       # 25%, 50%, 75%, 100%
+        disable_next=(step == 1)         # NEXT disabled on step 1
+    )
+
 #-------------Game procedure step 3---------------
 @app.route('/play-round')
 def play_round():

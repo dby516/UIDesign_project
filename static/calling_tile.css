@@ -1,71 +1,64 @@
-/* static/calling_tile.css */
-.calling-tile-container {
-    background-color: #c2d5c2;
-    padding: 60px 40px;
-    text-align: center;
-}
-
-.calling-tile-container h2 {
-    font-size: 28px;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.calling-tile-container p {
-    font-size: 20px;
-    color: #444;
-    margin-bottom: 30px;
-}
-
-.tile-hand {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 40px;
-}
-
-.tile {
+/* dashed slot */
+.tile.placeholder {
     width: 60px;
     height: auto;
-    cursor: grab;
-    transition: transform 0.2s;
-}
-
-.tile:active {
-    transform: scale(1.1);
-}
-
-.tile.incorrect {
-    border: 3px solid red;
+    margin: 5px;
+    border: 3px dashed #e74c3c;
     border-radius: 8px;
-}
-
-.action-buttons {
+  }
+  
+  /* split the stats + prompt side by side */
+  .decision-area {
     display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.action-buttons button {
-    background-color: white;
-    border: 2px solid #333;
-    border-radius: 8px;
-    padding: 12px 24px;
-    font-weight: bold;
-    color: #000;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.action-buttons button:hover {
-    background-color: #ddd;
-}
-
-#feedback {
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  /* left column */
+  .stats h3 {
+    margin-bottom: 8px;
+    font-size: 20px;
+    color: #444;
+  }
+  .stats ul {
+    list-style: disc inside;
     color: #333;
-}
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+  }
+  .stats .highlight {
+    color: #f5a623;
+    font-weight: bold;
+  }
+  
+  /* right column */
+  .prompt {
+    text-align: center;
+  }
+  .prompt p {
+    margin-bottom: 8px;
+    font-size: 18px;
+    color: #333;
+  }
+  .prompt .tile.discard-mini {
+    width: 60px;
+    margin: 0 10px;
+  }
+  
+  /* reuse winning_hands action-buttons look */
+  .action-buttons button {
+    width: 80px;
+  }
+  
+  /* move feedback under buttons */
+  #feedback {
+    margin-top: 12px;
+  }
+  
+  /* adjust NEXT arrow positioning if needed */
+  .next-button {
+    margin-top: 10px;
+  }
+  

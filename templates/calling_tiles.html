@@ -1,42 +1,73 @@
 <!-- templates/calling_tile.html -->
 {% extends "layout.html" %}
 {% block content %}
+  <!-- shared styles -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='winning_hands.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='calling_tile.css') }}">
-  <script src="{{ url_for('static', filename='calling_tile.js') }}" defer></script>
 
-  <div class="calling-tile-container">
+  <!-- only load the JS that corresponds to the current step -->
+  {% if step == 1 %}
+    <script src="{{ url_for('static', filename='calling_tile.js') }}" defer></script>
+  {% elif step == 2 %}
+    <script src="{{ url_for('static', filename='calling_tile.js') }}" defer></script>
+  {% elif step == 3 %}
+    <script src="{{ url_for('static', filename='calling_tile.js') }}" defer></script>
+  {% elif step == 4 %}
+    <script src="{{ url_for('static', filename='calling_tile.js') }}" defer></script>
+  {% endif %}
+
+  <div class="winning-hands-container">
     <h2>Calling Tiles – <strong>Chi</strong> &amp; <strong>Pong</strong></h2>
-    <p>To complete a <strong>straight</strong> - <strong>Chi</strong> the discarded tile from your last player.</p>
-    <p>To complete a <strong>triplet</strong> - <strong>Pong</strong> the discarded tile from any other player.</p>
+    <p>
+      To complete a <strong>straight</strong> – Chi the discarded tile from your last player.<br>
+      To complete a <strong>triplet</strong> – Pong the discarded tile from any other player.
+    </p>
 
-    <!-- Player’s hand -->
-    <div class="tile-hand" id="playerHand">
-        {% for tile in hand_tiles %}
-            <img
-            src="{{ url_for('static', filename='mahjong_tiles/' ~ tile) }}"
-            class="tile"
-            draggable="false"
-            data-filename="{{ tile }}"
-            alt="{{ tile|replace('_',' ') }}">
-        {% endfor %}
-    </div>
-
-    <!-- Discarded tile -->
     <div class="tile-hand">
-      <img
-        src="{{ url_for('static', filename='mahjong_tiles/' ~ discard_tile) }}"
-        class="tile incorrect"
-        id="discardTile"
-        alt="{{ discard_tile|replace('_',' ') }}">
+      {% for tile in hand_tiles %}
+        {% if loop.index0 == placeholder_index %}
+          <div class="tile placeholder"></div>
+        {% endif %}
+        <img
+          src="{{ url_for('static', filename='mahjong_tiles/' ~ tile) }}"
+          class="tile"
+          draggable="false"
+          alt="{{ tile|replace('_',' ') }}">
+      {% endfor %}
     </div>
 
-    <!-- Action buttons -->
-    <div class="action-buttons">
-      <button type="button" onclick="handleAction('chi')">Chi</button>
-      <button type="button" onclick="handleAction('pong')">Pong</button>
-      <button type="button" onclick="handleAction('hu')">Hu!</button>
-      <button type="button" onclick="handleAction('pass')">Pass</button>
+    <div class="decision-area">
+      <div class="stats">
+        <h3>Now you have:</h3>
+        <ul>
+          <li><span class="highlight">2</span> straights</li>
+          <li><span class="highlight">1</span> triplet</li>
+          <li><span class="highlight">1</span> pair</li>
+        </ul>
+      </div>
+
+      <div class="prompt">
+        <p>Chi or not?</p>
+        <img
+          src="{{ url_for('static', filename='mahjong_tiles/' ~ discard_tile) }}"
+          class="tile discard-mini"
+          alt="{{ discard_tile|replace('_',' ') }}">
+        <div class="action-buttons">
+          <button type="button" onclick="handleAction('chi')">Yes</button>
+          <button type="button" onclick="handleAction('pass')">No</button>
+        </div>
+        <div id="feedback"></div>
+      </div>
     </div>
 
+    <div class="progress-wrapper">
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: {{ progress }}%;"></div>
+      </div>
+    </div>
+    <a href="{{ url_for('calling_tiles',    step=step+1) }}"
+       class="next-button {% if disable_next %}disabled{% endif %}">
+      NEXT
+    </a>
   </div>
 {% endblock %}
