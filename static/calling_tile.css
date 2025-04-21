@@ -1,0 +1,71 @@
+/* static/calling_tile.css */
+.calling-tile-container {
+    background-color: #c2d5c2;
+    padding: 60px 40px;
+    text-align: center;
+}
+
+.calling-tile-container h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.calling-tile-container p {
+    font-size: 20px;
+    color: #444;
+    margin-bottom: 30px;
+}
+
+.tile-hand {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.tile {
+    width: 60px;
+    height: auto;
+    cursor: grab;
+    transition: transform 0.2s;
+}
+
+.tile:active {
+    transform: scale(1.1);
+}
+
+.tile.incorrect {
+    border: 3px solid red;
+    border-radius: 8px;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.action-buttons button {
+    background-color: white;
+    border: 2px solid #333;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.action-buttons button:hover {
+    background-color: #ddd;
+}
+
+#feedback {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}

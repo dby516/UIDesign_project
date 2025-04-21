@@ -1,0 +1,42 @@
+<!-- templates/calling_tile.html -->
+{% extends "layout.html" %}
+{% block content %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='calling_tile.css') }}">
+  <script src="{{ url_for('static', filename='calling_tile.js') }}" defer></script>
+
+  <div class="calling-tile-container">
+    <h2>Calling Tiles – <strong>Chi</strong> &amp; <strong>Pong</strong></h2>
+    <p>To complete a <strong>straight</strong> - <strong>Chi</strong> the discarded tile from your last player.</p>
+    <p>To complete a <strong>triplet</strong> - <strong>Pong</strong> the discarded tile from any other player.</p>
+
+    <!-- Player’s hand -->
+    <div class="tile-hand" id="playerHand">
+        {% for tile in hand_tiles %}
+            <img
+            src="{{ url_for('static', filename='mahjong_tiles/' ~ tile) }}"
+            class="tile"
+            draggable="false"
+            data-filename="{{ tile }}"
+            alt="{{ tile|replace('_',' ') }}">
+        {% endfor %}
+    </div>
+
+    <!-- Discarded tile -->
+    <div class="tile-hand">
+      <img
+        src="{{ url_for('static', filename='mahjong_tiles/' ~ discard_tile) }}"
+        class="tile incorrect"
+        id="discardTile"
+        alt="{{ discard_tile|replace('_',' ') }}">
+    </div>
+
+    <!-- Action buttons -->
+    <div class="action-buttons">
+      <button type="button" onclick="handleAction('chi')">Chi</button>
+      <button type="button" onclick="handleAction('pong')">Pong</button>
+      <button type="button" onclick="handleAction('hu')">Hu!</button>
+      <button type="button" onclick="handleAction('pass')">Pass</button>
+    </div>
+
+  </div>
+{% endblock %}
