@@ -24,6 +24,13 @@ CALLING_TILES_HAND = [ "1_million.png", "2_million.png", "3_million.png",
                     "5_tong.png", "6_tong.png", "7_tong.png",   
                     "west.png", "west.png"    ]
 
+CALLING_TILES_ANSWER_MAP = {
+    1: 'DoIt',
+    2: 'Pass',
+    3: 'DoIt',
+    4: 'DoIt',
+}
+
 with open("static/learn_data/tile_type_pairs.json") as f:
     tile_type_pairs = json.load(f)
 
@@ -158,6 +165,24 @@ def calling_tiles(step):
         progress=step * (100 / 4),       # 25%, 50%, 75%, 100%
         disable_next=(step == 1)         # NEXT disabled on step 1
     )
+
+@app.route('/check-calling-tiles', methods=['POST'])
+def check_calling_tiles():
+    data   = request.get_json()
+    step   = data.get('step')
+    action = data.get('action')
+
+    is_correct = (action == CALLING_TILES_ANSWER_MAP.get(step))
+
+    # on correct, send full list to client
+    new_hand = CALLING_TILES_HAND[:] if is_correct else data.get('current_hand', [])
+
+    return jsonify({
+        'valid': is_correct,
+        'new_hand': new_hand
+    })
+
+
 
 #-------------Game procedure step 3---------------
 @app.route('/play-round')
