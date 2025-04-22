@@ -1,0 +1,156 @@
+{
+    "1": {
+      "turn": "S",
+      "hand": ["back", "back", "back", "back", "back", "back", "back", "back", "back", "back", "back", "back", "back"],
+      "discard_E": [],
+      "discard_N": [],
+      "discard_W": [],
+      "discard_S": [],
+      "notice": "This section will guide you through one round of play. Follow the instructions at each step. The tiles have been dealt-click Pass to check your hand!",
+      "operations": {
+        "Discard": 0,
+        "Chi": 0,
+        "Pong": 0,
+        "Hu!": 0,
+        "Pass": 1
+      },
+      "clickable": []
+    },
+    "2": {
+      "turn": "S",
+      "hand": ["2_stripe", "3_stripe", "4_stripe", "6_stripe", "7_stripe", "8_stripe", "east", "east", "2_tong", "3_tong", "9_tong", "6_million", "6_million"],
+      "discard_E": [],
+      "discard_N": [],
+      "discard_W": [],
+      "discard_S": [],
+      "notice": "You're the South player. It's your turn-click Pass to draw a tile from the wall and check it.",
+      "operations": {
+        "Discard": 0,
+        "Chi": 0,
+        "Pong": 0,
+        "Hu!": 0,
+        "Pass": 1
+      },
+      "clickable": []
+    },
+    "3": {
+      "turn": "S",
+      "hand": ["2_stripe", "3_stripe", "4_stripe", "6_stripe", "7_stripe", "8_stripe", "east", "east", "2_tong", "3_tong", "9_tong", "6_million", "6_million", "south"],
+      "notice": "You drew \"South\". Click on a tile in your hand to discard it.",
+      "discard_E": [],
+      "discard_N": [],
+      "discard_W": [],
+      "discard_S": ["south"],
+      "operations": {
+        "Discard": 1,
+        "Chi": 0,
+        "Pong": 0,
+        "Hu!": 0,
+        "Pass": 0
+      },
+      "clickable": [13]
+    },
+    "4": {
+      "turn": "E",
+      "hand": ["2_stripe", "3_stripe", "4_stripe", "6_stripe", "7_stripe", "8_stripe", "east", "east", "2_tong", "3_tong", "9_tong", "6_million", "6_million"],
+      "notice": "Great! You completed your turn correctly. Now it's the next player's turn. He discarded \"East.\" What will you do?",
+      "discard_E": ["east"],
+      "discard_N": [],
+      "discard_W": [],
+      "discard_S": ["south"],
+      "operations": {
+        "Discard": 0,
+        "Chi": 0,
+        "Pong": 1,
+        "Hu!": 0,
+        "Pass": 0
+      },
+      "clickable": []
+    },
+    "5": {
+      "turn": "S",
+      "hand": ["2_stripe", "3_stripe", "4_stripe", "6_stripe", "7_stripe", "8_stripe", "east", "east", "east", "2_tong", "3_tong", "9_tong", "6_million", "6_million"],
+      "notice": "Correct! You declared a Pong and formed a triplet. It's your turn again-choose a tile to discard.",
+      "discard_E": [],
+      "discard_N": [],
+      "discard_W": [],
+      "discard_S": ["south"],
+      "operations": {
+        "Discard": 1,
+        "Chi": 0,
+        "Pong": 0,
+        "Hu!": 0,
+        "Pass": 0
+      },
+      "clickable": [11]
+    },
+    "6": {
+      "turn": "E",
+      "hand": ["2_stripe", "3_stripe", "4_stripe", "6_stripe", "7_stripe", "8_stripe", "east", "east", "east", "2_tong", "3_tong", "6_million", "6_million"],
+      "discard_E": [],
+      "discard_N": [],
+      "discard_W": [],
+      "discard_S": ["south", "9_tong"],
+      "notice": "You discarded \"9 Tong\". Now it's your next player's turn. Click Pass to continue.",
+      "operations": {
+        "Discard": 0,
+        "Chi": 0,
+        "Pong": 0,
+        "Hu!": 0,
+        "Pass": 1
+      },
+      "clickable": []
+    },
+    "7": {
+      "turn": "N",
+      "hand": ["2_stripe", "3_stripe", "4_stripe", "6_stripe", "7_stripe", "8_stripe", "east", "east", "east", "2_tong", "3_tong", "6_million", "6_million"],
+      "discard_E": ["1_million"],
+      "discard_N": [],
+      "discard_W": [],
+      "discard_S": ["south", "9_tong"],
+      "notice": "The East player discarded \"1 Million.\" You can't make a move-just wait for your turn.",
+      "operations": {
+        "Discard": 0,
+        "Chi": 0,
+        "Pong": 0,
+        "Hu!": 0,
+        "Pass": 1
+      },
+      "clickable": []
+    },
+    "8": {
+      "turn": "W",
+      "hand": ["2_stripe", "3_stripe", "4_stripe", "6_stripe", "7_stripe", "8_stripe", "east", "east", "east", "2_tong", "3_tong", "6_million", "6_million"],
+      "discard_E": ["1_million"],
+      "discard_N": ["9_million"],
+      "discard_W": ["1_tong"],
+      "discard_S": ["south", "9_tong"],
+      "notice": "The West player discarded \"1 Tong.\" Think of what you can do!",
+      "operations": {
+        "Discard": 0,
+        "Chi": 1,
+        "Pong": 0,
+        "Hu!": 0,
+        "Pass": 0
+      },
+      "clickable": []
+    },
+    "9": {
+      "turn": "S",
+      "hand": ["2_stripe", "3_stripe", "4_stripe", "6_stripe", "7_stripe", "8_stripe", "east", "east", "east", "1_tong", "2_tong", "3_tong", "6_million", "6_million"],
+      "discard_E": ["1_million"],
+      "discard_N": ["9_million"],
+      "discard_W": [],
+      "discard_S": ["south", "9_tong"],
+      "notice": "Great! You formed a new straight with a Chi! Now you have 4 melds and 1 pair-click \"Hu!\" to win the game!",
+      "operations": {
+        "Discard": 0,
+        "Chi": 0,
+        "Pong": 0,
+        "Hu!": 1,
+        "Pass": 0
+      },
+      "clickable": []
+    }
+  }
+  

@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container py-5 px-4 px-lg-5 mt-5">
+  <div class="row">
+
+    <!-- Left: Game Display -->
+    <div class="col play-column" style="background-image: url('{{ url_for('static', filename='learn_data/play_round_bg.png') }}');">
+      
+      <!-- Top (North) Discards -->
+      <div class="spacer-head"></div>
+      <div id="discard-N" class="discard-row discard-n"></div>
+
+      <!-- Middle Layer: West | Center | East -->
+      <div class="row discard-middle">
+        <div class="col spacer-mid-left custom-15"></div>
+
+        <div id="discard-W" class="col discard-col discard-w custom-10"></div>
+
+        <div class="col main-play-content custom-50">
+          <div class="notice-row">{{ round.notice }}</div>
+          <div id="discard-S" class="discard-row discard-s"></div>
+        </div>
+
+        <div id="discard-E" class="col discard-col discard-e custom-10"></div>
+
+        <div class="col spacer-mid-right custom-15"></div>
+      </div>
+
+
+      <!-- Bottom: Your Hand & Label -->
+      <div class="tile-row mb-2" id="hand-tiles"></div>
+      <div class="player-label mb-3">You</div>
+
+    </div>
+
+    <!-- Right: Operation Buttons -->
+    <div class="col">
+      <div class="operation-buttons">
+        {% for op in ["Discard", "Chi", "Pong", "Hu!", "Pass"] %}
+          {% if round.operations[op] == 1 %}
+            {% if op == "Hu!" %}
+              <form method="post" action="{{ url_for('play_round_end') }}" style="display: inline;">
+                <input type="hidden" name="operation" value="{{ op }}">
+                <button type="submit" class="btn btn-primary">{{ op }}</button>
+              </form>
+            {% else %}
+              <form method="post" action="{{ url_for('play_round', step=step + 1) }}" style="display: inline;">
+                <input type="hidden" name="operation" value="{{ op }}">
+                <button type="submit" class="btn btn-primary">{{ op }}</button>
+              </form>
+            {% endif %}
+          {% else %}
+            <button class="btn btn-secondary" disabled>{{ op }}</button>
+          {% endif %}  
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- JS -->
+<script>
+  const roundHand = {{ round.hand | tojson }};
+  const roundClickable = {{ round.clickable | tojson }};
+  const discardN = {{ round.discard_N | tojson }};
+  const discardS = {{ round.discard_S | tojson }};
+  const discardW = {{ round.discard_W | tojson }};
+  const discardE = {{ round.discard_E | tojson }};
+</script>
+<script src="{{ url_for('static', filename='play_round.js') }}"></script>
+
+{% endblock %}

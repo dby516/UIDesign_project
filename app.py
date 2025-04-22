@@ -34,6 +34,9 @@ CALLING_TILES_ANSWER_MAP = {
 with open("static/learn_data/tile_type_pairs.json") as f:
     tile_type_pairs = json.load(f)
 
+with open("static/learn_data/play_round.json") as f:
+    play_round_data = json.load(f)
+
 # ---------------------- Home & Main Pages ----------------------
 @app.route('/')
 def home():
@@ -185,9 +188,20 @@ def check_calling_tiles():
 
 
 #-------------Game procedure step 3---------------
-@app.route('/play-round')
-def play_round():
-    return render_template('play_round.html')
+@app.route('/play-round-start')
+def play_round_start():
+    return render_template('play_round_start.html')
+
+@app.route('/play_round/<int:step>', methods=['GET', 'POST'])
+def play_round(step):
+    round = play_round_data.get(str(step))
+    return render_template('play_round.html', step=step, round=round)
+
+@app.route('/play_round_end', methods=['POST'])
+def play_round_end():
+    return render_template('play_round_end.html')
+
+
 #-----------------------------------------------
     
 
