@@ -80,7 +80,8 @@ body {
     flex-direction: column;
 }
 
-.options button {
+.options button,
+.options form button {
     background-color: #f7d559;
     color: #333;
     border: none;
@@ -185,5 +186,163 @@ body {
     opacity: 1;
 }
 
+
+/* ----- Play Round ----- */
+.play-column {
+    /*background-size: contain;           preserve aspect ratio */
+    background-repeat: no-repeat;      /* avoid tiling */
+    background-position: center;       /* center the image */
+    width: 100%;                       /* responsive width */
+    min-width: 1000px;
+    min-height: 600px;
+    height: auto;                      /* allow content to determine height */
+    padding: 30px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+    align-items: center;
+    background-size: cover;
+}
+  
+
+.mahjong-tile {
+    height: 60px;
+    margin-right: 2px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+.mahjong-tile.disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+}
+ 
+
+.mahjong-tile:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 10px 2px gold;
+}
+
+.mahjong-tile.selected {
+    border: 3px solid gold;
+    transform: translateY(-10px);
+}
+
+.notice-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 60%;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.25rem; /* adjust as needed */
+    padding: 1rem 0;
+    color: white;
+}
+
+.spacer-head {
+    height: 30%;
+    width: 100%;
+}
+
+.spacer-mid-left{
+    width: 1px;
+}
+
+.spacer-mid-right{
+    width: 10%;
+}
+
+.tile-row {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.player-label {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 20px;
+    color: white;
+}
+
+.operation-buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.operation-buttons button {
+    background-color: #f7d559;
+    color: #333;
+    border: none;
+    padding: 12px;
+    margin: 5px 0;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.operation-buttons button:hover {
+    background-color: #ffe589;
+}
+
+
+/* Discard Tiles */
+.discard-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 5px 0;
+}
+  
+.discard-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+.discard-tile {
+    height: 40px;
+    margin: 2px;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.discard-middle {
+    display: flex;
+    width: 100%;
+    align-items: top;
+    justify-content: space-between;
+}
+
+  
+.main-play-content {
+    /* flex-grow: 1; */
+    width: 100%;
+}
+
+.custom-15 {
+    flex: 0 0 15%;
+    max-width: 15%;
+  }
+  
+  .custom-10 {
+    flex: 0 0 10%;
+    max-width: 10%;
+  }
+  
+  .custom-50 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  
+  
 
 /* ----- Layout ----- */

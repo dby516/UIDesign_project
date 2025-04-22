@@ -25,6 +25,19 @@
     
         console.log("Retrieved from localStorage:", correct, wrong); // DEBUG
     });
+
+    document.getElementById('finish-btn').addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log("Resetting localStorage...");
+
+        localStorage.removeItem('drag_correct');
+        localStorage.removeItem('drag_wrong');
+
+        setTimeout(() => {
+            window.location.href = e.target.href;
+        }, 50);
+    });
+
 </script>
 
 <script src="{{ url_for('static', filename='drag_to_match.js') }}"></script>

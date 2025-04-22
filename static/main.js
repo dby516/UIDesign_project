@@ -10,3 +10,6 @@ function Quiz() {
     window.location.href = '/quiz';
 }
 
+function StartPlayRound() {
+    window.location.href = '/play_round/1';
+}
