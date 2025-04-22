@@ -6,31 +6,42 @@
 
     <!-- Left: Game Display -->
     <div class="col play-column">
-      
-      <!-- Top (North) Discards -->
-      <div class="spacer-head"></div>
-      <div id="discard-N" class="discard-row discard-n"></div>
 
-      <!-- Middle Layer: West | Center | East -->
-      <div class="row discard-middle">
-        <div class="col spacer-mid-left custom-15"></div>
-
-        <div id="discard-W" class="col discard-col discard-w custom-10"></div>
-
-        <div class="col main-play-content custom-50">
-          <div class="notice-row">{{ round.notice }}</div>
-          <div id="discard-S" class="discard-row discard-s"></div>
-        </div>
-
-        <div id="discard-E" class="col discard-col discard-e custom-10"></div>
-
-        <div class="col spacer-mid-right custom-15"></div>
+      <!-- Players -->
+      <div class="player north">
+        <img src="/static/avatars/avatar_n.png">
+      </div>
+      <div class="player west">
+        <img src="/static/avatars/avatar_w.png">
+      </div>
+      <div class="player east">
+        <img src="/static/avatars/avatar_e.png">
+      </div>
+      <div class="player south you">
+        <div class="tile-row mb-2" id="player-hand"></div>
+        <img src="/static/avatars/avatar_s.png">
       </div>
 
+      <!-- Discard Boxes -->
+      <div class="discardbox dis_north">
+        <div id="discard-N" class="discard-row"></div>
+      </div>
+      <div class="discardbox dis_south">
+        <div id="discard-S" class="discard-row"></div>
+      </div>
+      <div class="discardbox dis_west">
+        <div id="discard-W" class="discard-row"></div>
+      </div>
+      <div class="discardbox dis_east">
+        <div id="discard-E" class="discard-row"></div>
+      </div>
 
-      <!-- Bottom: Your Hand & Label -->
-      <div class="tile-row mb-2" id="hand-tiles"></div>
-      <div class="player-label mb-3">You</div>
+      <!-- Center Notice -->
+      <div class="center">
+        <div class="discard-info">
+          <p>{{ round.notice }}</p>
+        </div>
+      </div>
 
     </div>
 

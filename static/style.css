@@ -35,8 +35,9 @@ body {
 }
 
 #player-hand {
-    width: 70%;
+    width: 60%;
     margin: 0 auto;
+    padding-left: 10px;
     display: flex;
     justify-content: center;
 }

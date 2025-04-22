@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const handContainer = document.getElementById("hand-tiles");
+    const handContainer = document.getElementById("player-hand");
   
     roundHand.forEach((tile, idx) => {
       const img = document.createElement("img");
