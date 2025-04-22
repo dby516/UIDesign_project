@@ -73,9 +73,9 @@ def learn_tiles_end():
 def quiz(question_id):
     return render_template('quiz.html', question_id=question_id)
 
-@app.route('/result')
-def result():
-    return render_template('result.html')
+@app.route("/quiz/<int:question_id>/results")
+def quiz_results(question_id):
+    return render_template("quiz_result.html", question_id=question_id)
 
 #-------------Game procedure step 1---------------
 @app.route("/winning-hands/<int:step>")

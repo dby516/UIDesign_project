@@ -1,6 +1,12 @@
 let roundCounter = 0;
+let score = 0;
 
 const playerHand = [
+    "/static/mahjong_tiles/2_stripe.png",
+    "/static/mahjong_tiles/2_stripe.png",
+    "/static/mahjong_tiles/5_stripe.png",
+    "/static/mahjong_tiles/5_stripe.png",
+    "/static/mahjong_tiles/6_stripe.png",
     "/static/mahjong_tiles/6_tong.png",
     "/static/mahjong_tiles/7_tong.png",
     "/static/mahjong_tiles/1_million.png",
@@ -31,7 +37,7 @@ const rounds = [
         text: "Pick one to discard.",
         buttons: [],
         allowTileClick: true,
-        correctTileIndex: 5,
+        correctTileIndex: 10,
         action: (clickedIndex) => {
             if (clickedIndex === rounds[roundCounter].correctTileIndex) {
                 setMessage("✅ Correct discard!");
@@ -40,13 +46,15 @@ const rounds = [
                 renderRound();
             } else {
                 const errorMessages = {
-                    0: "❌ Too early to discard this tile.",
-                    1: "❌ That tile isn't helping your set.",
-                    3: "❌ Hmm… not quite the right choice.",
-                    4: "❌ That doesn't improve your hand.",
-                    5: "❌ Wrong tile. Think again!"
+                    0: "❌ Could be a set or a pair.",
+                    1: "❌ Could be a set or a pair.",
+                    2: "❌ Could be a set or a pair.",
+                    3: "❌ Could be a set or a pair.",
+                    4: "❌ Could be a set or a pair.",
+                    5: "❌ Could be a set or a pair.",
+                    6: "❌ Could be a set or a pair."
                 };
-                setMessage(errorMessages[clickedIndex] || "❌ Not the right tile.");
+                setMessage(errorMessages[clickedIndex] || "❌ Already a set");
             }
         }
     },
@@ -62,9 +70,9 @@ const rounds = [
         card: "/static/mahjong_tiles/8_tong.png",
         buttons: ["Chi", "Pong", "Hu!", "Pass"],
         buttonActions: {
-            "Chi": () => setMessage("❌ You can't chi"),
-            "Pong": () => setMessage("⭕️ You can pong"),
-            "Hu!": () => setMessage("❌ You can't hu"),
+            "Chi": () => setMessage("❌ You can't chi now"),
+            "Pong": () => setMessage("❌ You can't pong now"),
+            "Hu!": () => setMessage("❌ You can't hu now"),
             "Pass": () => {
                 setMessage("✅ All you can do is pass");
                 roundCounter++;
@@ -84,12 +92,12 @@ const rounds = [
     },
     {
         text: "North player turn\n He played:",
-        card: "/static/mahjong_tiles/5_tong.png",
+        card: "/static/mahjong_tiles/7_stripe.png",
         buttons: ["Chi", "Pong", "Hu!", "Pass"],
         buttonActions: {
-            "Chi": () => setMessage("❌ You can't chi"),
-            "Pong": () => setMessage("⭕️ You can pong"),
-            "Hu!": () => setMessage("❌ You can't hu"),
+            "Chi": () => setMessage("❌ You can't chi now"),
+            "Pong": () => setMessage("❌ You can't pong now"),
+            "Hu!": () => setMessage("❌ You can't hu now"),
             "Pass": () => {
                 setMessage("✅ All you can do is pass");
                 roundCounter++;
@@ -101,11 +109,72 @@ const rounds = [
         }
     },
     {
-        text: "TODO",
-        buttons: ["TODO"],
-        card: "/static/mahjong_tiles/9_million.png",
+        text: "",
+        buttons: ["Next"],
         action: () => {
-            // Do nothing
+            setMessage("");
+        }
+    },
+    {
+        text: "West player turn\n He played:",
+        card: "/static/mahjong_tiles/7_stripe.png",
+        buttons: ["Chi", "Pong", "Hu!", "Pass"],
+        buttonActions: {
+            "Chi": () => {
+                setMessage("✅ Correct!");
+                playerHand.splice(5, 0, "/static/mahjong_tiles/7_stripe.png");
+                renderHand(); 
+
+                roundCounter++;
+                renderRound();
+            },
+            "Pong": () => setMessage("❌ You can't pong now"),
+            "Hu!": () => setMessage("❌ You can't hu now"),
+            "Pass": () => setMessage("✅ There's option you can do to form a set")
+        },
+        action: () => {
+            setMessage("Select your action");
+        }
+    },
+    {
+        text: "Pick one to discard.",
+        buttons: [],
+        allowTileClick: true,
+        correctTileIndex: [2, 3],
+        action: (clickedIndex) => {
+            if (rounds[roundCounter].correctTileIndex.includes(clickedIndex)) {
+                setMessage("✅ Correct discard!");
+                playerHand.splice(clickedIndex, 1); 
+                roundCounter++;
+                renderRound();
+            } else {
+                const errorMessages = {
+                    0: "❌ Could be a set or a pair.",
+                    1: "❌ Could be a set or a pair."
+                };
+                setMessage(errorMessages[clickedIndex] || "❌ Already a set");
+            }
+        }
+    },
+    {
+        text: "",
+        buttons: ["Next"],
+        action: () => {
+            setMessage("");
+        }
+    },
+    {
+        text: "East player turn\n He played:",
+        card: "/static/mahjong_tiles/8_tong.png",
+        buttons: ["Chi", "Pong", "Hu!", "Pass"],
+        buttonActions: {
+            "Chi": () => setMessage("❌ You can't chi now"),
+            "Pong": () => setMessage("❌ You can't pong now"),
+            "Hu!": () => {window.location.href = `/quiz/${questionId}/results`;},
+            "Pass": () => setMessage("❌ You shouldn't pass now")
+        },
+        action: () => {
+            setMessage("Select your action");
         }
     },
 ];
