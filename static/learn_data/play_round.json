@@ -119,6 +119,23 @@
       "clickable": []
     },
     "8": {
+      "turn": "N",
+      "hand": ["2_stripe", "3_stripe", "4_stripe", "6_stripe", "7_stripe", "8_stripe", "east", "east", "east", "2_tong", "3_tong", "6_million", "6_million"],
+      "discard_E": ["1_million"],
+      "discard_N": ["9_million"],
+      "discard_W": [],
+      "discard_S": ["south", "9_tong"],
+      "notice": "The North player discarded \"9 Million\".",
+      "operations": {
+        "Discard": 0,
+        "Chi": 0,
+        "Pong": 0,
+        "Hu!": 0,
+        "Pass": 1
+      },
+      "clickable": []
+    },
+    "9": {
       "turn": "W",
       "hand": ["2_stripe", "3_stripe", "4_stripe", "6_stripe", "7_stripe", "8_stripe", "east", "east", "east", "2_tong", "3_tong", "6_million", "6_million"],
       "discard_E": ["1_million"],
@@ -135,7 +152,7 @@
       },
       "clickable": []
     },
-    "9": {
+    "10": {
       "turn": "S",
       "hand": ["2_stripe", "3_stripe", "4_stripe", "6_stripe", "7_stripe", "8_stripe", "east", "east", "east", "1_tong", "2_tong", "3_tong", "6_million", "6_million"],
       "discard_E": ["1_million"],

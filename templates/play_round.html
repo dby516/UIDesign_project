@@ -39,20 +39,12 @@
       <div class="operation-buttons">
         {% for op in ["Discard", "Chi", "Pong", "Hu!", "Pass"] %}
           {% if round.operations[op] == 1 %}
-            {% if op == "Hu!" %}
-              <form method="post" action="{{ url_for('play_round_end') }}" style="display: inline;">
-                <input type="hidden" name="operation" value="{{ op }}">
-                <button type="submit" class="btn btn-primary">{{ op }}</button>
-              </form>
-            {% else %}
-              <form method="post" action="{{ url_for('play_round', step=step + 1) }}" style="display: inline;">
-                <input type="hidden" name="operation" value="{{ op }}">
-                <button type="submit" class="btn btn-primary">{{ op }}</button>
-              </form>
-            {% endif %}
+            <form method="post" action="{{ url_for('play_round_end') if op == 'Hu!' else url_for('play_round', step=step + 1) }}">
+              <button type="submit" name="operation" value="{{ op }}">{{ op }}</button>
+            </form>
           {% else %}
             <button class="btn btn-secondary" disabled>{{ op }}</button>
-          {% endif %}  
+          {% endif %}
         {% endfor %}
       </div>
     </div>

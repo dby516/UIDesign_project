@@ -80,7 +80,8 @@ body {
     flex-direction: column;
 }
 
-.options button {
+.options button,
+.options form button {
     background-color: #f7d559;
     color: #333;
     border: none;
@@ -268,10 +269,30 @@ body {
     color: white;
 }
 
-.operation-buttons button {
-    margin-right: 10px;
-    margin-top: 10px;
+.operation-buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
 }
+
+.operation-buttons button {
+    background-color: #f7d559;
+    color: #333;
+    border: none;
+    padding: 12px;
+    margin: 5px 0;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.operation-buttons button:hover {
+    background-color: #ffe589;
+}
+
 
 /* Discard Tiles */
 .discard-row {
