@@ -1,46 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Mahjong Quiz</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <div class="table-container">
-        <div class="player north">
-            <img src="/static/avatar_n.png">
-            <div class="tiles hidden"></div>
-            <div class="label">N</div>
-        </div>
-        <div class="player west">
-            <img src="/static/avatar_w.png">
-            <div class="tiles hidden"></div>
-            <div class="label">W</div>
-        </div>
-        <div class="player east">
-            <img src="/static/avatar_e.png">
-            <div class="tiles hidden"></div>
-            <div class="label">E</div>
-        </div>
-        <div class="player south you">
-            <img src="/static/avatar_you.png">
-            <div class="tiles" id="player-hand"></div>
-            <div class="label">S - You</div>
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container py-5 px-4 px-lg-5 mt-5">
+    <div class="row">
+        <div class="col play-column">
+        <!-- <div class="table-container"> -->
+            <div class="player north">
+                <img src="/static/avatars/avatar_n.png">
+                <div class="tiles hidden"></div>
+            </div>
+            <div class="player west">
+                <img src="/static/avatars/avatar_w.png">
+                <div class="tiles hidden"></div>
+            </div>
+            <div class="player east">
+                <img src="/static/avatars/avatar_e.png">
+                <div class="tiles hidden"></div>
+            </div>
+            <div class="player south you">
+                <!-- <div class="tiles" id="player-hand"></div> -->
+                 <!-- Bottom: Your Hand & Label -->
+                <div class="tile-row mb-2" id="player-hand"></div>
+                <img src="/static/avatars/avatar_s.png">
+            </div>
+
+            <div class="center">
+                <div class="discard-info">
+                    <p></p> 
+                    <img class="tile discard" style="display: none;">
+                </div>
+                
+                <div id="message-box"></div>
+            </div>
+
+            <div class="discardbox dis_north">
+                <div id="discard-N" class="discard-row"></div>
+            </div>
+            <div class="discardbox dis_south">
+                <div id="discard-S" class="discard-row"></div>
+            </div>
+            <div class="discardbox dis_west">
+                <div id="discard-W" class="discard-row"></div>
+            </div>
+            <div class="discardbox dis_east">
+                <div id="discard-E" class="discard-row"></div>
+            </div>
+            
+
+        <!-- </div> -->
         </div>
 
-        <div class="center">
-            <div class="discard-info">
-                <img class="tile discard" style="display: none;">
-                <p></p> 
-            </div>
+        <!-- Right: Operation Buttons -->
+        <div class="col">
             <div class="options">
             </div>
-            <div id="message-box"></div>
         </div>
+    </div>
+</div>
 
+<script>
+    const questionId = {{ question_id }};
+</script>
+<script src="{{ url_for('static', filename='quiz.js') }}"></script>
 
-        <script>
-            const questionId = {{ question_id }};
-        </script>
-        <script src="{{ url_for('static', filename='quiz.js') }}"></script>
-
+{% endblock %}

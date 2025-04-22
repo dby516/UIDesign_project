@@ -7,7 +7,7 @@ function LearnGameProc() {
 }
 
 function Quiz() {
-    window.location.href = '/quiz';
+    window.location.href = '/quiz/1';
 }
 
 function StartPlayRound() {
