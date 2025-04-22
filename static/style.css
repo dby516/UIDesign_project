@@ -8,8 +8,12 @@ body {
     position: relative;
     width: 100%;
     height: 100vh;
-    background-color: #2e4b2c;
-    border: 20px solid #5d3c1c;
+    /* background-color: #2e4b2c;
+    border: 20px solid #5d3c1c; */
+    background-image: url('/static/learn_data/play_round_bg.png');
+    background-repeat: no-repeat;      /* avoid tiling */
+    background-position: center;       /* center the image */
+    background-size: cover;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -190,6 +194,7 @@ body {
 /* ----- Play Round ----- */
 .play-column {
     /*background-size: contain;           preserve aspect ratio */
+    background-image: url('/static/learn_data/play_round_bg.png');
     background-repeat: no-repeat;      /* avoid tiling */
     background-position: center;       /* center the image */
     width: 100%;                       /* responsive width */
