@@ -73,9 +73,18 @@ def learn_tiles_end():
 def quiz(question_id):
     return render_template('quiz.html', question_id=question_id)
 
-@app.route('/result')
-def result():
-    return render_template('result.html')
+@app.route("/quiz/<int:question_id>/results", methods=["POST", "GET"])
+def quiz_results(question_id):
+    if request.method == "POST":
+        data = request.get_json()
+        session["score"] = data.get("score", 0)
+        session["max_score"] = data.get("max_score", 0)
+        return "", 204
+
+    score = session.pop("score", 0)
+    max_score = session.pop("max_score", 0)
+    return render_template("quiz_result.html", score=score, max_score=max_score)
+
 
 #-------------Game procedure step 1---------------
 @app.route("/winning-hands/<int:step>")
