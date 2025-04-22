@@ -2,12 +2,9 @@
 {% block content %}
 
 <div class="container py-5 px-4 px-lg-5 mt-5 text-center">
-    <!-- Page Title -->
-    <h1>Quiz Results</h1>
-
     <div class="mt-4">
         <p class="lead">🎉 Well done! You’ve completed the quiz.</p>
-        <img src="/static/result_banner.png" class="d-block mx-auto my-4" width="600px" alt="Result Banner">
+        <p>Your score: {{ score }} / {{max_score}}</p>
     </div>
 
     <div class="mt-4">

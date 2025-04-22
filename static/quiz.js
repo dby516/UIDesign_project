@@ -1,5 +1,7 @@
 let roundCounter = 0;
 let score = 0;
+let max_score = 0;
+let score_flag = 1;
 
 const playerHand = [
     "/static/mahjong_tiles/2_stripe.png",
@@ -40,11 +42,18 @@ const rounds = [
         correctTileIndex: 10,
         action: (clickedIndex) => {
             if (clickedIndex === rounds[roundCounter].correctTileIndex) {
+                if (score_flag === 1) {
+                    score += 1;
+                }
+                score_flag = 1;
+                max_score += 1;
+                
                 setMessage("✅ Correct discard!");
                 playerHand.splice(clickedIndex, 1); 
                 roundCounter++;
                 renderRound();
             } else {
+                score_flag = 0;
                 const errorMessages = {
                     0: "❌ Could be a set or a pair.",
                     1: "❌ Could be a set or a pair.",
@@ -70,10 +79,25 @@ const rounds = [
         card: "/static/mahjong_tiles/8_tong.png",
         buttons: ["Chi", "Pong", "Hu!", "Pass"],
         buttonActions: {
-            "Chi": () => setMessage("❌ You can't chi now"),
-            "Pong": () => setMessage("❌ You can't pong now"),
-            "Hu!": () => setMessage("❌ You can't hu now"),
+            "Chi": () => {
+                score_flag = 0;
+                setMessage("❌ You can't chi now");
+            },
+            "Pong": () => {
+                score_flag = 0;
+                setMessage("❌ You can't pong now");
+            },
+            "Hu!": () => {
+                score_flag = 0;
+                setMessage("❌ You can't hu now");
+            },
             "Pass": () => {
+                if (score_flag === 1) {
+                    score += 1;
+                }
+                score_flag = 1;
+                max_score += 1;
+
                 setMessage("✅ All you can do is pass");
                 roundCounter++;
                 renderRound();
@@ -95,10 +119,25 @@ const rounds = [
         card: "/static/mahjong_tiles/7_stripe.png",
         buttons: ["Chi", "Pong", "Hu!", "Pass"],
         buttonActions: {
-            "Chi": () => setMessage("❌ You can't chi now"),
-            "Pong": () => setMessage("❌ You can't pong now"),
-            "Hu!": () => setMessage("❌ You can't hu now"),
+            "Chi": () => {
+                score_flag = 0;
+                setMessage("❌ You can't chi now");
+            },
+            "Pong": () => {
+                score_flag = 0;
+                setMessage("❌ You can't pong now");
+            },
+            "Hu!": () => {
+                score_flag = 0;
+                setMessage("❌ You can't hu now");
+            },
             "Pass": () => {
+                if (score_flag === 1) {
+                    score += 1;
+                }
+                score_flag = 1;
+                max_score += 1;
+
                 setMessage("✅ All you can do is pass");
                 roundCounter++;
                 renderRound();
@@ -121,6 +160,12 @@ const rounds = [
         buttons: ["Chi", "Pong", "Hu!", "Pass"],
         buttonActions: {
             "Chi": () => {
+                if (score_flag === 1) {
+                    score += 1;
+                }
+                score_flag = 1;
+                max_score += 1;
+
                 setMessage("✅ Correct!");
                 playerHand.splice(5, 0, "/static/mahjong_tiles/7_stripe.png");
                 renderHand(); 
@@ -128,9 +173,18 @@ const rounds = [
                 roundCounter++;
                 renderRound();
             },
-            "Pong": () => setMessage("❌ You can't pong now"),
-            "Hu!": () => setMessage("❌ You can't hu now"),
-            "Pass": () => setMessage("✅ There's option you can do to form a set")
+            "Pong": () => {
+                score_flag = 0;
+                setMessage("❌ You can't pong now");
+            },
+            "Hu!": () => {
+                score_flag = 0;
+                setMessage("❌ You can't hu now");
+            },
+            "Pass": () => {
+                score_flag = 0;
+                setMessage("❌ There's option you can do to form a set")
+            }
         },
         action: () => {
             setMessage("Select your action");
@@ -143,11 +197,19 @@ const rounds = [
         correctTileIndex: [2, 3],
         action: (clickedIndex) => {
             if (rounds[roundCounter].correctTileIndex.includes(clickedIndex)) {
+                if (score_flag === 1) {
+                    score += 1;
+                }
+                score_flag = 1;
+                max_score += 1;
+
                 setMessage("✅ Correct discard!");
                 playerHand.splice(clickedIndex, 1); 
                 roundCounter++;
                 renderRound();
             } else {
+                score_flag = 0;
+
                 const errorMessages = {
                     0: "❌ Could be a set or a pair.",
                     1: "❌ Could be a set or a pair."
@@ -168,10 +230,43 @@ const rounds = [
         card: "/static/mahjong_tiles/8_tong.png",
         buttons: ["Chi", "Pong", "Hu!", "Pass"],
         buttonActions: {
-            "Chi": () => setMessage("❌ You can't chi now"),
-            "Pong": () => setMessage("❌ You can't pong now"),
-            "Hu!": () => {window.location.href = `/quiz/${questionId}/results`;},
-            "Pass": () => setMessage("❌ You shouldn't pass now")
+            "Chi": () => {
+                score_flag = 0;
+                setMessage("❌ You can't chi now");
+            },
+            "Pong": () => {
+                score_flag = 0;
+                setMessage("❌ You can't pong now");
+            },
+            "Hu!": () => {
+                if (score_flag === 1) {
+                    score += 1;
+                }
+                score_flag = 1;
+                max_score += 1;
+
+                fetch(`/quiz/${questionId}/results`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ score: score, max_score: max_score })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = `/quiz/${questionId}/results`; 
+                    } else {
+                        console.error("Error while submitting score.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+            },
+            "Pass": () => {
+                score_flag = 0;
+                setMessage("❌ You shouldn't pass now")
+            }
         },
         action: () => {
             setMessage("Select your action");
