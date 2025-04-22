@@ -28,14 +28,28 @@ body {
     align-items: center;
 }
 
-.north { top: 20px; left: 50%; transform: translateX(-50%); }
-.south { bottom: 20px; left: 50%; transform: translateX(-50%); }
-.west { left: 20px; top: 50%; transform: translateY(-50%); }
-.east { right: 20px; top: 50%; transform: translateY(-50%); }
+.player-label {
+    display: flex;
+    align-items: center; /* vertically center image and text */
+    gap: 8px; /* space between image and text */
+}
+
+#player-hand {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+  
+
+.north { top: 45px; left: 50%; transform: translateX(-50%); }
+.south { bottom: 45px; left: 50%; transform: translateX(-50%); }
+.west { left: 50px; top: 50%; transform: translateY(-50%); }
+.east { right: 50px; top: 50%; transform: translateY(-50%); }
 
 .player img {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 70px;
     border-radius: 10px;
 }
 
@@ -71,7 +85,7 @@ body {
 
 .center {
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -193,6 +207,7 @@ body {
 
 /* ----- Play Round ----- */
 .play-column {
+    position: relative;
     /*background-size: contain;           preserve aspect ratio */
     background-image: url('/static/learn_data/play_round_bg.png');
     background-repeat: no-repeat;      /* avoid tiling */
@@ -306,6 +321,48 @@ body {
     flex-wrap: wrap;
     margin: 5px 0;
 }
+
+.discardbox {
+    position: absolute;
+    display: flex;
+    gap: 4px;
+    z-index: 5;
+}
+
+.discardbox .discard-row {
+    display: flex;
+    gap: 4px;
+}
+
+/* North - Top center */
+.dis_north {
+    top: 180px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* South - Bottom center (above player's hand) */
+.dis_south {
+    bottom: 200px; /* adjust to sit above hand */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* West - Center left */
+.dis_west {
+    left: 240px;
+    top: 40%;
+    transform: translateY(-50%);
+    flex-direction: column;
+}
+
+/* East - Center right */
+.dis_east {
+    right: 240px;
+    top: 40%;
+    transform: translateY(-50%);
+    flex-direction: column;
+}
   
 .discard-col {
     display: flex;
@@ -327,6 +384,35 @@ body {
     justify-content: space-between;
 }
 
+/* Top-center (North) */
+.discard-n-f {
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  /* Bottom-center (South) */
+  .discard-s-f {
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  /* Left-center (West) */
+  .discard-w-f {
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    flex-direction: column;
+  }
+  
+  /* Right-center (East) */
+  .discard-e-f {
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    flex-direction: column;
+  }
   
 .main-play-content {
     /* flex-grow: 1; */
