@@ -50,6 +50,30 @@ CALLING_TILES_FEEDBACK = {
     }
 }
 
+CALLING_TILES_CORRECT_HANDS = { 
+    1: ["1_million.png", "2_million.png", "3_million.png",  
+        "1_stripe.png", "1_stripe.png", "1_stripe.png", 
+        "4_stripe.png", "5_stripe.png", "6_stripe.png",
+        "5_tong.png", "6_tong.png", "7_tong.png",   
+        "west.png", "west.png"],
+    2: ["1_million.png", "2_million.png", "3_million.png",  
+        "1_stripe.png", "1_stripe.png", "1_stripe.png", 
+        "4_stripe.png", "5_stripe.png", "6_stripe.png",
+        "5_tong.png", "6_tong.png", "7_tong.png",   
+        "west.png", "west.png"],
+    3: ["1_million.png", "2_million.png", "3_million.png",  
+        "4_million.png", "1_stripe.png", "1_stripe.png", 
+        "4_stripe.png", "5_stripe.png", "6_stripe.png",
+        "5_tong.png", "6_tong.png", "7_tong.png",   
+        "west.png", "west.png"],
+    4: ["1_million.png", "2_million.png", "3_million.png",  
+        "1_stripe.png", "1_stripe.png", "1_stripe.png", 
+        "4_stripe.png", "5_stripe.png", "6_stripe.png",
+        "5_tong.png", "6_tong.png", "7_tong.png",   
+        "west.png", "west.png"],}
+
+
+
 with open("static/learn_data/tile_type_pairs.json") as f:
     tile_type_pairs = json.load(f)
 
@@ -206,7 +230,11 @@ def check_calling_tiles():
     is_correct = (action == CALLING_TILES_ANSWER_MAP.get(step))
 
     # on correct, send full list to client
-    new_hand = CALLING_TILES_HAND[:] if is_correct else data.get('current_hand', [])
+    # new_hand = CALLING_TILES_HAND[:] if is_correct else data.get('current_hand', [])
+    if is_correct:
+        new_hand = CALLING_TILES_CORRECT_HANDS.get(step, [])
+    else:
+        new_hand = data.get('current_hand', [])
 
     messages = CALLING_TILES_FEEDBACK.get(step, {})
     msg = messages['correct'] if is_correct else messages['incorrect']
