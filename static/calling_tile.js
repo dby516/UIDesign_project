@@ -24,8 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .then(res => res.json())
     .then(data => {
+      document.getElementById('feedback').textContent = data.feedback;
       if (data.valid) {
-        feedback.textContent = 'Correct!';
+        //feedback.textContent = 'Correct!';
         // rebuild the hand
         const tileHand = document.getElementById('tileHand');
         tileHand.innerHTML = '';
@@ -44,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // enable Next
         document.querySelector('.next-button').classList.remove('disabled');
       } else {
-        feedback.textContent = 'Incorrect. Try again.';
+        //feedback.textContent = 'Incorrect. Try again.';
       }
     })
     .catch(err => {

@@ -31,6 +31,25 @@ CALLING_TILES_ANSWER_MAP = {
     4: 'DoIt',
 }
 
+CALLING_TILES_FEEDBACK = {
+    1: {
+        'correct': "Nice! You made a straight with a Chi call!.",
+        'incorrect': "CHI it! You can form a straight by taking the discarded tile. "
+    },
+    2: {
+        'correct': "Nice pass—you knew when not to Chi.",
+        'incorrect': "Not quite—To CHI, remeber you need to form a straight with the discarded tile."
+    },
+    3: {
+        'correct': "Perfect—you spotted the Chi opportunity! However, it didn't increase the number of melds so might not help you win",
+        'incorrect': "Great Pass! It didn't incresae the number of melds so might not help you win."
+    },
+    4: {
+        'correct': "Excellent—your final choice was spot on.",
+        'incorrect': "You can Pong the discarded tile to complete a triplet"
+    }
+}
+
 with open("static/learn_data/tile_type_pairs.json") as f:
     tile_type_pairs = json.load(f)
 
@@ -189,9 +208,13 @@ def check_calling_tiles():
     # on correct, send full list to client
     new_hand = CALLING_TILES_HAND[:] if is_correct else data.get('current_hand', [])
 
+    messages = CALLING_TILES_FEEDBACK.get(step, {})
+    msg = messages['correct'] if is_correct else messages['incorrect']
+
     return jsonify({
         'valid': is_correct,
-        'new_hand': new_hand
+        'new_hand': new_hand,
+        'feedback': msg
     })
 
 
