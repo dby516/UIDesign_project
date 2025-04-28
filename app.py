@@ -42,7 +42,7 @@ CALLING_TILES_FEEDBACK = {
     },
     3: {
         'correct': "Perfect—you spotted the Chi opportunity! However, it didn't increase the number of melds so might not help you win",
-        'incorrect': "Great Pass! It didn't incresae the number of melds so might not help you win."
+        'incorrect': "Great Pass! It forms a stright but it didn't increase the number of melds so might not help you win."
     },
     4: {
         'correct': "Excellent—your final choice was spot on.",

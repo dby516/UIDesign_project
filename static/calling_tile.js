@@ -25,6 +25,16 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(res => res.json())
     .then(data => {
       document.getElementById('feedback').textContent = data.feedback;
+      const clickedButton = document.querySelector(`.action-buttons button[data-action="${action}"]`);
+      document.querySelectorAll('.action-buttons button').forEach(btn => {
+        btn.style.backgroundColor = '';
+      });
+      clickedButton.style.backgroundColor = data.valid ? '#4CAF50' : '#e74c3c';
+      // special hand for step 3
+      if (CALLING_TILE_CONTEXT.step === 3) {
+        clickedButton.style.backgroundColor = '#bdc3c7'; // only clicked one grey
+      }
+
       if (data.valid) {
         //feedback.textContent = 'Correct!';
         // rebuild the hand
