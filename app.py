@@ -31,6 +31,49 @@ CALLING_TILES_ANSWER_MAP = {
     4: 'DoIt',
 }
 
+CALLING_TILES_FEEDBACK = {
+    1: {
+        'correct': "Nice! You made a straight with a Chi call!.",
+        'incorrect': "CHI it! You can form a straight by taking the discarded tile. "
+    },
+    2: {
+        'correct': "Nice pass—you knew when not to Chi.",
+        'incorrect': "Not quite—To CHI, remeber you need to form a straight with the discarded tile."
+    },
+    3: {
+        'correct': "Perfect—you spotted the Chi opportunity! However, it didn't increase the number of melds so might not help you win",
+        'incorrect': "Great Pass! It forms a stright but it didn't increase the number of melds so might not help you win."
+    },
+    4: {
+        'correct': "Excellent—your final choice was spot on.",
+        'incorrect': "You can Pong the discarded tile to complete a triplet"
+    }
+}
+
+CALLING_TILES_CORRECT_HANDS = { 
+    1: ["1_million.png", "2_million.png", "3_million.png",  
+        "1_stripe.png", "1_stripe.png", "1_stripe.png", 
+        "4_stripe.png", "5_stripe.png", "6_stripe.png",
+        "5_tong.png", "6_tong.png", "7_tong.png",   
+        "west.png", "west.png"],
+    2: ["1_million.png", "2_million.png", "3_million.png",  
+        "1_stripe.png", "1_stripe.png", "1_stripe.png", 
+        "4_stripe.png", "5_stripe.png", "6_stripe.png",
+        "5_tong.png", "6_tong.png", "7_tong.png",   
+        "west.png", "west.png"],
+    3: ["1_million.png", "2_million.png", "3_million.png",  
+        "4_million.png", "1_stripe.png", "1_stripe.png", 
+        "4_stripe.png", "5_stripe.png", "6_stripe.png",
+        "5_tong.png", "6_tong.png", "7_tong.png",   
+        "west.png", "west.png"],
+    4: ["1_million.png", "2_million.png", "3_million.png",  
+        "1_stripe.png", "1_stripe.png", "1_stripe.png", 
+        "4_stripe.png", "5_stripe.png", "6_stripe.png",
+        "5_tong.png", "6_tong.png", "7_tong.png",   
+        "west.png", "west.png"],}
+
+
+
 with open("static/learn_data/tile_type_pairs.json") as f:
     tile_type_pairs = json.load(f)
 
@@ -187,11 +230,19 @@ def check_calling_tiles():
     is_correct = (action == CALLING_TILES_ANSWER_MAP.get(step))
 
     # on correct, send full list to client
-    new_hand = CALLING_TILES_HAND[:] if is_correct else data.get('current_hand', [])
+    # new_hand = CALLING_TILES_HAND[:] if is_correct else data.get('current_hand', [])
+    if is_correct:
+        new_hand = CALLING_TILES_CORRECT_HANDS.get(step, [])
+    else:
+        new_hand = data.get('current_hand', [])
+
+    messages = CALLING_TILES_FEEDBACK.get(step, {})
+    msg = messages['correct'] if is_correct else messages['incorrect']
 
     return jsonify({
         'valid': is_correct,
-        'new_hand': new_hand
+        'new_hand': new_hand,
+        'feedback': msg
     })
 
 
