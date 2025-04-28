@@ -37,6 +37,9 @@ with open("static/learn_data/tile_type_pairs.json") as f:
 with open("static/learn_data/play_round.json") as f:
     play_round_data = json.load(f)
 
+with open("static/learn_data/drag2match_resp.json") as f:
+    tile_description_data = json.load(f)
+
 # ---------------------- Home & Main Pages ----------------------
 @app.route('/')
 def home():
@@ -58,17 +61,38 @@ def learn_tiles(step):
 def game_procedure():
     return render_template('learn_game_proc.html')
 
+# ---------------------- Drag to Match Game ----------------------
 @app.route('/drag_to_match/<int:step>')
 def drag_to_match(step):
     random.seed(step)
-    sample = random.sample(tile_type_pairs, 4)
-    return render_template('drag_to_match.html', step=step, pairs=sample)
 
+    # Group tiles by type
+    type_to_tiles = {}
+    for pair in tile_type_pairs:
+        if pair['type'] not in type_to_tiles:
+            type_to_tiles[pair['type']] = []
+        type_to_tiles[pair['type']].append(pair)
+
+    # Pick 4 unique types
+    all_types = list(type_to_tiles.keys())
+    if len(all_types) >= 4:
+        selected_types = random.sample(all_types, 4)
+    else:
+        selected_types = all_types  # if fewer types
+
+    # Pick 1 tile per type
+    sample = []
+    for t in selected_types:
+        sample.append(random.choice(type_to_tiles[t]))
+
+    return render_template('drag_to_match.html', step=step, pairs=sample, tile_descriptions=tile_description_data)
+
+# ---------------------- Learn Tiles ----------------------
 @app.route('/learn_tiles/end')
 def learn_tiles_end():
     return render_template('learn_tiles_end.html')
 
-
+# ---------------------- Quiz ----------------------
 @app.route('/quiz/<int:question_id>')
 def quiz(question_id):
     return render_template('quiz.html', question_id=question_id)

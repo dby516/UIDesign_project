@@ -58,5 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
         row.appendChild(tileContainer);
         container.appendChild(row);
     });
+    
 });
 

@@ -174,8 +174,13 @@ body {
     position: relative;
     display: inline-block;
     margin: 5px;
-    width: 80px;
+    width: 72px;
     cursor: pointer;
+}
+
+.tile_learn:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 10px 2px gold;
 }
 
 .tile_learn img {
@@ -204,6 +209,17 @@ body {
 .tile_learn:hover .tile_label {
     opacity: 1;
 }
+
+.notice-box {
+    background: transparent;
+    border: 2px dashed darkgreen;
+    border-radius: 12px;
+    padding: 20px;
+    font-size: 16px;
+    color: darkgreen;
+    text-align: center;
+}
+
 
 
 /* ----- Play Round ----- */
@@ -435,6 +451,103 @@ body {
     max-width: 50%;
   }
   
-  
+
+/* ----- Drag to Match ----- */
+/* .tile-info {
+    text-decoration: underline dotted;
+    cursor: pointer;
+    position: relative;
+}*/
+
+/* Tooltip window */
+/* .tile-info:hover::after {
+    content: attr(title);
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: darkgreen;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+    font-size: 14px;
+    z-index: 10;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.3);
+} */
+.tile-info {
+    text-decoration: underline dotted;
+    cursor: pointer;
+    position: relative;
+}
+
+/* Fancy tooltip content */
+.tile-info .tooltip-content {
+    display: none;
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f0f0f0;
+    color: #333;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    white-space: normal;
+    width: 280px;
+    z-index: 100;
+}
+
+/* Show on hover */
+.tile-info:hover .tooltip-content {
+    display: block;
+}
+
+/* Images inside tooltip */
+.tooltip-content img {
+    width: 40px;
+    height: 50px;
+    margin: 4px;
+    border-radius: 6px;
+}
+
+
+
+.tutorial-gif {
+    width: 100%;
+    max-width: 280px;
+    height: 300px;
+    border: 2px solid darkgreen;
+    border-radius: 12px;
+    padding: 5px;
+    background: white;
+}
+
+
+/* Drop zones (droppable targets) */
+.droppable {
+    width: 100px;
+    height: 130px;
+    background: transparent;
+    border: 2px dashed darkgreen;
+    border-radius: 10px;
+    color: darkgreen;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.droppable-hover {
+    background: gold;
+    color: white;
+    transform: scale(1.1);
+    border: 2px dashed white;
+}
+
 
 /* ----- Layout ----- */
