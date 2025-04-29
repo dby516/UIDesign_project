@@ -14,7 +14,7 @@ lessons = {
 
 CORRECT_ORDER = [ "1_million.png", "2_million.png", "3_million.png",  
                  "1_stripe.png", "1_stripe.png", "1_stripe.png", 
-                 "4_stripe.png", "5_stripe.png", "rich.png",  
+                 "4_stripe.png", "5_stripe.png", "6_stripe.png",  
                  "5_tong.png", "6_tong.png", "7_tong.png",   
                  "west.png", "west.png"    ]
 
@@ -133,13 +133,16 @@ def quiz_results(question_id):
 @app.route("/winning-hands/<int:step>")
 def winning_hands(step):
     if step == 1:
+        # New Step 0: No tile images needed
+        return render_template("winning_hands.html", step=step, tile_images=[])
+    elif step == 2:
         # Shuffle on first visit
         tile_order = CORRECT_ORDER[:]
         random.shuffle(tile_order)
         session["tile_order"] = tile_order
         return render_template("winning_hands.html", step=step, tile_images=tile_order)
 
-    elif step == 2:
+    elif step == 3:
         # Fixed correct order for teaching overlays
         return render_template("winning_hands.html", step=step, tile_images=CORRECT_ORDER)
 
@@ -263,7 +266,69 @@ def play_round_end():
 
 
 #-----------------------------------------------
+# ===== Cheatsheet Routes =====
+@app.route('/get-cheatsheet')
+def get_cheatsheet():
+    from flask import jsonify
+    cheatsheet = session.get('cheatsheet', [])
+    return jsonify(cheatsheet)
+
+@app.route('/get-cheatsheet-content', methods=['GET'])
+def get_cheatsheet_content():
+    """API endpoint to get cheatsheet content for the modal"""
+    # Get the cheatsheet from session
+    cheatsheet_entries = session.get('cheatsheet', [])
     
+    # Return as JSON
+    return jsonify(cheatsheet_entries)
+
+@app.route('/add-to-cheatsheet', methods=['POST'])
+def add_to_cheatsheet():
+    data = request.get_json()
+    images = data.get('images', [])
+    notes = data.get('notes', '')  # optional, can be empty
+
+    if 'cheatsheet' not in session:
+        session['cheatsheet'] = []
+
+    # Save as a {images: [...], notes: "..."} entry
+    session['cheatsheet'].append({
+        'images': images,
+        'notes': notes
+    })
+
+    session.modified = True  # Tell Flask session changed
+    return jsonify(success=True)
+
+@app.route('/cheatsheet')
+def cheatsheet():
+    cheatsheet_entries = session.get('cheatsheet', [])
+    return render_template('cheatsheet.html', cheatsheet=cheatsheet_entries)
+
+@app.route('/update-cheatsheet', methods=['POST'])
+def update_cheatsheet():
+    data = request.get_json()
+    idx = data.get('index')
+    new_note = data.get('notes')
+
+    if 'cheatsheet' in session and 0 <= idx < len(session['cheatsheet']):
+        session['cheatsheet'][idx]['notes'] = new_note
+        session.modified = True
+        return jsonify(success=True)
+
+    return jsonify(success=False), 400
+    
+@app.route('/delete-from-cheatsheet', methods=['POST'])
+def delete_from_cheatsheet():
+    data = request.get_json()
+    idx = data.get('index')
+
+    if 'cheatsheet' in session and 0 <= idx < len(session['cheatsheet']):
+        session['cheatsheet'].pop(idx)
+        session.modified = True
+        return jsonify(success=True)
+
+    return jsonify(success=False), 400
 
 if __name__ == '__main__':
     app.run(debug=True)

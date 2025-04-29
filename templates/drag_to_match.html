@@ -1,6 +1,8 @@
 {% extends "layout.html" %}
-{% block content %}
 
+
+{% block content %}
+{% include '/cheatsheet_modal.html' %}
 <div class="container py-5 px-4 px-lg-5 mt-5">
     <!-- Row 1: Drag to match header -->
     <div class="h1 text-center mt-5 mb-2">Drag to Match!</div>
@@ -11,7 +13,8 @@
     </div>
 
     <!-- Row 3: Droppable type names -->
-    <div class="mt-3">
+    <div id="drop-section" class="mt-3">
+
         <!-- JS will populate this dynamically from a JSON array -->
     </div>
 
@@ -38,5 +41,6 @@
 </script>
     
 <script src="{{ url_for('static', filename='drag_to_match.js') }}"></script>
+<script src="{{ url_for('static', filename='cheatsheet_modal.js') }}" defer></script>
 
 {% endblock %}
