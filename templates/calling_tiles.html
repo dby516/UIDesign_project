@@ -27,8 +27,8 @@
     <div class="winning-hands-container">
       <h2>Calling Tiles – <strong class="highlight">Chi</strong> &amp; <strong class="highlight">Pong</strong></h2>
       <p>
-        To complete a <strong class="highlight">straight</strong> – Chi the discarded tile from your last player.<br>
-        To complete a <strong class="highlight">triplet</strong> – Pong the discarded tile from any other player.
+        To complete a <strong class="highlight">straight</strong> – Chi the discarded tile from <strong class="highlight">your last</strong> player.<br>
+        To complete a <strong class="highlight">triplet</strong> – Pong the discarded tile from <strong class="highlight">any other</strong> player.
       </p>
       
       <div id="tileHand" class="tile-hand">
@@ -71,8 +71,8 @@
             alt="{{ discard_tile|replace('_',' ') }}">
             <div class="action-buttons">
               {% if step == 4 %}
-                <button type="button" data-action="DoIt">Chi</button>
-                <button type="button" data-action="Pass">Pong</button>
+                <button type="button" data-action="DoIt">Pong</button>
+                <button type="button" data-action="Pass">Chi</button>
               {% else %}
                 <button type="button" data-action="DoIt">Yes</button>
                 <button type="button" data-action="Pass">No</button>

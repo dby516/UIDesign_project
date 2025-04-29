@@ -23,11 +23,12 @@
   }
   .stats ul {
     list-style: disc inside;
-    color: #333;
-    font-size: 18px;
+    text-align: left;         /* ✨ Force left-align text */
+    font-size: 22px;           /* ✨ Make font bigger */
     margin: 0;
-    padding: 0;
-  }
+    padding-left: 20px;        /* ✨ Push it slightly inward for a clean look */
+    color: #333;
+}
   .stats .highlight {
     color: #f5a623;
     font-weight: bold;
