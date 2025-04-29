@@ -124,16 +124,17 @@ body {
     left: 0;
     width: 100%;
     z-index: 1000;
-    /* background-color: rgb(35, 34, 34); */
-    border-bottom: #2e4b2c solid 2px;
-    padding: 0.5rem 1rem; /* Consistent spacing */
+    background-color: rgb(33 107 74);
+    border-bottom: #ffffff solid 2px;
+    padding: 1rem 1rem; /* Consistent spacing */
   }
   
   .navbar-brand {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: bold;
     color: white;
     text-decoration: none;
+      margin-right:50px;
   }
   
   .navbar-brand:hover {
@@ -141,8 +142,8 @@ body {
   }
   
   .navbar-nav {
-    font-size: 1.25rem;
-    color: lightslategray;
+    font-size: 1.2rem;
+    color: #ffffff;
     text-decoration: none;
     padding-right: 30px;
   }
@@ -159,6 +160,7 @@ body {
   
   .navbar-nav:hover {
     color: white;
+      text-decoration: underline;
   }
   
 /* ----- Tile cards in Tile Learning Module ----- */
@@ -550,4 +552,119 @@ body {
 }
 
 
-/* ----- Layout ----- */
+/* ----- HOME Layout ----- */
+.homepage-banner {
+    position: relative;
+    height: 800px;
+    background-image: url('/static/mahjong_home.JPG');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.text-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.how-to-play-text {
+    font-size: 32px;
+    /* font-weight: bold; */
+    line-height: 1.2;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    animation: slideInLeft 1s ease-out forwards;
+}
+
+.mahjong-title {
+    font-size: 150px;
+    font-weight: bold;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+    animation: slideInUp 1.2s ease-out forwards;
+}
+
+/* Option Buttons */
+.option-card {
+    background-color: white;
+    border: 2px solid #2e4b2c;
+    padding: 20px 30px;
+    font-size: 22px;
+    border-radius: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #2e4b2c;
+    transition: all 0.3s ease;
+    min-width: 220px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+}
+
+.option-card:hover {
+    background-color: #c2d5c2;
+    color: #000;
+    transform: translateY(-5px);
+}
+/* ⭐ Start Now Button ⭐ */
+.start-now-btn {
+    background-color: #fcd53f;
+    color: #ffffff;
+    border: 2px solid #ffffff00;
+    padding: 12px 34px;
+    font-size: 30px;
+    font-weight: bold;
+    border-radius: 10px;
+    text-decoration: none;
+    /* transition: background-color 0.3s ease; */
+}
+
+.start-now-btn:hover {
+    background-color: #cfaf33;
+    
+}
+
+/* Option Cards same size */
+.option-card {
+    background-color: white;
+    border: 2px solid #2e4b2c00;
+    padding: 20px;
+    font-size: 22px;
+    border-radius: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #154730;
+    transition: all 0.3s ease;
+    width: 250px;    /* fixed width */
+    height: 150px;   /* fixed height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+}
+
+.option-card:hover {
+    background-color: #b9b9b9;
+    color: #000;
+    transform: translateY(-5px);
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container py-5 px-4 px-lg-5 mt-5">
+    <h1>My Cheatsheet</h1>
+
+    <div class="container" id="cheatsheet-container">
+        {% for entry in cheatsheet %}
+            <div class="row mb-4 p-3 bg-light rounded shadow-sm align-items-stretch cheatsheet-entry" data-index="{{ loop.index0 }}" style="height: 220px;">
+                <!-- Left column: images -->
+                <div class="col-12 col-md-6 d-flex flex-wrap align-content-start gap-2 p-2 h-100" style="background: #e5f2e5;">
+                    {% for img in entry.images %}
+                        {% if img.startswith('explanation_') %}
+                            <img src="{{ url_for('static', filename='explanations/' + img) }}" class="img-fluid cheatsheet-img" style="height: 80px; width: auto;">
+                        {% else %}
+                        <img src="{{ url_for('static', filename='mahjong_tiles/' + img) }}" class="img-fluid cheatsheet-img" style="height: 80px; width: auto;">
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                <!-- Right column: notes + delete button -->
+                <div class="col-12 col-md-6 p-2 d-flex flex-column h-100">
+                    <textarea class="form-control cheatsheet-note flex-grow-1 mb-2" data-index="{{ loop.index0 }}" style="resize: vertical;">{{ entry.notes }}</textarea>
+                    <button class="btn btn-danger btn-sm delete-entry-btn" style="align-self: flex-end;">Delete</button>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Load cheatsheet.js -->
+<script src="{{ url_for('static', filename='cheatsheet.js') }}"></script>
+
+{% endblock %}

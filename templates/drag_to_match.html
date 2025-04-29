@@ -1,6 +1,8 @@
 {% extends "layout.html" %}
-{% block content %}
 
+
+{% block content %}
+{% include '/cheatsheet_modal.html' %}
 <div class="container py-5 px-4 px-lg-5 mt-5">
     <!-- Row 1: Drag to match header -->
     <div class="h1 text-center mt-2 mb-2">Drag to Match!</div>
@@ -21,7 +23,6 @@
             <div id="tile-drag-section" class="d-flex flex-wrap justify-content-between my-4">
                 <!-- Tiles populated by JS -->
             </div>
-
             <!-- Sub-Row 2: Droppable Type Names -->
             <div id="drop-section" class="d-flex flex-wrap justify-content-between my-5">
                 <!-- Drop zones populated by JS -->
@@ -59,5 +60,6 @@
 </script>
     
 <script src="{{ url_for('static', filename='drag_to_match.js') }}"></script>
+<script src="{{ url_for('static', filename='cheatsheet_modal.js') }}" defer></script>
 
 {% endblock %}

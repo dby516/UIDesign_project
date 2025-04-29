@@ -1,15 +1,37 @@
 {% extends "layout.html" %}
 {% block content %}
+<div class="container-fluid p-0">
 
-<div class="container py-5 px-4 px-lg-5 mt-5">
-    <!-- Page Title -->
-    <h1>Welcome to the Learning App!</h1>
-    <div class="text-center mt-2">
-        <img src="static/Title.png" class="d-block mx-auto mb-2" width="800px" ></img>
+    <div class="homepage-banner d-flex align-items-center justify-content-center text-white">
+    <div class="text-container d-flex flex-column align-items-center">
+        <div class="d-flex align-items-center mb-4">
+            <div class="how-to-play-text text-end me-4">
+                <div>HOW</div>
+                <div>TO</div>
+                <div>PLAY</div>
+            </div>
+            <div class="mahjong-title">
+                MAHJONG
+            </div>
+        </div>
+        
+        <!-- ⭐ Start Now Button ⭐ -->
+        
+        <a href="{{ url_for('learn_tiles', step=1) }}" class="start-now-btn">
+            Start Now
+        </a>
     </div>
-    <button onclick="LearnTiles()">Learn Tiles</button>
-    <button onclick="LearnGameProc()">Learn Game Procedure</button>
-    <button onclick="Quiz()">Play a Round</button>
 </div>
 
+
+    <div class="container text-center mt-5">
+        <h3>Choose Your Step!</h3>
+        <div class="d-flex flex-wrap justify-content-center gap-4 mt-4">
+            <a href="{{ url_for('learn_tiles', step=1) }}" class="option-card">Learn Tiles</a>
+            <a href="{{ url_for('game_procedure') }}" class="option-card">Learn Game Procedure</a>
+            <a href="{{ url_for('quiz', question_id=1) }}" class="option-card">Play Minigame</a>
+        </div>
+    </div>
+
+</div>
 {% endblock %}

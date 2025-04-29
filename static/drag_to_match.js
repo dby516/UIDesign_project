@@ -7,18 +7,21 @@ const exampleTiles = {
     "flower": ["1_flower", "2_flower", "3_flower", "4_flower"]
 };
 
-
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize drag and drop containers
     const dragSection = document.getElementById('tile-drag-section');
     const dropSection = document.getElementById('drop-section');
-
     // Initialize user performance tracking
     let correctCount = Number(localStorage.getItem('drag_correct')) || 0;
     let wrongCount = Number(localStorage.getItem('drag_wrong')) || 0;
-    let totalTiles = tilePairs.length; // total tiles for this step
-    let correctDrops = 0;
-
+    
+    // ADDED: Get reference to the cheatsheet button
+    const cheatsheetBtn = document.getElementById('check-cheatsheet-btn');
+    // ADDED: Hide the cheatsheet button initially 
+    if (cheatsheetBtn) {
+        cheatsheetBtn.style.display = 'none';
+    }
+    
     // ---------------------
     // 1. Group tiles by type
     const typeToTiles = {};
@@ -43,8 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const shuffledTypes = [...allTypes].sort(() => Math.random() - 0.5);
 
-    // ---------------------
-
     // Create draggable tile images
     shuffledTiles.forEach(({ tile, type }) => {
         const img = document.createElement('img');
@@ -53,23 +54,19 @@ document.addEventListener('DOMContentLoaded', () => {
         img.draggable = true;
         img.className = 'tile_learn';
         img.id = `drag-${tile}`;
-
         img.ondragstart = (e) => {
             e.dataTransfer.setData('text/plain', type);
             e.dataTransfer.setData('tile-id', img.id);
         };
-        
 
         dragSection.appendChild(img);
     });
-
     // Create droppable type containers
     shuffledTypes.forEach(type => {
         const dropDiv = document.createElement('div');
         dropDiv.textContent = type.charAt(0).toUpperCase() + type.slice(1);
         dropDiv.className = 'droppable';
         dropDiv.style.display = 'inline-block';
-
         dropDiv.ondragover = (e) => e.preventDefault();
         
         dropDiv.ondragenter = (e) => {
@@ -90,10 +87,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const draggedTile = document.getElementById(draggedTileId);
             const responseText = document.getElementById('response-text');
 
+
             if (droppedType === type) {
                 correctCount++;
                 correctDrops++;
                 dropDiv.style.background = '#d4edda';  // green
+
         
                 // Find the dragged tile and disable further dragging
                 // const draggedTileId = e.dataTransfer.getData('tile-id');
@@ -147,17 +146,24 @@ document.addEventListener('DOMContentLoaded', () => {
                         </span>
                     </span>
                 `;
+              
+                if (cheatsheetBtn) {
+                    cheatsheetBtn.style.display = 'block';
+                }
+                // Dispatch custom event for wrong answer
+                const wrongAnswerEvent = new CustomEvent('dragdrop', { 
+                    detail: { isWrong: true } 
+                });
+                document.dispatchEvent(wrongAnswerEvent);
             }
-        
+
             // Save updated stats
             localStorage.setItem('drag_correct', correctCount);
             localStorage.setItem('drag_wrong', wrongCount);
         };
-        
 
         dropSection.appendChild(dropDiv);
     });
-
     // Clear stats on finish
     const finishBtn = document.querySelector('#finish-btn');
     if (finishBtn) {
@@ -167,10 +173,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 correct: localStorage.getItem('drag_correct'),
                 wrong: localStorage.getItem('drag_wrong')
             });
-
             localStorage.removeItem('drag_correct');
             localStorage.removeItem('drag_wrong');
-
             console.log("After reset:", {
                 correct: localStorage.getItem('drag_correct'),
                 wrong: localStorage.getItem('drag_wrong')
@@ -178,9 +182,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Reset counters on first step
     if (step === 1) {
         localStorage.setItem('drag_correct', 0);
         localStorage.setItem('drag_wrong', 0);
     }
+
 });
