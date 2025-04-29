@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize user performance tracking
     let correctCount = Number(localStorage.getItem('drag_correct')) || 0;
     let wrongCount = Number(localStorage.getItem('drag_wrong')) || 0;
+    let correctDrops = 0;
+    let totalTiles = 4;
     
     // ADDED: Get reference to the cheatsheet button
     const cheatsheetBtn = document.getElementById('check-cheatsheet-btn');
