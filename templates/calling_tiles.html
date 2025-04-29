@@ -23,78 +23,84 @@
   {% elif step == 4 %}
     <script src="{{ url_for('static', filename='calling_tile.js') }}" defer></script>
   {% endif %}
-
-  <div class="winning-hands-container">
-    <h2>Calling Tiles – <strong>Chi</strong> &amp; <strong>Pong</strong></h2>
-    <p>
-      To complete a <strong>straight</strong> – Chi the discarded tile from your last player.<br>
-      To complete a <strong>triplet</strong> – Pong the discarded tile from any other player.
-    </p>
-    
-    <div id="tileHand" class="tile-hand">
-      {% for tile in hand_tiles %}
-        {% if loop.index0 == placeholder_index %}
-          <div class="tile placeholder"></div>
-        {% endif %}
-        <img
-          src="{{ url_for('static', filename='mahjong_tiles/' ~ tile) }}"
-          class="tile"
-          draggable="false"
-          alt="{{ tile|replace('_',' ') }}">
-      {% endfor %}
-    </div>
-
-    <div class="decision-area">
-      <div class="stats">
-        <h3>Now you have:</h3>
-        <ul>
-          <li><span class="highlight">2</span> straights</li>
-          <li><span class="highlight">1</span> triplet</li>
-          <li><span class="highlight">1</span> pair</li>
-        </ul>
+  <div class="container py-5 px-4 px-lg-5 mt-5">
+    <div class="winning-hands-container">
+      <h2>Calling Tiles – <strong class="highlight">Chi</strong> &amp; <strong class="highlight">Pong</strong></h2>
+      <p>
+        To complete a <strong class="highlight">straight</strong> – Chi the discarded tile from <strong class="highlight">your last</strong> player.<br>
+        To complete a <strong class="highlight">triplet</strong> – Pong the discarded tile from <strong class="highlight">any other</strong> player.
+      </p>
+      
+      <div id="tileHand" class="tile-hand">
+        {% for tile in hand_tiles %}
+          {% if loop.index0 == placeholder_index %}
+            <div class="tile placeholder"></div>
+          {% endif %}
+          <img
+            src="{{ url_for('static', filename='mahjong_tiles/' ~ tile) }}"
+            class="tile"
+            draggable="false"
+            alt="{{ tile|replace('_',' ') }}">
+        {% endfor %}
       </div>
 
-      <div class="prompt">
-        {# step‑specific prompt text #}
-        {% if step == 1 %}
-          <p>Chi or not?</p>
-        {% elif step == 2 %}
-          <p>Chi or not?</p>
-        {% elif step == 3 %}
-          <p>Chi or not?</p>
-        {% elif step == 4 %}
-          <p>Final decision: Chi or Pong?</p>
-        {% endif %}
-        <img
-          src="{{ url_for('static', filename='mahjong_tiles/' ~ discard_tile) }}"
-          class="tile discard-mini"
-          alt="{{ discard_tile|replace('_',' ') }}">
-          <div class="action-buttons">
-            <button type="button" data-action="DoIt">Yes</button>
-            <button type="button" data-action="Pass">No</button>
-          </div>
-        <div id="feedback"></div>
-      </div>
-    </div>
+      <div class="decision-area">
+        <div class="stats">
+          <h3>Now you have:</h3>
+          <ul>
+            <li><span class="highlight">2</span> straights</li>
+            <li><span class="highlight">1</span> triplet</li>
+            <li><span class="highlight">1</span> pair</li>
+          </ul>
+        </div>
 
-    <div class="progress-wrapper">
-        <div class="progress-bar">
-          <div class="progress-fill" style="width: {{ progress }}%;"></div>
+        <div class="prompt">
+          {# step‑specific prompt text #}
+          {% if step == 1 %}
+            <p>Chi or not?</p>
+          {% elif step == 2 %}
+            <p>Chi or not?</p>
+          {% elif step == 3 %}
+            <p>Chi or not?</p>
+          {% elif step == 4 %}
+            <p>Final decision: Chi or Pong?</p>
+          {% endif %}
+          <img
+            src="{{ url_for('static', filename='mahjong_tiles/' ~ discard_tile) }}"
+            class="tile discard-mini"
+            alt="{{ discard_tile|replace('_',' ') }}">
+            <div class="action-buttons">
+              {% if step == 4 %}
+                <button type="button" data-action="DoIt">Pong</button>
+                <button type="button" data-action="Pass">Chi</button>
+              {% else %}
+                <button type="button" data-action="DoIt">Yes</button>
+                <button type="button" data-action="Pass">No</button>
+              {% endif %}
+            </div>
+          <div id="feedback"></div>
         </div>
       </div>
-  
-      {# only show “NEXT” until the last step, then switch to “HOME” #}
-      {% if step < 4 %}
-        <a href="{{ url_for('calling_tiles', step=step+1) }}"
-           class="next-button {% if disable_next %}disabled{% endif %}">
-          NEXT
-        </a>
-      {% else %}
-        <a href="{{ url_for('game_procedure') }}"
-           class="next-button">
-          HOME
-        </a>
-      {% endif %}
-    </a>
+
+      <div class="progress-wrapper">
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: {{ progress }}%;"></div>
+          </div>
+        </div>
+    
+        {# only show “NEXT” until the last step, then switch to “HOME” #}
+        {% if step < 4 %}
+          <a href="{{ url_for('calling_tiles', step=step+1) }}"
+            class="next-button {% if disable_next %}disabled{% endif %}">
+            NEXT
+          </a>
+        {% else %}
+          <a href="{{ url_for('game_procedure') }}"
+            class="next-button">
+            HOME
+          </a>
+        {% endif %}
+      </a>
+    </div>
   </div>
 {% endblock %}
