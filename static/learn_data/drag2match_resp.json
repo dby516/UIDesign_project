@@ -1,0 +1,45 @@
+{
+    "1_million": "1 Million: The first tile of the Million suit, representing the number 1.",
+    "2_million": "2 Million: The second tile in the Million suit.",
+    "3_million": "3 Million: A basic tile from the Million suit, numbered 3.",
+    "4_million": "4 Million: Represents four circles in the Million suit.",
+    "5_million": "5 Million: Middle-ranked tile in the Million suit.",
+    "6_million": "6 Million: Higher-numbered tile in the Million suit.",
+    "7_million": "7 Million: Important for forming sequences.",
+    "8_million": "8 Million: Part of the upper sequence tiles.",
+    "9_million": "9 Million: The highest tile in the Million suit.",
+    
+    "1_tong": "1 Tong: A tile with one circle, part of the Tong suit.",
+    "2_tong": "2 Tong: Two circles, part of the Tong suit.",
+    "3_tong": "3 Tong: Three circles, used in sequences.",
+    "4_tong": "4 Tong: Four circles, part of Tong suit.",
+    "5_tong": "5 Tong: Center of the Tong number range.",
+    "6_tong": "6 Tong: Six circles representing six.",
+    "7_tong": "7 Tong: Seven circles, important for runs.",
+    "8_tong": "8 Tong: Close to completing a straight.",
+    "9_tong": "9 Tong: Highest numbered tile in the Tong suit.",
+
+    "1_stripe": "1 Stripe: Represents a bamboo stick, part of the Stripe suit.",
+    "2_stripe": "2 Stripe: Two bamboo sticks in the Stripe suit.",
+    "3_stripe": "3 Stripe: Three bamboo sticks.",
+    "4_stripe": "4 Stripe: Four bamboo sticks.",
+    "5_stripe": "5 Stripe: Central tile in Stripe numbers.",
+    "6_stripe": "6 Stripe: Six bamboos for runs.",
+    "7_stripe": "7 Stripe: Near the end of the sequence.",
+    "8_stripe": "8 Stripe: High-numbered bamboo tile.",
+    "9_stripe": "9 Stripe: Highest in the Stripe suit.",
+
+    "east": "East Wind: One of the four Wind tiles, important for winds hands.",
+    "south": "South Wind: Another Wind tile, part of directional hands.",
+    "west": "West Wind: Related to certain Mahjong bonuses.",
+    "north": "North Wind: Final of the four Winds.",
+
+    "middle": "Red Dragon (Middle): A dragon tile representing prosperity.",
+    "rich": "Green Dragon (Rich): A dragon symbolizing wealth.",
+    "blank": "White Dragon (Blank): A dragon symbolizing purity.",
+
+    "1_flower": "Flower 1: Special bonus tile, not part of main suits.",
+    "2_flower": "Flower 2: Another flower bonus tile.",
+    "3_flower": "Flower 3: Collecting flowers gives extra points.",
+    "4_flower": "Flower 4: Part of the flower tile set."
+}

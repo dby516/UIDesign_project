@@ -40,7 +40,7 @@
       "discard_E": [],
       "discard_N": [],
       "discard_W": [],
-      "discard_S": ["south"],
+      "discard_S": [],
       "operations": {
         "Discard": 1,
         "Chi": 0,

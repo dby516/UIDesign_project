@@ -5,34 +5,53 @@
 {% include '/cheatsheet_modal.html' %}
 <div class="container py-5 px-4 px-lg-5 mt-5">
     <!-- Row 1: Drag to match header -->
-    <div class="h1 text-center mt-5 mb-2">Drag to Match!</div>
+    <div class="h1 text-center mt-2 mb-2">Drag to Match!</div>
+    <div class="text-center mt-2 mb-5">Drag each tile onto its correct category. Match all tiles correctly to practice recognizing Mahjong tile types!</div>
 
-    <!-- Row 2: Draggable tiles -->
-    <div id="tile-drag-section" class="d-flex flex-wrap gap-3 my-4">
-        <!-- JS will populate this dynamically from a JSON array, the tile-type pairs should appear randomly, 4 pairs each step  -->
+    <!-- Row 2: Drag and Drop Section -->
+    <div class="row align-items-center">
+        <!-- Left Column: Guide Image -->
+        <div class="col-md-4 text-center mb-4 mb-md-0">
+            <img src="/static/learn_data/drag2match_guide.gif" class="img-fluid tutorial-gif" alt="Drag to Match Guide">
+        </div>
+
+        <!-- Right Column: Game Area -->
+        <div class="col">
+            <!-- Sub-Row 0: Response Text -->
+            <div id="response-text" class="text-center mt-4"></div>
+            <!-- Sub-Row 1: Draggable Tiles -->
+            <div id="tile-drag-section" class="d-flex flex-wrap justify-content-between my-4">
+                <!-- Tiles populated by JS -->
+            </div>
+            <!-- Sub-Row 2: Droppable Type Names -->
+            <div id="drop-section" class="d-flex flex-wrap justify-content-between my-5">
+                <!-- Drop zones populated by JS -->
+            </div>
+        </div>
     </div>
 
-    <!-- Row 3: Droppable type names -->
-    <div id="drop-section" class="mt-3">
-
-        <!-- JS will populate this dynamically from a JSON array -->
-    </div>
 
     <!-- Row 3: Navigation buttons -->
-    <div style="margin-top: 30px;">
-        {% if step>1 %}
-            <a href="{{ url_for('drag_to_match', step=step - 1) }}">← Previous</a>
-        {% endif %}
-        {% if step<3 %}
-            <a href="{{ url_for('drag_to_match', step=step + 1) }}" style="float: right;">Next →</a>
-        {% else %}
-        <a href="{{ url_for('learn_tiles_end', step=1) }}" style="float: right;">Next →</a>
-        {% endif %}
+    <div class="d-flex justify-content-center mt-1">
+        <div class="operation-buttons" style="width: 200px;">
+            {% if step > 1 %}
+                <button id="prev-btn" onclick="location.href='{{ url_for('drag_to_match', step=step - 1) }}'">Previous</button>
+            {% endif %}
+
+            {% if step < 3 %}
+                <button id="next-btn" onclick="location.href='{{ url_for('drag_to_match', step=step + 1) }}'" class="btn btn-secondary" disabled>Next</button>
+            {% else %}
+                <button id="next-btn" onclick="location.href='{{ url_for('learn_tiles_end', step=1) }}'" class="btn btn-secondary" disabled>Next</button>
+            {% endif %}
+        </div>
     </div>
+
 </div>
 
 <script>
     const tilePairs = {{ pairs | tojson }};
+    const step = {{ step }};
+    const tileDescriptions = {{ tile_descriptions | tojson }};
 
     if (step === 1) {
         localStorage.setItem('drag_correct', 0);

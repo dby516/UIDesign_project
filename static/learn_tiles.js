@@ -94,5 +94,4 @@ document.addEventListener('DOMContentLoaded', () => {
         container.appendChild(row);
     });
 
-
 });

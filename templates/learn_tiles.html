@@ -5,12 +5,32 @@
     <!-- Row 1: Lesson text block 1 -->
     <div class="learn_text">{{ lesson.text }}</div>
 
-    <!-- Row 2: Interactive block -->
-    <!-- Types -->
-    <!-- Interactive tiles, can dynamically insert via learn_tiles.js -->
-    <div id="tile-learn-section" class="d-flex flex-wrap gap-3 my-4">
-        <!-- Example tile; real ones will be injected by JS -->
-        <!-- JS will populate this dynamically from a JSON array -->
+    <!-- Row 2: Interactive Block -->
+    <div class="row">
+        <!-- Col 1: Interactive Tiles -->
+        {% if step == 1 %}
+            <div class="col-md-9">
+                <div id="tile-learn-section" class="d-flex flex-wrap gap-3 my-4">
+                    <!-- JS will populate this dynamically -->
+                </div>
+            </div>
+        {% else %}
+            <div class="col-md-7">
+                <div id="tile-learn-section" class="d-flex flex-wrap gap-3 my-4">
+                    <!-- JS will populate this dynamically -->
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- Col 2: Notice Text -->
+        <div class="col-md-3">
+            {% if lesson.notice %}
+                <div class="notice-box mt-3">
+                    <i class="bi bi-info-circle" style="font-size: 24px; color: darkgreen; margin-top: 2px;"></i>
+                    <div>{{ lesson.notice }}</div>
+                </div>
+            {% endif %}
+        </div>
     </div>
     <!-- cheatsheet section -->
     <!-- <div style="margin-top: 20px;">
@@ -19,23 +39,20 @@
         </button>
     </div> -->
 
-    <!-- Row 3: Optional notice text -->
-    {% if lesson.notice %}
-        <div class="alert alert-info mt-3" role="alert">
-            {{ lesson.notice }}
-        </div>
-    {% endif %}
 
     <!-- Row 3: Navigation buttons -->
-    <div style="margin-top: 30px;">
-        {% if step>1 %}
-            <a href="{{ url_for('learn_tiles', step=step - 1) }}">← Previous</a>
-        {% endif %}
-        {% if step<3 %}
-            <a href="{{ url_for('learn_tiles', step=step + 1) }}" style="float: right;">Next →</a>
-        {% else %}
-        <a href="{{ url_for('drag_to_match', step=1) }}" style="float: right;">Next →</a>
-        {% endif %}
+    <div class="d-flex justify-content-center mt-1">
+        <div class="operation-buttons" style="width: 200px;">
+            {% if step > 1 %}
+                <button id="prev-btn" onclick="location.href='{{ url_for('learn_tiles', step=step - 1) }}'">Previous</button>
+            {% endif %}
+
+            {% if step < 3 %}
+                <button id="next-btn" onclick="location.href='{{ url_for('learn_tiles', step=step + 1) }}'">Next</button>
+            {% else %}
+                <button id="next-btn" onclick="location.href='{{ url_for('drag_to_match', step=1) }}'">Drag to Match Game</button>
+            {% endif %}
+        </div>
     </div>
 </div>
 
