@@ -25,13 +25,17 @@
 
 
     <div class="container text-center mt-5">
-        <h3>Choose Your Step!</h3>
-        <div class="d-flex flex-wrap justify-content-center gap-4 mt-4">
-            <a href="{{ url_for('learn_tiles', step=1) }}" class="option-card">Learn Tiles</a>
-            <a href="{{ url_for('game_procedure') }}" class="option-card">Learn Game Procedure</a>
-            <a href="{{ url_for('quiz', question_id=1) }}" class="option-card">Play Minigame</a>
-        </div>
+    <div class="fancy-divider">
+        <span>Choose Your Step!</span>
     </div>
+
+    <div class="d-flex flex-wrap justify-content-center gap-5 mt-5">
+        <a href="{{ url_for('learn_tiles', step=1) }}" class="option-card">Learn Tiles</a>
+        <a href="{{ url_for('game_procedure') }}" class="option-card">Learn Game Procedure</a>
+        <a href="{{ url_for('quiz', question_id=1) }}" class="option-card">Play Minigame</a>
+    </div>
+</div>
+
 
 </div>
 {% endblock %}

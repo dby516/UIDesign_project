@@ -555,7 +555,7 @@ body {
 /* ----- HOME Layout ----- */
 .homepage-banner {
     position: relative;
-    height: 800px;
+    height: 1100px;
     background-image: url('/static/mahjong_home.JPG');
     background-size: cover;
     background-position: center;
@@ -667,4 +667,23 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
+}
+/* -------- Fancy Divider -------- */
+.fancy-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 50px 0 20px 0;
+    font-size: 28px;
+    font-weight: bold;
+    color: #2e4b2c;
+    position: relative;
+}
+
+.fancy-divider::before,
+.fancy-divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 2px solid #2e4b2c;
+    margin: 0 16px;
 }

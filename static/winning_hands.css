@@ -1,5 +1,5 @@
 .winning-hands-container {
-    background-color: #f9fefa;
+    background-color: #efefef;
     padding: 60px 40px;
     text-align: center;
     border-radius: 12px;
@@ -8,14 +8,14 @@
 
 .winning-hands-container h2 {
     font-size: 34px;
-    color: #216b4a;
+    color: #5e756b;
     margin-bottom: 16px;
     /* font-weight: bold; */
 }
 
 .winning-hands-container p {
     font-size: 20px;
-    color: #216b4a;
+    color: #5e756b;
     margin-bottom: 30px;
 }
 
@@ -84,7 +84,7 @@
 }
 
 /* Buttons */
-.next-button, .save-to-cheatsheet-btn {
+ .save-to-cheatsheet-btn {
     display: inline-block;
     padding: 14px 28px;
     background-color: #216b4a;
@@ -97,14 +97,29 @@
     transition: background-color 0.3s, transform 0.2s;
     margin: 10px;
 }
-
-.next-button:hover, .save-to-cheatsheet-btn:hover {
+.next-button{
+    display: inline-block;
+    padding: 14px 28px;
+    background-color: #fcd53f;
+    border: 2px solid #2e4b2c00;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #4b4f4d;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+    margin: 10px;
+}
+.save-to-cheatsheet-btn:hover {
     background-color: #c2d5c2;
+}
+.next-button:hover{
+    background-color: #d7b73b;
     transform: translateY(-2px);
 }
-
 .next-button.disabled {
     opacity: 0.5;
+    background-color: #cccbca;
     pointer-events: none;
 }
 
@@ -195,7 +210,7 @@
 }
 
 .meld:hover .info-btn {
-    background: rgba(0,0,0,0.4);
+    background: rgb(207 227 212 / 71%);
 }
 
 /* Hover label */
@@ -204,7 +219,7 @@
     top: -50px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(0,0,0,0.7);
+    background: rgb(33 107 74);
     color: #fff;
     padding: 6px 10px;
     border-radius: 8px;
