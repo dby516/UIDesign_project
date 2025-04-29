@@ -48,10 +48,27 @@
     margin: 0 10px;
   }
   
-  /* reuse winning_hands action-buttons look */
+  /* reuse winning_hands action-buttons look
   .action-buttons button {
     width: 80px;
-  }
+  } */
+
+  .action-buttons button {
+    background-color: #f7d559;
+    color: #333;
+    border: none;
+    padding: 12px;
+    margin: 5px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 120px; /* slightly wider than before */
+}
+
+.action-buttons button:hover {
+    background-color: #ffe589;
+}
   
   /* move feedback under buttons */
   #feedback {
