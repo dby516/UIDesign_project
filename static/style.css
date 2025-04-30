@@ -86,11 +86,20 @@ body {
 
 .center {
     position: absolute;
-    top: 50%;
+    top: 47%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     color: white;
+}
+
+#message-box {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0px;
+    white-space: nowrap;
 }
 
 .options {
@@ -687,3 +696,19 @@ body {
     border-bottom: 2px solid #2e4b2c;
     margin: 0 16px;
 }
+
+
+/* Strike System */
+
+#strike-container {
+    font-size: 24px;
+    color: lightgray;
+}
+.strike.active {
+    color: red;
+}
+#feedback-message {
+    font-weight: bold;
+    font-size: 18px;
+}
+
