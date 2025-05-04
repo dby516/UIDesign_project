@@ -18,6 +18,17 @@ function createTileElement(tile_name) {
 
     return tileDiv;
 }
+// function showCheatsheetPopup() {
+//     const popup = document.getElementById('cheatsheet-popup');
+//     const closeBtn = popup.querySelector('.popup-close');
+
+//     popup.classList.remove('hidden');
+
+//     // Allow close
+//     closeBtn.onclick = () => {
+//         popup.classList.add('hidden');
+//     };
+// }
 
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('tile-learn-section');
@@ -78,7 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify({ images: tileImages, notes: "" })
             }).then(res => {
                 if (res.ok) {
-                    alert(`Saved ${type} tiles to Cheatsheet!`);
+                    showCheatsheetPopup();
+
                 }
             });
         };

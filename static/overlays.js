@@ -71,7 +71,8 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify({ images: [imgFilename], notes: notes })
       }).then(res => {
         if (res.ok) {
-          alert("Saved to Cheatsheet!");
+          showCheatsheetPopup();
+
         }
       });
     }

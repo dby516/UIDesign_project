@@ -1,10 +1,28 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<div class="container py-5 px-4 px-lg-5 mt-5">
+<!-- Fullscreen flexbox wrapper -->
+<div class="d-flex justify-content-center align-items-center min-vh-100">
 
-    <div class="learn_text">Let’s play one round step-by-step with 3 virtual players.</div>
-    <button onclick="StartPlayRound()">Play a Round</button>
+    <div class="text-center">
+
+        <!-- Large title -->
+        <h1 class="display-4 mb-3">Let's Play a Round!</h1>
+
+        <!-- Guiding text -->
+        <p class="lead mb-4">
+            You'll go through one Mahjong round step-by-step with 3 virtual players.<br>
+            We'll explain each action and help you understand the game flow.
+        </p>
+
+        <!-- Big centered button -->
+        <button onclick="StartPlayRound()" class="btn btn-primary btn-lg px-5 py-3">
+            Start Playing
+        </button>
+
+    </div>
+
 </div>
+<link rel="stylesheet" href="{{ url_for('static', filename='play_round_start.css') }}">
 
 {% endblock %}

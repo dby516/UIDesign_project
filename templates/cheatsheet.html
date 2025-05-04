@@ -19,10 +19,12 @@
                 </div>
 
                 <!-- Right column: notes + delete button -->
-                <div class="col-12 col-md-6 p-2 d-flex flex-column h-100">
-                    <textarea class="form-control cheatsheet-note flex-grow-1 mb-2" data-index="{{ loop.index0 }}" style="resize: vertical;">{{ entry.notes }}</textarea>
-                    <button class="btn btn-danger btn-sm delete-entry-btn" style="align-self: flex-end;">Delete</button>
-                </div>
+<div class="col-12 col-md-6 p-2 d-flex flex-column h-100">
+    <h5 class="mb-2">Notes</h5> 
+    <textarea class="form-control cheatsheet-note flex-grow-1 mb-2" data-index="{{ loop.index0 }}" style="resize: vertical;">{{ entry.notes }}</textarea>
+    <button class="btn btn-danger btn-sm delete-entry-btn" style="align-self: flex-end;">Delete</button>
+</div>
+
             </div>
         {% endfor %}
     </div>

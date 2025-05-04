@@ -11,7 +11,12 @@
         <p><strong>❌ Incorrect Matches:</strong> <span id="wrong-count">0</span></p>
     </div>
 
-    <a id="finish-btn" href="{{ url_for('home') }}" class="btn btn-success btn-lg mt-4">Finish Learning</a>
+    <!-- <a id="finish-btn" href="{{ url_for('home') }}" class="btn btn-success btn-lg mt-4">Finish Learning</a>
+ -->
+    <div class="d-flex justify-content-center gap-4 mt-4">
+    <a id="finish-btn" href="{{ url_for('home') }}" class="btn btn-success btn-lg">Back to Homepage</a>
+    <a href="{{ url_for('game_procedure') }}" class="btn btn-success btn-lg">Learn Game Procedure</a>
+</div>
 
 </div>
 
