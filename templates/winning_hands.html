@@ -103,7 +103,7 @@
         </div>
     
     {% elif step == 4 %}
-        <h2>🎉 You’ve Completed the First Section: Winning Hands</h2>
+        <h2 style="padding-top: 12%">🎉 You’ve Completed the First Section: Winning Hands</h2>
     <br>
         <p>Now you understand how to win a Mahjong hand with <strong>4 melds</strong> and <strong>1 pair</strong>.
             <br>In the next section, you'll learn how to <strong>call tiles</strong> like Chi, Pong, and more.</p>
@@ -134,7 +134,7 @@
     
 
     <!-- Progress Bar at Bottom -->
-    <div class="progress-wrapper mt-4">
+    <div class="progress-wrapper position-absolute start-50 translate-middle-x d-flex gap-3"> <!--mt-4-->
         <div class="progress-bar">
             <div class="progress-fill" style="width: {{ (step-1) * 33.33 }}%;"></div>
         </div>

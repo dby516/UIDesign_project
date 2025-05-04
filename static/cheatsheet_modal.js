@@ -96,6 +96,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    if (window.location.pathname.startsWith('/play_round/')) {
+        cheatsheetBtn.style.display = 'block';
+    }
+
     // Reset the session counter when the page loads 
     // This ensures the counter resets on each new quiz
     // Add this line at the beginning of your script to reset for each new page load:

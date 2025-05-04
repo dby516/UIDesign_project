@@ -69,13 +69,17 @@
 
 /* Progress bar */
 .progress-wrapper {
+    /* position: absolute;
     display: flex;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 30px; */
+    display: flex;
+    gap: 10px;
+    bottom: 180px;
 }
 
 .progress-bar {
-    width: 320px;
+    width: 640px;
     height: 12px;
     background-color: #ccc;
     border-radius: 6px;

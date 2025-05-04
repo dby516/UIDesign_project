@@ -81,7 +81,7 @@
         </div>
       </div>
 
-      <div class="progress-wrapper">
+      <div class="progress-wrapper position-absolute start-50 translate-middle-x d-flex gap-3">
           <div class="progress-bar">
             <div class="progress-fill" style="width: {{ progress }}%;"></div>
           </div>
@@ -95,10 +95,12 @@
             NEXT
           </a>
         {% else %}
-          <a href="{{ url_for('game_procedure') }}"
+          <!-- <a href="{{ url_for('game_procedure') }}"
             class="next-button">
             HOME
-          </a>
+          </a> -->
+          <a href="{{ url_for('game_procedure') }}" class="next-button">🏠 Back to Home</a>
+          <a href="{{ url_for('play_round_start') }}" class="next-button">Next Section →</a>
         {% endif %}
       </div>
 {% endblock %}

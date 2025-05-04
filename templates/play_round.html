@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
+{% include '/cheatsheet_modal.html' %}
 
 <div class="container py-5 px-4 px-lg-5 mt-5">
   <div class="row">
@@ -51,7 +52,7 @@
 
     <!-- Right: Operation Buttons -->
     <div class="col">
-      <div class="operation-buttons">
+      <div class="operation-buttons mt-5 pt-5">
         {% for op in ["Discard", "Chi", "Pong", "Hu!", "Pass"] %}
           {% if round.operations[op] == 1 %}
             <form method="post" action="{{ url_for('play_round_end') if op == 'Hu!' else url_for('play_round', step=step + 1) }}">
@@ -77,5 +78,6 @@
   const discardE = {{ round.discard_E | tojson }};
 </script>
 <script src="{{ url_for('static', filename='play_round.js') }}"></script>
+<script src="{{ url_for('static', filename='cheatsheet_modal.js') }}" defer></script>
 
 {% endblock %}
