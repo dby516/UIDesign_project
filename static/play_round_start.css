@@ -1,0 +1,46 @@
+/* Centering already handled by Bootstrap utilities, so focus on typography and flair */
+
+body {
+    background: linear-gradient(135deg, #cfe3d4, #ffffff);
+    color: #2e7d32;
+}
+
+h1.display-4 {
+    font-weight: 700;
+    color: #1b5e20;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+p.lead {
+    font-size: 1.2rem;
+    color: #388e3c;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button.btn-primary {
+    background-color: #fcd53f;
+    border-color: #fcd53f;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button.btn-primary:hover {
+    background-color: #ffc107;
+    transform: scale(1.05);
+}
+
+button.btn-primary:active {
+    transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+    h1.display-4 {
+        font-size: 2rem;
+    }
+
+    p.lead {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+}
