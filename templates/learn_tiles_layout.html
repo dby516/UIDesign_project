@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="procedure-wrapper">
+    <div class="procedure-container">
+        {% block learn_tiles_content %}
+        {% endblock %}
+    </div>
+</div>
+<link href="{{ url_for('static', filename='game_procedure.css') }}" rel="stylesheet" />
+
+{% endblock %}

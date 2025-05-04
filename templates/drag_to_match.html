@@ -1,9 +1,7 @@
-{% extends "layout.html" %}
-
-
-{% block content %}
+{% extends "learn_tiles_layout.html" %}
+{% block learn_tiles_content %}
 {% include '/cheatsheet_modal.html' %}
-<div class="container py-5 px-4 px-lg-5 mt-5">
+<div class="container">
     <!-- Row 1: Drag to match header -->
     <div class="h1 text-center mt-2 mb-2">Drag to Match!</div>
     <div class="text-center mt-2 mb-5">Drag each tile onto its correct category. Match all tiles correctly to practice recognizing Mahjong tile types!</div>
@@ -11,12 +9,12 @@
     <!-- Row 2: Drag and Drop Section -->
     <div class="row align-items-center">
         <!-- Left Column: Guide Image -->
-        <div class="col-md-4 text-center mb-4 mb-md-0">
+        <div class="col-md-3 text-center mb-4 mb-md-0">
             <img src="/static/learn_data/drag2match_guide.gif" class="img-fluid tutorial-gif" alt="Drag to Match Guide">
         </div>
 
         <!-- Right Column: Game Area -->
-        <div class="col">
+        <div class="col px-lg-5">
             <!-- Sub-Row 0: Response Text -->
             <div id="response-text" class="text-center mt-4"></div>
             <!-- Sub-Row 1: Draggable Tiles -->
@@ -32,18 +30,17 @@
 
 
     <!-- Row 3: Navigation buttons -->
-    <div class="d-flex justify-content-center mt-1">
-        <div class="operation-buttons" style="width: 200px;">
-            {% if step > 1 %}
-                <button id="prev-btn" onclick="location.href='{{ url_for('drag_to_match', step=step - 1) }}'">Previous</button>
-            {% endif %}
+    <div class="nav-buttons position-absolute start-50 translate-middle-x">
+        {% if step > 1 %}
+            <button id="prev-btn" onclick="location.href='{{ url_for('drag_to_match', step=step - 1) }}'">Previous</button>
+        {% endif %}
 
-            {% if step < 3 %}
-                <button id="next-btn" onclick="location.href='{{ url_for('drag_to_match', step=step + 1) }}'" class="btn btn-secondary" disabled>Next</button>
-            {% else %}
-                <button id="next-btn" onclick="location.href='{{ url_for('learn_tiles_end', step=1) }}'" class="btn btn-secondary" disabled>Next</button>
-            {% endif %}
-        </div>
+        {% if step < 3 %}
+            <button id="next-btn" onclick="location.href='{{ url_for('drag_to_match', step=step + 1) }}'" class="btn btn-secondary" disabled>Next</button>
+        {% else %}
+            <button id="next-btn" onclick="location.href='{{ url_for('learn_tiles_end', step=1) }}'" class="btn btn-secondary" disabled>Next</button>
+        {% endif %}
+   
     </div>
 
 </div>

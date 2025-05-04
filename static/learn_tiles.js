@@ -39,7 +39,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Create a flex row: [type label] [tiles...]
         const row = document.createElement('div');
         // >>> ADDED >>>
-        row.className = 'd-flex flex-column align-items-start mb-4'; 
+        row.className = 'd-flex flex-row align-items-center mb-4 gap-3';
+
+        // row.className = 'd-flex flex-column align-items-start mb-4'; 
         // was originally: 'd-flex align-items-center mb-3'
         // <<< ADDED <<<
 

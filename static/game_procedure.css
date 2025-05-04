@@ -1,6 +1,16 @@
+.procedure-wrapper {
+    width: 100%;             /* fixed width */
+    height: 100%;            /* fixed height (optional) */
+    padding: 3% 10% 10% 10%;
+    margin: 0 auto;           /* center horizontally */
+    box-sizing: border-box;  /* ensures padding is included in the size */
+}
+
 .procedure-container {
     background-color: #f9fefa;
     padding: 60px 40px;
+    width: 1300px;             /* fixed width */
+    height: 740px;            /* fixed height (optional) */
     text-align: center;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);

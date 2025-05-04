@@ -1,8 +1,5 @@
-{% extends "layout.html" %}
-{% block content %}
-<link rel="stylesheet" href="{{ url_for('static', filename='game_procedure.css') }}">
-<div class="container py-5 px-4 px-lg-5 mt-5">
-    <div class="procedure-container">
+{% extends "learn_tiles_layout.html" %}
+{% block learn_tiles_content %}
     <h2 class="procedure-title">How Mahjong is Played: From Start to Win</h2>
     <p class="procedure-subtitle">
         Learn the key steps to play, win,<br>
@@ -39,8 +36,6 @@
                 </button>
             </a>
         </div>
-    </div>
-</div>
 {% endblock %}
 
 </div>

@@ -1,6 +1,6 @@
 <!-- templates/calling_tile.html -->
-{% extends "layout.html" %}
-{% block content %}
+{% extends "learn_tiles_layout.html" %}
+{% block learn_tiles_content %}
   <!-- shared styles -->
   <link rel="stylesheet" href="{{ url_for('static', filename='winning_hands.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='calling_tile.css') }}">
@@ -24,7 +24,7 @@
     <script src="{{ url_for('static', filename='calling_tile.js') }}" defer></script>
   {% endif %}
 
-  <div class="winning-hands-container">
+  <!-- <div class="winning-hands-container"> -->
     <h2>Calling Tiles – <strong>Chi</strong> &amp; <strong>Pong</strong></h2>
     <p>
       To complete a <strong>straight</strong> – Chi the discarded tile from your last player.<br>
@@ -81,8 +81,10 @@
         <div class="progress-bar">
           <div class="progress-fill" style="width: {{ progress }}%;"></div>
         </div>
-      </div>
+    </div>
   
+
+    <div class="nav-buttons position-absolute start-50 translate-middle-x d-flex gap-3">
       {# only show “NEXT” until the last step, then switch to “HOME” #}
       {% if step < 4 %}
         <a href="{{ url_for('calling_tiles', step=step+1) }}"
@@ -95,6 +97,6 @@
           HOME
         </a>
       {% endif %}
-    </a>
-  </div>
+    </div>
+  <!-- </div> -->
 {% endblock %}

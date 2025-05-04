@@ -1,5 +1,5 @@
-{% extends "layout.html" %}
-{% block content %}
+{% extends "learn_tiles_layout.html" %}
+{% block learn_tiles_content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='winning_hands.css') }}">
 
 {% if step == 1 %}
@@ -10,8 +10,8 @@
     <script src="{{ url_for('static', filename='overlays.js') }}" defer></script>
 {% endif %}
 
-<div class="container py-5 px-4 px-lg-5 mt-5">
-<div class="winning-hands-container">
+<!-- <div class="container py-5 px-4 px-lg-5 mt-5">
+<div class="winning-hands-container"> -->
 
     {% if step == 1 %}
     <h2>Learn about <strong class="highlight">Melds</strong> and <strong class="highlight">Pairs</strong></h2>
@@ -101,22 +101,36 @@
                 <button id="save-to-cheatsheet-btn" class="save-to-cheatsheet-btn">Save to Cheatsheet ⭐</button>
             </div>
         </div>
+    
+    {% elif step == 4 %}
+        <h2>🎉 You’ve Completed the First Section: Winning Hands</h2>
+    <br>
+        <p>Now you understand how to win a Mahjong hand with <strong>4 melds</strong> and <strong>1 pair</strong>.
+            <br>In the next section, you'll learn how to <strong>call tiles</strong> like Chi, Pong, and more.</p>
     {% endif %}
 
     <!-- Navigation Buttons -->
-    <div class="d-flex justify-content-between mt-4">
+    <div class="nav-buttons position-absolute start-50 translate-middle-x d-flex gap-3">
         {% if step > 1 %}
             <a href="{{ url_for('winning_hands', step=step-1) }}" class="next-button">← Previous</a>
         {% else %}
             <div></div> <!-- Empty space if no previous -->
         {% endif %}
 
-        {% if step < 3 %}
+        {% if step < 4 %}
             <a id="nextBtn" class="next-button {% if step==2 and step!=3 %}disabled{% endif %}" 
                href="{{ url_for('winning_hands', step=step+1) }}"
                {% if step==2 %} onclick="return false;"{% endif %}>Next →</a>
         {% endif %}
+        {% if step == 4 %}
+            <!-- <div class="d-flex justify-content-center gap-4 mt-4"> -->
+            <a href="{{ url_for('game_procedure') }}" class="next-button">🏠 Back to Home</a>
+            <a href="{{ url_for('calling_tiles_root') }}" class="next-button">Next Section →</a>
+        </div>
+        {% endif %}
+
     </div>
+    
 
     <!-- Progress Bar at Bottom -->
     <div class="progress-wrapper mt-4">
@@ -125,8 +139,8 @@
         </div>
     </div>
 
-</div>
-</div>
+<!-- </div>
+</div> -->
 
 <!-- Save function for examples -->
 <script>

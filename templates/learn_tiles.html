@@ -1,7 +1,7 @@
-{% extends "layout.html" %}
-{% block content %}
+{% extends "learn_tiles_layout.html" %}
+{% block learn_tiles_content %}
 
-<div class="container py-5 px-4 px-lg-5 mt-5">
+
     <!-- Row 1: Lesson text block 1 -->
     <div class="learn_text">{{ lesson.text }}</div>
 
@@ -9,7 +9,7 @@
     <div class="row">
         <!-- Col 1: Interactive Tiles -->
         {% if step == 1 %}
-            <div class="col-md-9">
+            <div class="col-md-11">
                 <div id="tile-learn-section" class="d-flex flex-wrap gap-3 my-4">
                     <!-- JS will populate this dynamically -->
                 </div>
@@ -41,7 +41,7 @@
 
 
     <!-- Row 3: Navigation buttons -->
-    <div class="d-flex justify-content-center mt-1">
+    <!-- <div class="d-flex justify-content-center mt-1">
         <div class="operation-buttons" style="width: 200px;">
             {% if step > 1 %}
                 <button id="prev-btn" onclick="location.href='{{ url_for('learn_tiles', step=step - 1) }}'">Previous</button>
@@ -53,8 +53,22 @@
                 <button id="next-btn" onclick="location.href='{{ url_for('drag_to_match', step=1) }}'">Drag to Match Game</button>
             {% endif %}
         </div>
-    </div>
-</div>
+    </div> -->
+    <!-- <div class="d-flex justify-content-center mt-1 h-100 position-relative"> -->
+        <div class="nav-buttons position-absolute start-50 translate-middle-x">
+          {% if step > 1 %}
+            <button id="prev-btn" onclick="location.href='{{ url_for('learn_tiles', step=step - 1) }}'">Previous</button>
+          {% endif %}
+      
+          {% if step < 3 %}
+            <button id="next-btn" onclick="location.href='{{ url_for('learn_tiles', step=step + 1) }}'">Next</button>
+          {% else %}
+            <button id="next-btn" onclick="location.href='{{ url_for('drag_to_match', step=1) }}'">Drag to Match Game</button>
+          {% endif %}
+        </div>
+    <!-- </div> -->
+      
+
 
 <script>
     const tileTypes = {{ lesson.types|tojson }};
