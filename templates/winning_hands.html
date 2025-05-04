@@ -73,7 +73,7 @@
         </div>
 
     {% elif step == 3 %}
-        <h2>This is a Winning Hand!</h2>
+        <h2>This is a <span class="highlight">Winning Hand!</span></h2>
         <p>Hover over each meld and click on them for details.</p>
 
         <div class="melds-grid">
@@ -109,6 +109,8 @@
             <br>In the next section, you'll learn how to <strong>call tiles</strong> like Chi, Pong, and more.</p>
     {% endif %}
 
+
+
     <!-- Navigation Buttons -->
     <div class="nav-buttons position-absolute start-50 translate-middle-x d-flex gap-3">
         {% if step > 1 %}
@@ -121,8 +123,7 @@
             <a id="nextBtn" class="next-button {% if step==2 and step!=3 %}disabled{% endif %}" 
                href="{{ url_for('winning_hands', step=step+1) }}"
                {% if step==2 %} onclick="return false;"{% endif %}>Next →</a>
-        {% endif %}
-        {% if step == 4 %}
+        {% elif step == 4 %}
             <!-- <div class="d-flex justify-content-center gap-4 mt-4"> -->
             <a href="{{ url_for('game_procedure') }}" class="next-button">🏠 Back to Home</a>
             <a href="{{ url_for('calling_tiles_root') }}" class="next-button">Next Section →</a>
@@ -135,7 +136,7 @@
     <!-- Progress Bar at Bottom -->
     <div class="progress-wrapper mt-4">
         <div class="progress-bar">
-            <div class="progress-fill" style="width: {{ (step-1) * 50 }}%;"></div>
+            <div class="progress-fill" style="width: {{ (step-1) * 33.33 }}%;"></div>
         </div>
     </div>
 
@@ -151,7 +152,8 @@ function saveExample(images, notes) {
         body: JSON.stringify({ images: images, notes: notes })
     }).then(res => {
         if (res.ok) {
-            alert('Saved to Cheatsheet!');
+            showCheatsheetPopup();
+
         }
     });
 }

@@ -1,7 +1,6 @@
 body {
     background-color: #cfe3d4;
-    /* font-family: Arial, sans-serif; */
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: Georgia,'Times New Roman',serif;
     margin: 0;
 }
 
@@ -97,11 +96,20 @@ body {
 
 .center {
     position: absolute;
-    top: 50%;
+    top: 47%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     color: white;
+}
+
+#message-box {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0px;
+    white-space: nowrap;
 }
 
 .options {
@@ -601,7 +609,7 @@ body {
 /* ----- HOME Layout ----- */
 .homepage-banner {
     position: relative;
-    height: 800px;
+    height: 1100px;
     background-image: url('/static/mahjong_home.JPG');
     background-size: cover;
     background-position: center;
@@ -714,3 +722,94 @@ body {
         transform: translateY(0);
     }
 }
+/* -------- Fancy Divider -------- */
+.fancy-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 50px 0 20px 0;
+    font-size: 28px;
+    font-weight: bold;
+    color: #2e4b2c;
+    position: relative;
+}
+
+.fancy-divider::before,
+.fancy-divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 2px solid #2e4b2c;
+    margin: 0 16px;
+}
+
+
+/* Strike System */
+
+#strike-container {
+    font-size: 24px;
+    color: lightgray;
+}
+.strike.active {
+    color: red;
+}
+#feedback-message {
+    font-weight: bold;
+    font-size: 18px;
+}
+/* window pop up */
+.popup {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background-color: #ffffff;
+  border: 2px solid #4CAF50;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  padding: 16px 20px;
+  z-index: 9999;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease;
+}
+.popup.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+.popup.hidden {
+  display: none;
+}
+
+.popup-content {
+  width: 100%;
+  position: relative;
+}
+
+.popup-content p {
+  margin: 0 0 10px 0;
+  font-weight: 500;
+}
+
+.popup-link {
+  color: #4CAF50;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.popup-close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #73a97500;
+  color: #198754;
+  border: none;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  font-size: 16px;
+  cursor: pointer;
+}
+

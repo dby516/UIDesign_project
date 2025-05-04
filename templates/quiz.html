@@ -30,10 +30,9 @@
 
             <div class="center">
                 <div class="discard-info">
-                    <p></p> 
+                    <div id="discard-message"></div>
                     <img class="tile discard" style="display: none;">
                 </div>
-                
                 <div id="message-box"></div>
             </div>
 
@@ -59,6 +58,21 @@
             <div class="options">
             </div>
         </div>
+
+        <!-- Stirke System -->
+        <div id="quiz-status" class="mt-4">
+            <div style="display: flex; align-items: center;">
+                <div id="strike-container">
+                    <span class="strike">✘</span>
+                    <span class="strike">✘</span>
+                    <span class="strike">✘</span>
+                </div>
+                <div id="strike-message" class="ms-3 text-danger"></div>
+            </div>
+            <div id="feedback-message" class="mt-2 text-success"></div>
+        </div>
+        
+
     </div>
 </div>
 

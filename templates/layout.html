@@ -40,6 +40,14 @@
         <!-- Homepage -->
         {% block content %}
         {% endblock %}
+        <!-- Cheatsheet added window -->
+        <div id="cheatsheet-popup" class="popup hidden">
+          <div class="popup-content">
+            <button class="popup-close">&times;</button>
+            <p>✅ Added to Cheatsheet!</p>
+            <a href="/cheatsheet" class="popup-link">Click here to view</a>
+          </div>
+        </div>
 
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

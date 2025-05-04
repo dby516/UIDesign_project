@@ -7,7 +7,7 @@
 }
 
 .procedure-container {
-    background-color: #f9fefa;
+    background-color: #efefef;
     padding: 60px 40px;
     width: 1300px;             /* fixed width */
     height: 740px;            /* fixed height (optional) */
@@ -65,4 +65,8 @@
 .step-button span {
     font-weight: normal;
     font-size: 16px;
+}
+.step-button:hover {
+    background-color: #237550;
+    transform: translateY(-2px);
 }

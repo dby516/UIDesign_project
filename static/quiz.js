@@ -404,7 +404,7 @@ const rounds = [
                 score_flag = 1;
                 max_score += 1;
                 
-                setMessage("✅ Correct discard!");
+                setMessage("✅ Correct discard! The tile isn't any part of the set or pair.");
                 const discarded = playerHand.splice(clickedIndex, 1)[0];
                 discard_S.push(discarded);
                 addDiscard("S", discarded);
@@ -422,6 +422,7 @@ const rounds = [
                     6: "❌ Could be a set or a pair."
                 };
                 setMessage(errorMessages[clickedIndex] || "❌ Already a set");
+                addStrike();
             }
         }
     },
@@ -440,14 +441,17 @@ const rounds = [
             "Chi": () => {
                 score_flag = 0;
                 setMessage("❌ You can't chi now");
+                addStrike();
             },
             "Pong": () => {
                 score_flag = 0;
                 setMessage("❌ You can't pong now");
+                addStrike();
             },
             "Hu!": () => {
                 score_flag = 0;
                 setMessage("❌ You can't hu now");
+                addStrike();
             },
             "Pass": () => {
                 if (score_flag === 1) {
@@ -482,14 +486,17 @@ const rounds = [
             "Chi": () => {
                 score_flag = 0;
                 setMessage("❌ You can't chi now");
+                addStrike();
             },
             "Pong": () => {
                 score_flag = 0;
                 setMessage("❌ You can't pong now");
+                addStrike();
             },
             "Hu!": () => {
                 score_flag = 0;
                 setMessage("❌ You can't hu now");
+                addStrike();
             },
             "Pass": () => {
                 if (score_flag === 1) {
@@ -538,14 +545,17 @@ const rounds = [
             "Pong": () => {
                 score_flag = 0;
                 setMessage("❌ You can't pong now");
+                addStrike();
             },
             "Hu!": () => {
                 score_flag = 0;
                 setMessage("❌ You can't hu now");
+                addStrike();
             },
             "Pass": () => {
                 score_flag = 0;
-                setMessage("❌ There's option you can do to form a set")
+                setMessage("❌ There's option you can do to form a set");
+                addStrike();
             }
         },
         action: () => {
@@ -581,6 +591,7 @@ const rounds = [
                     1: "❌ Could be a set or a pair."
                 };
                 setMessage(errorMessages[clickedIndex] || "❌ Already a set");
+                addStrike();
             }
         }
     },
@@ -599,10 +610,12 @@ const rounds = [
             "Chi": () => {
                 score_flag = 0;
                 setMessage("❌ You can't chi now");
+                addStrike();
             },
             "Pong": () => {
                 score_flag = 0;
                 setMessage("❌ You can't pong now");
+                addStrike();
             },
             "Hu!": () => {
                 if (score_flag === 1) {
@@ -631,7 +644,8 @@ const rounds = [
             },
             "Pass": () => {
                 score_flag = 0;
-                setMessage("❌ You shouldn't pass now")
+                setMessage("❌ You shouldn't pass now");
+                addStrike();
             }
         },
         action: () => {
@@ -648,7 +662,7 @@ function renderRound() {
     const centerText = document.querySelector(".discard-info");
     const cardImg = centerText.querySelector("img");
     const options = document.querySelector(".options");
-    const paragraph = centerText.querySelector("p");
+    const paragraph = document.getElementById("discard-message");
 
     const current = rounds[roundCounter];
 
@@ -711,5 +725,24 @@ function addDiscard(player, tile) {
     img.className = "discard-tile";
     div.appendChild(img);
 }
+
+let strikeCount = 0;
+
+function addStrike() {
+    strikeCount++;
+    const strikes = document.querySelectorAll(".strike");
+    if (strikeCount <= 3) {
+        strikes[strikeCount - 1].classList.add("active");
+    }
+    if (strikeCount >= 3) {
+        const strikeMsg = "You made too many mistakes. Restarting the quiz...";
+        setMessage(strikeMsg); 
+        document.getElementById("strike-message").innerText = strikeMsg; 
+        setTimeout(() => {
+            window.location.reload();
+        }, 2000);
+    }
+}
+
 
 document.addEventListener("DOMContentLoaded", renderRound);
