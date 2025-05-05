@@ -726,7 +726,7 @@ function addDiscard(player, tile) {
     div.appendChild(img);
 }
 
-let strikeCount = 0;
+// let strikeCount = 0;
 
 function addStrike() {
     strikeCount++;

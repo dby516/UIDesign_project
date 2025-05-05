@@ -99,9 +99,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (window.location.pathname.startsWith('/play_round/')) {
         cheatsheetBtn.style.display = 'block';
     }
-    // if (window.location.pathname.startsWith('/quiz/')) {
-    //     cheatsheetBtn.style.display = 'block';
-    // }
+
+    document.querySelector(".options").addEventListener("click", function (event) {
+        if (window.location.pathname.startsWith('/quiz/') && event.target.tagName === "BUTTON") {
+          // Your logic here
+          console.log("Button clicked:", event.target, strikeCount);
+          if (strikeCount > 0) cheatsheetBtn.style.display = 'block';
+        }
+    });
 
     // Reset the session counter when the page loads 
     // This ensures the counter resets on each new quiz

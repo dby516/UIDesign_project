@@ -54,7 +54,7 @@
         </div>
 
         <!-- Right: Operation Buttons -->
-        <div class="col">
+        <div class="col mt-5 pt-5">
             <div class="options">
             </div>
         </div>
@@ -78,6 +78,7 @@
 
 <script>
     const questionId = {{ question_id }};
+    let strikeCount = 0;
 </script>
 <script src="{{ url_for('static', filename='quiz.js') }}"></script>
 <script src="{{ url_for('static', filename='cheatsheet_modal.js') }}" defer></script>
