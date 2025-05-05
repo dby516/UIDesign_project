@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const nextBtn = document.querySelector('.next-button');
+    if (nextBtn) {
+      nextBtn.addEventListener('click', (e) => {
+        if (nextBtn.classList.contains('disabled')) {
+          e.preventDefault(); // block navigation
+        }
+      });
+    }
     document.querySelectorAll('.action-buttons button').forEach(btn => {
       btn.addEventListener('click', () => {
         const action = btn.dataset.action;
@@ -33,11 +41,17 @@ document.addEventListener('DOMContentLoaded', () => {
       // special hand for step 3
       if (CALLING_TILE_CONTEXT.step === 3) {
         clickedButton.style.backgroundColor = '#bdc3c7'; // only clicked one grey
+        const nextBtn = document.querySelector('.next-button');
+        nextBtn.classList.remove('disabled');
       }
 
       if (data.valid) {
         //feedback.textContent = 'Correct!';
         // rebuild the hand
+        const nextBtn = document.querySelector('.next-button');
+        if (nextBtn) {
+          nextBtn.classList.remove('disabled');
+        }
         const tileHand = document.getElementById('tileHand');
         tileHand.innerHTML = '';
         data.new_hand.forEach((tile, idx) => {

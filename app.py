@@ -245,7 +245,7 @@ def calling_tiles(step):
         discard_tile=discard,
         placeholder_index=len(order),    # dashed slot at end of hand
         progress=step * (100 / 4),       # 25%, 50%, 75%, 100%
-        disable_next=(step == 1)         # NEXT disabled on step 1
+        disable_next=True         # NEXT disabled on step 1
     )
 
 @app.route('/check-calling-tiles', methods=['POST'])
