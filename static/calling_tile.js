@@ -52,6 +52,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (nextBtn) {
           nextBtn.classList.remove('disabled');
         }
+        if (CALLING_TILE_CONTEXT.step === 4 && data.valid) {
+          // Enable both buttons for step 4 only if the answer is correct
+          document.querySelectorAll('.next-button').forEach(btn => {
+            btn.classList.remove('disabled');
+          });
+        }
         const tileHand = document.getElementById('tileHand');
         tileHand.innerHTML = '';
         data.new_hand.forEach((tile, idx) => {

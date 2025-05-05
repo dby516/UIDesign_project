@@ -99,8 +99,8 @@
             class="next-button">
             HOME
           </a> -->
-          <a href="{{ url_for('game_procedure') }}" class="next-button">🏠 Back to Home</a>
-          <a href="{{ url_for('play_round_start') }}" class="next-button">Next Section →</a>
+          <a href="{{ url_for('game_procedure') }}" class="next-button {% if disable_next %}disabled{% endif %}">🏠 Back to Home</a>
+          <a href="{{ url_for('play_round_start') }}"  class="next-button {% if disable_next %}disabled{% endif %}">Next Section →</a>
         {% endif %}
       </div>
 {% endblock %}
