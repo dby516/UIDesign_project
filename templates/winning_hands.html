@@ -1,4 +1,4 @@
-{% extends "learn_tiles_layout.html" %}
+{% extends "learn_tiles_layout.html" %} 
 {% block learn_tiles_content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='winning_hands.css') }}">
 
@@ -10,12 +10,10 @@
     <script src="{{ url_for('static', filename='overlays.js') }}" defer></script>
 {% endif %}
 
-<!-- <div class="container py-5 px-4 px-lg-5 mt-5">
-<div class="winning-hands-container"> -->
-
-    {% if step == 1 %}
-    <h2>Learn about <strong class="highlight">Melds</strong> and <strong class="highlight">Pairs</strong></h2>
-    <br>
+{% if step == 1 %}
+    <div class="section-heading">
+        Learn about <strong class="highlight">Melds</strong> and <strong class="highlight">Pairs</strong>
+    </div>
 
     <div class="row justify-content-center mb-4">
         <!-- Straight -->
@@ -59,91 +57,86 @@
             <button class="save-to-cheatsheet-btn" onclick="saveExample(['west.png', 'west.png'], document.getElementById('pair-text').innerText)">⭐</button>
         </div>
     </div>
-    {% elif step == 2 %}
-        <h2>How to Win? – Get <span class="highlight">4 melds</span> and <span class="highlight">1 pair!</span></h2>
-        <p>After the deal, your hand will be unordered.<br>Rearranging the tiles helps you spot potential melds and plan your strategy.</p>
 
-        <div class="tile-hand" id="tileContainer">
-            {% for tile in tile_images %}
-                <img src="{{ url_for('static', filename='mahjong_tiles/' ~ tile) }}" 
-                     class="tile" 
-                     draggable="true" 
-                     data-filename="{{ tile }}">
-            {% endfor %}
-        </div>
-
-    {% elif step == 3 %}
-        <h2>This is a <span class="highlight">Winning Hand!</span></h2>
-        <p>Hover over each meld and click on them for details.</p>
-
-        <div class="melds-grid">
-            {% set groups = [[0,1,2], [3,4,5], [6,7,8], [9,10,11], [12,13]] %}
-            {% for meld in groups %}
-                <div class="meld">
-                    <div class="info-btn" data-meld-index="{{ loop.index0 }}">
-                        <div class="meld-label">{{ ["Straight", "Triplet", "Straight", "Straight", "Pair"][loop.index0] }}</div>
-                    </div>
-                    {% for idx in meld %}
-                        <img src="{{ url_for('static', filename='mahjong_tiles/' ~ tile_images[idx]) }}"
-                             class="tile no-drag"
-                             draggable="false">
-                    {% endfor %}
-                </div>
-            {% endfor %}
-        </div>
-
-        <!-- Modal -->
-        <div id="explanationModal" class="modal hidden">
-            <div class="modal-content">
-                <span class="close-btn">&times;</span>
-                <div id="modal-text"></div>
-                <img id="modal-img" src="" alt="Meld example" class="img-fluid mb-3">
-                <button id="save-to-cheatsheet-btn" class="save-to-cheatsheet-btn">Save to Cheatsheet ⭐</button>
-            </div>
-        </div>
+{% elif step == 2 %}
+    <div class="section-heading">
+        How to Win? – Get <span class="highlight">4 melds</span> and <span class="highlight">1 pair!</span>
     
-    {% elif step == 4 %}
-        <h2 style="padding-top: 12%">🎉 You’ve Completed the First Section: Winning Hands</h2>
-    <br>
-        <p>Now you understand how to win a Mahjong hand with <strong>4 melds</strong> and <strong>1 pair</strong>.
-            <br>In the next section, you'll learn how to <strong>call tiles</strong> like Chi, Pong, and more.</p>
+    <p>After the deal, your hand will be unordered.<br>Rearranging the tiles helps you spot potential melds and plan your strategy.</p>
+</div>
+    <div class="tile-hand" id="tileContainer">
+        {% for tile in tile_images %}
+            <img src="{{ url_for('static', filename='mahjong_tiles/' ~ tile) }}" 
+                 class="tile" 
+                 draggable="true" 
+                 data-filename="{{ tile }}">
+        {% endfor %}
+    </div>
+
+{% elif step == 3 %}
+    <div class="section-heading">
+        This is a <span class="highlight">Winning Hand!</span>
+    
+    <p>Hover over each meld and click on them for details.</p>
+        </div>
+
+    <div class="melds-grid">
+        {% set groups = [[0,1,2], [3,4,5], [6,7,8], [9,10,11], [12,13]] %}
+        {% for meld in groups %}
+            <div class="meld">
+                <div class="info-btn" data-meld-index="{{ loop.index0 }}">
+                    <div class="meld-label">{{ ["Straight", "Triplet", "Straight", "Straight", "Pair"][loop.index0] }}</div>
+                </div>
+                {% for idx in meld %}
+                    <img src="{{ url_for('static', filename='mahjong_tiles/' ~ tile_images[idx]) }}"
+                         class="tile no-drag"
+                         draggable="false">
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Modal -->
+    <div id="explanationModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="modal-text"></div>
+            <img id="modal-img" src="" alt="Meld example" class="img-fluid mb-3">
+            <button id="save-to-cheatsheet-btn" class="save-to-cheatsheet-btn">Save to Cheatsheet ⭐</button>
+        </div>
+    </div>
+
+{% elif step == 4 %}
+    <div class="section-heading" style="padding-top: 12%">🎉 <span class="highlight">You’ve Completed the First Section: Winning Hands</span><br><br>
+    <p>Now you understand how to win a Mahjong hand with <strong>4 melds</strong> and <strong>1 pair</strong>.
+        <br>In the next section, you'll learn how to <strong>call tiles</strong> like Chi, Pong, and more.</p></div>
+{% endif %}
+
+<!-- Navigation Buttons -->
+<div class="nav-buttons position-absolute start-50 translate-middle-x d-flex gap-3">
+    {% if step > 1 %}
+        <a href="{{ url_for('winning_hands', step=step-1) }}" class="next-button">← Previous</a>
+    {% else %}
+        <div></div> <!-- Empty space if no previous -->
     {% endif %}
 
+    {% if step < 4 %}
+        <a id="nextBtn" class="next-button {% if step==2 and step!=3 %}disabled{% endif %}" 
+           href="{{ url_for('winning_hands', step=step+1) }}"
+           {% if step==2 %} onclick="return false;"{% endif %}>Next →</a>
+    {% elif step == 4 %}
+        <a href="{{ url_for('game_procedure') }}" class="next-button">🏠 Back to Home</a>
+        <a href="{{ url_for('calling_tiles_root') }}" class="next-button">Next Section →</a>
+    {% endif %}
+</div>
 
-
-    <!-- Navigation Buttons -->
-    <div class="nav-buttons position-absolute start-50 translate-middle-x d-flex gap-3">
-        {% if step > 1 %}
-            <a href="{{ url_for('winning_hands', step=step-1) }}" class="next-button">← Previous</a>
-        {% else %}
-            <div></div> <!-- Empty space if no previous -->
-        {% endif %}
-
-        {% if step < 4 %}
-            <a id="nextBtn" class="next-button {% if step==2 and step!=3 %}disabled{% endif %}" 
-               href="{{ url_for('winning_hands', step=step+1) }}"
-               {% if step==2 %} onclick="return false;"{% endif %}>Next →</a>
-        {% elif step == 4 %}
-            <!-- <div class="d-flex justify-content-center gap-4 mt-4"> -->
-            <a href="{{ url_for('game_procedure') }}" class="next-button">🏠 Back to Home</a>
-            <a href="{{ url_for('calling_tiles_root') }}" class="next-button">Next Section →</a>
-        </div>
-        {% endif %}
-
+<!-- Progress Bar at Bottom -->
+<div class="progress-wrapper position-absolute start-50 translate-middle-x d-flex gap-3">
+    <div class="progress-bar">
+        <div class="progress-fill" style="width: {{ (step-1) * 33.33 }}%;"></div>
     </div>
-    
+</div>
 
-    <!-- Progress Bar at Bottom -->
-    <div class="progress-wrapper position-absolute start-50 translate-middle-x d-flex gap-3"> <!--mt-4-->
-        <div class="progress-bar">
-            <div class="progress-fill" style="width: {{ (step-1) * 33.33 }}%;"></div>
-        </div>
-    </div>
-
-<!-- </div>
-</div> -->
-
-<!-- Save function for examples -->
 <script>
 function saveExample(images, notes) {
     fetch('/add-to-cheatsheet', {
@@ -153,7 +146,6 @@ function saveExample(images, notes) {
     }).then(res => {
         if (res.ok) {
             showCheatsheetPopup();
-
         }
     });
 }

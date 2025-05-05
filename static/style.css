@@ -138,22 +138,55 @@ body {
 
 /* ----- Navigation Bar ----- */
 .navbar {
+    background-color: #216b4a; /* Deep green */
+    padding: 16px 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: rgb(33 107 74);
-    border-bottom: #ffffff solid 2px;
-    padding: 1rem 1rem; /* Consistent spacing */
   }
-  
-  .navbar-brand {
-    font-size: 1.5rem;
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.navbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.navbar-left .navbar-brand {
+    font-size: 26px;
     font-weight: bold;
     color: white;
     text-decoration: none;
-      margin-right:50px;
+}
+.navbar-right {
+    display: flex;
+    gap: 30px;
+}
+
+.navbar-right .navbar-nav {
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+
+
+  .navbar-brand {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
   }
   
   .navbar-brand:hover {
@@ -161,11 +194,12 @@ body {
   }
   
   .navbar-nav {
-    font-size: 1.2rem;
-    color: #ffffff;
+    margin-left: 20px;
+    font-size: 20px;
+    color: white;
     text-decoration: none;
-    padding-right: 30px;
-  }
+    transition: color 0.2s ease-in-out;
+}
   
   .nav-pills .nav-link.active {
     background-color: gainsboro !important;
@@ -181,6 +215,22 @@ body {
     color: white;
       text-decoration: underline;
   }
+/* GROUP NAV LINKS IN A ROW */
+.navbar .container > a.navbar-nav {
+    display: inline-block;
+}
+
+/* RESPONSIVE STACKING (optional) */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar .navbar-nav {
+        margin: 10px 0 0;
+    }
+}
   
 /* ----- Tile cards in Tile Learning Module ----- */
 .learn_text {

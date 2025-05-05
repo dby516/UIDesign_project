@@ -20,22 +20,19 @@
     <body>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg">
-            <div class="container">
-                <a class="navbar-brand" href="/">Learn Mahjong</a>
-                <a class="navbar-nav" href="/learn_tiles/1">Tiles</a>
-                <a class="navbar-nav" href="/learn_game_proc">Game Procedure</a>
-                <a class="navbar-nav" href="/quiz/1">Play</a>
-                <a class="navbar-nav" href="/cheatsheet">Cheatsheet ⭐</a>
-                <form class="d-flex ms-auto" id="searchForm">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" id="searchInput" autocomplete="off">
-                    <button class="btn search-btn" type="submit">
-                        <i class="bi bi-search"></i>
-                    </button>
-                    <div id="autocomplete-results" class="autocomplete-dropdown"></div>
-                </form>
-            </div>
-            
-        </nav>
+    <div class="container navbar-inner">
+        <div class="navbar-left">
+            <a class="navbar-brand" href="/">Learn Mahjong</a>
+        </div>
+        <div class="navbar-right">
+            <a class="navbar-nav" href="/learn_tiles/1">Tiles</a>
+            <a class="navbar-nav" href="/learn_game_proc">Game Procedure</a>
+            <a class="navbar-nav" href="/quiz/1">Play</a>
+            <a class="navbar-nav" href="/cheatsheet">Cheatsheet ⭐</a>
+        </div>
+    </div>
+</nav>
+
 
         <!-- Homepage -->
         {% block content %}

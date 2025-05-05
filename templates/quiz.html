@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-
+{% include '/cheatsheet_modal.html' %}
 <div class="container py-5 px-4 px-lg-5 mt-5">
     <div class="row">
         <div class="col play-column">
@@ -80,5 +80,5 @@
     const questionId = {{ question_id }};
 </script>
 <script src="{{ url_for('static', filename='quiz.js') }}"></script>
-
+<script src="{{ url_for('static', filename='cheatsheet_modal.js') }}" defer></script>
 {% endblock %}
