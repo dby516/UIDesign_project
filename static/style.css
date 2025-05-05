@@ -64,6 +64,14 @@ body {
     border-radius: 10px;
 }
 
+.player-highlight {
+    border: 3px solid gold;
+    border-radius: 10px;
+    box-shadow: 0 0 15px gold;
+    transform: scale(1.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
 .tiles {
     display: flex;
     margin: 10px;

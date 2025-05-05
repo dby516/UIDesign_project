@@ -29,6 +29,20 @@ document.addEventListener("DOMContentLoaded", () => {
         container.appendChild(img);
       });
     }
+
+    if (roundTurn === 'S') {
+      const southImg = document.querySelector(".player.south .player-info img");
+      southImg.classList.add("player-highlight");
+    } else if (roundTurn === 'N') {
+      const northImg = document.querySelector(".player.north img");
+      northImg.classList.add("player-highlight");
+    } else if (roundTurn === 'E') {
+      const eastImg = document.querySelector(".player.east img");
+      eastImg.classList.add("player-highlight");
+    }if (roundTurn === 'W') {
+      const westImg = document.querySelector(".player.west img");
+      westImg.classList.add("player-highlight");
+    }
   
     renderDiscardTiles(discardN, "discard-N");
     renderDiscardTiles(discardS, "discard-S");

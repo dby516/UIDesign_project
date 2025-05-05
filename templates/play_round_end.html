@@ -3,12 +3,15 @@
 
 
 <div class="container py-5 px-4 px-lg-5 mt-5 text-center">
-    <h1 class="mb-4">🎉 You Finished 1 Round of Play!</h1>
+    <h1 class="mb-4 pt-5">🎉 You Finished 1 Round of Play!</h1>
 
-    <p class="lead">Great job! You're now ready to test your knowledge in the quiz session. Click 'Finish Learning' to return to the homepage.</p>
+    <p class="lead">Great job! You're now ready to test your knowledge in the quiz session.</p>
+    <p>Click '🏠 Finish Learning' to return to the homepage.</p>
+    <p>Click 'Play a Minigame' to test your learning!</p>
 
 
-    <a id="finish-btn" href="{{ url_for('home') }}" class="btn btn-success btn-lg mt-4">Finish Learning</a>
+    <a id="finish-btn" href="{{ url_for('home') }}" class="btn btn-success btn-lg mt-4">🏠 Finish Learning</a>
+    <a id="finish-btn" href="{{ url_for('quiz', question_id=1) }}" class="btn btn-success btn-lg mt-4">Play a Minigame</a>
 
 </div>
 

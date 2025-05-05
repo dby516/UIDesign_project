@@ -379,6 +379,7 @@ const rounds = [
     {
         text: "Tiles are dealt! Check your hand!",
         buttons: ["Start Turn"],
+        turn: "S",
         action: () => {
         }
     },
@@ -386,6 +387,7 @@ const rounds = [
         text: "",
         card: "/static/mahjong_tiles/9_million.png",
         buttons: ["Grab"],
+        turn: "S",
         action: () => {
             playerHand.push("/static/mahjong_tiles/9_million.png");
             renderHand(); 
@@ -396,6 +398,7 @@ const rounds = [
         buttons: [],
         allowTileClick: true,
         correctTileIndex: 10,
+        turn: "S",
         action: (clickedIndex) => {
             if (clickedIndex === rounds[roundCounter].correctTileIndex) {
                 if (score_flag === 1) {
@@ -429,6 +432,7 @@ const rounds = [
     {
         text: "",
         buttons: ["Next"],
+        turn: "S",
         action: () => {
             setMessage("");
         }
@@ -437,6 +441,7 @@ const rounds = [
         text: "East player turn\n He played:",
         card: "/static/mahjong_tiles/8_tong.png",
         buttons: ["Chi", "Pong", "Hu!", "Pass"],
+        turn: "E",
         buttonActions: {
             "Chi": () => {
                 score_flag = 0;
@@ -474,6 +479,7 @@ const rounds = [
     {
         text: "",
         buttons: ["Next"],
+        turn: "E",
         action: () => {
             setMessage("");
         }
@@ -482,6 +488,7 @@ const rounds = [
         text: "North player turn\n He played:",
         card: "/static/mahjong_tiles/7_stripe.png",
         buttons: ["Chi", "Pong", "Hu!", "Pass"],
+        turn: "N",
         buttonActions: {
             "Chi": () => {
                 score_flag = 0;
@@ -519,6 +526,7 @@ const rounds = [
     {
         text: "",
         buttons: ["Next"],
+        turn: "N",
         action: () => {
             setMessage("");
         }
@@ -527,6 +535,7 @@ const rounds = [
         text: "West player turn\n He played:",
         card: "/static/mahjong_tiles/7_stripe.png",
         buttons: ["Chi", "Pong", "Hu!", "Pass"],
+        turn: "W",
         buttonActions: {
             "Chi": () => {
                 if (score_flag === 1) {
@@ -569,6 +578,7 @@ const rounds = [
         buttons: [],
         allowTileClick: true,
         correctTileIndex: [2, 3],
+        turn: "S",
         action: (clickedIndex) => {
             if (rounds[roundCounter].correctTileIndex.includes(clickedIndex)) {
                 if (score_flag === 1) {
@@ -598,6 +608,7 @@ const rounds = [
     {
         text: "",
         buttons: ["Next"],
+        turn: "S",
         action: () => {
             setMessage("");
         }
@@ -606,6 +617,7 @@ const rounds = [
         text: "East player turn\n He played:",
         card: "/static/mahjong_tiles/8_tong.png",
         buttons: ["Chi", "Pong", "Hu!", "Pass"],
+        turn: "E",
         buttonActions: {
             "Chi": () => {
                 score_flag = 0;
@@ -656,6 +668,7 @@ const rounds = [
     },
 ];
 
+
 renderHand();
 
 function renderRound() {
@@ -665,6 +678,7 @@ function renderRound() {
     const paragraph = document.getElementById("discard-message");
 
     const current = rounds[roundCounter];
+    let roundTurn = rounds[roundCounter].turn;
 
     paragraph.textContent = current.text;
 
@@ -696,6 +710,36 @@ function renderRound() {
             current.action(index);
         }
     } : null);
+
+    if (roundTurn === 'S') {
+        const southImg = document.querySelector(".player.south .player-info img");
+        southImg.classList.add("player-highlight");
+    } else {
+        const southImg = document.querySelector(".player.south .player-info img");
+        southImg.classList.remove("player-highlight");
+    }
+    if (roundTurn === 'N') {
+        const northImg = document.querySelector(".player.north img");
+        northImg.classList.add("player-highlight");
+    } else {
+        const northImg = document.querySelector(".player.north img");
+        northImg.classList.remove("player-highlight");
+    }
+    if (roundTurn === 'E') {
+        const eastImg = document.querySelector(".player.east img");
+        eastImg.classList.add("player-highlight");
+    } else {
+        const eastImg = document.querySelector(".player.east img");
+        eastImg.classList.remove("player-highlight");
+    }
+    
+    if (roundTurn === 'W') {
+        const westImg = document.querySelector(".player.west img");
+        westImg.classList.add("player-highlight");
+    } else {
+        const westImg = document.querySelector(".player.west img");
+        westImg.classList.remove("player-highlight");
+    }
 }
 
 function renderHand(onClickHandler) {
@@ -743,6 +787,8 @@ function addStrike() {
         }, 2000);
     }
 }
+
+
 
 
 document.addEventListener("DOMContentLoaded", renderRound);
