@@ -56,7 +56,7 @@ CALLING_TILES_CORRECT_HANDS = {
         "4_stripe.png", "5_stripe.png", "6_stripe.png",
         "5_tong.png", "6_tong.png", "7_tong.png",   
         "west.png", "west.png"],
-    2: ["1_million.png", "2_million.png", "3_million.png",  
+    2: ["1_million.png", "2_million.png", "Empty.png",  
         "1_stripe.png", "1_stripe.png", "1_stripe.png", 
         "4_stripe.png", "5_stripe.png", "6_stripe.png",
         "5_tong.png", "6_tong.png", "7_tong.png",   
@@ -209,8 +209,6 @@ def calling_tiles(step):
         discard = "9_million.png"
         order.insert(2, "Empty.png")
         
-    
-
     # Step 3: 
     if step == 3:
         order.pop(3)
@@ -220,22 +218,6 @@ def calling_tiles(step):
     if step == 4:
         discard = order.pop(4)
         order.insert(3, "Empty.png")
-    # on step 1 (or first ever), shuffle and store the "hand"
-    # if step == 1 or 'calling_tiles_order' not in session:
-    #     order = CORRECT_ORDER[:]          # use your existing CORRECT_ORDER
-    #     #random.shuffle(order)
-    #     session['calling_tiles_order'] = order
-    # else:
-    #     order = session['calling_tiles_order']
-
-    # # pop off one tile as the discarded tile
-    # if order:
-    #     discard = order.pop(5)
-    #     session['calling_tiles_order'] = order
-    # else:
-    #     discard = CORRECT_ORDER[-1]
-
-
 
     # render with exactly the same context your template expects:
     return render_template(
