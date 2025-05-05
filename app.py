@@ -33,20 +33,20 @@ CALLING_TILES_ANSWER_MAP = {
 
 CALLING_TILES_FEEDBACK = {
     1: {
-        'correct': "Nice! You made a straight with a Chi call!.",
-        'incorrect': "CHI it! You can form a straight by taking the discarded tile. "
+        'correct': "<strong>Correct!</strong> <br>You made a straight with a Chi call!.",
+        'incorrect': "<strong>Try Again!</strong> Maybe CHI it! <br> You can form a straight by taking the discarded tile. "
     },
     2: {
-        'correct': "Nice pass—you knew when not to Chi.",
-        'incorrect': "Not quite—To CHI, remeber you need to form a straight with the discarded tile."
+        'correct': "<strong>Correct!</strong> Nice pass! <br>You knew when not to Chi.",
+        'incorrect': "<strong>Try Again!</strong> <br>To CHI, remeber you need to form a straight with the discarded tile."
     },
     3: {
-        'correct': "Perfect—you spotted the Chi opportunity! However, it didn't increase the number of melds so might not help you win",
-        'incorrect': "Great Pass! It forms a stright but it didn't increase the number of melds so might not help you win."
+        'correct': "<strong>Correct!</strong> You spotted the Chi opportunity! <br>However, it didn't increase the number of melds so might not help you win",
+        'incorrect': "<strong>Correct!</strong> Great Pass! <br>It forms a stright but it didn't increase the number of melds so might not help you win."
     },
     4: {
-        'correct': "Excellent—your final choice was spot on.",
-        'incorrect': "You can Pong the discarded tile to complete a triplet"
+        'correct': "<strong>Correct!</strong> <br>You formed another triplet by Pong!",
+        'incorrect': "<strong>Try Again!</strong> <br>You can Pong the discarded tile to complete a triplet"
     }
 }
 

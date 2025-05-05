@@ -31,7 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .then(res => res.json())
     .then(data => {
-      document.getElementById('feedback').textContent = data.feedback;
+      const feedback = document.getElementById('feedback');
+      feedback.innerHTML = data.feedback;
       const clickedButton = document.querySelector(`.action-buttons button[data-action="${action}"]`);
       document.querySelectorAll('.action-buttons button').forEach(btn => {
         btn.style.backgroundColor = '';

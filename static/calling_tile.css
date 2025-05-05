@@ -95,3 +95,13 @@
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
 }
+
+.feedback-standalone {
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  color: #333;
+  margin: 32px 0 0;
+  min-height: 1.8em; /* reserve space so layout doesn't jump */
+}
