@@ -667,7 +667,7 @@ body {
 /* ----- HOME Layout ----- */
 .homepage-banner {
     position: relative;
-    height: 1100px;
+    height: 960px;
     background-image: url('/static/mahjong_home.JPG');
     background-size: cover;
     background-position: center;
@@ -697,7 +697,7 @@ body {
 
 /* Option Buttons */
 .option-card {
-    background-color: white;
+    background-color: rgba(255, 255, 255);
     border: 2px solid #2e4b2c;
     padding: 20px 30px;
     font-size: 22px;
@@ -735,14 +735,15 @@ body {
 
 /* Option Cards same size */
 .option-card {
-    background-color: white;
-    border: 2px solid #2e4b2c00;
+    background-color: rgba(255, 255, 255, 0.264);
+    border: 2px solid gold;
     padding: 20px;
     font-size: 22px;
     border-radius: 12px;
     font-weight: bold;
     text-decoration: none;
-    color: #154730;
+    color: white;
+    /* color: #154730; */
     transition: all 0.3s ease;
     width: 250px;    /* fixed width */
     height: 150px;   /* fixed height */
@@ -788,7 +789,7 @@ body {
     margin: 50px 0 20px 0;
     font-size: 28px;
     font-weight: bold;
-    color: #2e4b2c;
+    color: white; /*#2e4b2c;*/
     position: relative;
 }
 
@@ -796,7 +797,7 @@ body {
 .fancy-divider::after {
     content: "";
     flex: 1;
-    border-bottom: 2px solid #2e4b2c;
+    border-bottom: 2px solid #ffffff;
     margin: 0 16px;
 }
 
