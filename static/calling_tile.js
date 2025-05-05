@@ -1,12 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const nextBtn = document.querySelector('.next-button');
-    if (nextBtn) {
-      nextBtn.addEventListener('click', (e) => {
-        if (nextBtn.classList.contains('disabled')) {
-          e.preventDefault(); // block navigation
-        }
-      });
-    }
+  document.querySelectorAll('.next-button').forEach(nextBtn => {
+    nextBtn.addEventListener('click', (e) => {
+      if (nextBtn.classList.contains('disabled')) {
+        e.preventDefault(); // block navigation
+      }
+    });
+  });
     document.querySelectorAll('.action-buttons button').forEach(btn => {
       btn.addEventListener('click', () => {
         const action = btn.dataset.action;
@@ -46,7 +45,33 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (data.valid) {
-        //feedback.textContent = 'Correct!';
+        if (CALLING_TILE_CONTEXT.step === 1) {
+          const statusList = document.getElementById('current-status');
+          if (statusList) {
+            statusList.innerHTML = `
+              <li><span class="highlight">3</span> straights</li>
+              <li><span class="highlight">1</span> triplet</li>
+              <li><span class="highlight">1</span> pair</li>
+            `;
+            statusList.classList.add('updated');
+            setTimeout(() => {
+              statusList.classList.remove('updated');
+            }, 400); // match the CSS animation time
+          }
+        } else if (CALLING_TILE_CONTEXT.step === 4) {
+          const statusList = document.getElementById('current-status');
+          if (statusList) {
+            statusList.innerHTML = `
+              <li><span class="highlight">2</span> straights</li>
+              <li><span class="highlight">2</span> triplet</li>
+              <li><span class="highlight">1</span> pair</li>
+            `;
+            statusList.classList.add('updated');
+            setTimeout(() => {
+              statusList.classList.remove('updated');
+            }, 400); // match the CSS animation time
+          }
+        }
         // rebuild the hand
         const nextBtn = document.querySelector('.next-button');
         if (nextBtn) {

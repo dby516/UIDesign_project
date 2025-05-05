@@ -70,18 +70,28 @@
     background-color: #ffe589;
 }
   
-  /* move feedback under buttons */
-  #feedback {
-    margin-top: 12px;
-  }
-  
-  /* adjust NEXT arrow positioning if needed */
-  .next-button {
-    margin-top: 10px;
-  }
-  
-  .next-button.disabled {
-    pointer-events: none;
-    opacity: 0.5;
-    cursor: default;
-  }
+/* move feedback under buttons */
+#feedback {
+  margin-top: 12px;
+}
+
+/* adjust NEXT arrow positioning if needed */
+.next-button {
+  margin-top: 10px;
+}
+
+.next-button.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: default;
+}
+
+#current-status.updated {
+  animation: pulse 0.3s ease;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
