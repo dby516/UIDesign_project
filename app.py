@@ -33,20 +33,20 @@ CALLING_TILES_ANSWER_MAP = {
 
 CALLING_TILES_FEEDBACK = {
     1: {
-        'correct': "Nice! You made a straight with a Chi call!.",
-        'incorrect': "CHI it! You can form a straight by taking the discarded tile. "
+        'correct': "<strong>Correct!</strong> <br>You made a straight with a Chi call!.",
+        'incorrect': "<strong>Try Again!</strong> Maybe CHI it! <br> You can form a straight by taking the discarded tile. "
     },
     2: {
-        'correct': "Nice pass—you knew when not to Chi.",
-        'incorrect': "Not quite—To CHI, remeber you need to form a straight with the discarded tile."
+        'correct': "<strong>Correct!</strong> Nice pass! <br>You knew when not to Chi.",
+        'incorrect': "<strong>Try Again!</strong> <br>To CHI, remeber you need to form a straight with the discarded tile."
     },
     3: {
-        'correct': "Perfect—you spotted the Chi opportunity! However, it didn't increase the number of melds so might not help you win",
-        'incorrect': "Great Pass! It forms a stright but it didn't increase the number of melds so might not help you win."
+        'correct': "<strong>Correct!</strong> You spotted the Chi opportunity! <br>However, it didn't increase the number of melds so might not help you win",
+        'incorrect': "<strong>Correct!</strong> Great Pass! <br>It forms a stright but it didn't increase the number of melds so might not help you win."
     },
     4: {
-        'correct': "Excellent—your final choice was spot on.",
-        'incorrect': "You can Pong the discarded tile to complete a triplet"
+        'correct': "<strong>Correct!</strong> <br>You formed another triplet by Pong!",
+        'incorrect': "<strong>Try Again!</strong> <br>You can Pong the discarded tile to complete a triplet"
     }
 }
 
@@ -56,7 +56,7 @@ CALLING_TILES_CORRECT_HANDS = {
         "4_stripe.png", "5_stripe.png", "6_stripe.png",
         "5_tong.png", "6_tong.png", "7_tong.png",   
         "west.png", "west.png"],
-    2: ["1_million.png", "2_million.png", "3_million.png",  
+    2: ["1_million.png", "2_million.png", "Empty.png",  
         "1_stripe.png", "1_stripe.png", "1_stripe.png", 
         "4_stripe.png", "5_stripe.png", "6_stripe.png",
         "5_tong.png", "6_tong.png", "7_tong.png",   
@@ -209,8 +209,6 @@ def calling_tiles(step):
         discard = "9_million.png"
         order.insert(2, "Empty.png")
         
-    
-
     # Step 3: 
     if step == 3:
         order.pop(3)
@@ -220,22 +218,6 @@ def calling_tiles(step):
     if step == 4:
         discard = order.pop(4)
         order.insert(3, "Empty.png")
-    # on step 1 (or first ever), shuffle and store the "hand"
-    # if step == 1 or 'calling_tiles_order' not in session:
-    #     order = CORRECT_ORDER[:]          # use your existing CORRECT_ORDER
-    #     #random.shuffle(order)
-    #     session['calling_tiles_order'] = order
-    # else:
-    #     order = session['calling_tiles_order']
-
-    # # pop off one tile as the discarded tile
-    # if order:
-    #     discard = order.pop(5)
-    #     session['calling_tiles_order'] = order
-    # else:
-    #     discard = CORRECT_ORDER[-1]
-
-
 
     # render with exactly the same context your template expects:
     return render_template(
@@ -245,7 +227,7 @@ def calling_tiles(step):
         discard_tile=discard,
         placeholder_index=len(order),    # dashed slot at end of hand
         progress=step * (100 / 4),       # 25%, 50%, 75%, 100%
-        disable_next=(step == 1)         # NEXT disabled on step 1
+        disable_next=True         # NEXT disabled on step 1
     )
 
 @app.route('/check-calling-tiles', methods=['POST'])

@@ -46,7 +46,7 @@
       <div class="decision-area">
         <div class="stats">
           <h3>Now you have:</h3>
-          <ul>
+          <ul id="current-status">
             <li><span class="highlight">2</span> straights</li>
             <li><span class="highlight">1</span> triplet</li>
             <li><span class="highlight">1</span> pair</li>
@@ -77,9 +77,10 @@
                 <button type="button" data-action="Pass">No</button>
               {% endif %}
             </div>
-          <div id="feedback"></div>
+          <!-- <div id="feedback"></div> -->
         </div>
       </div>
+      <div id="feedback" class="feedback-standalone"></div>
 
       <div class="progress-wrapper position-absolute start-50 translate-middle-x d-flex gap-3">
           <div class="progress-bar">
@@ -99,8 +100,8 @@
             class="next-button">
             HOME
           </a> -->
-          <a href="{{ url_for('game_procedure') }}" class="next-button">🏠 Back to Home</a>
-          <a href="{{ url_for('play_round_start') }}" class="next-button">Next Section →</a>
+          <a href="{{ url_for('game_procedure') }}" class="next-button {% if disable_next %}disabled{% endif %}">🏠 Back to Home</a>
+          <a href="{{ url_for('play_round_start') }}"  class="next-button {% if disable_next %}disabled{% endif %}">Next Section →</a>
         {% endif %}
       </div>
 {% endblock %}
