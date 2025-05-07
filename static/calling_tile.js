@@ -72,6 +72,19 @@ document.addEventListener('DOMContentLoaded', () => {
               statusList.classList.remove('updated');
             }, 400); // match the CSS animation time
           }
+        } else if (CALLING_TILE_CONTEXT.step === 3) {
+          const statusList = document.getElementById('current-status');
+          if (statusList) {
+            statusList.innerHTML = `
+              <li><span class="highlight">3</span> straights</li>
+              <li><span class="highlight">0</span> triplet</li>
+              <li><span class="highlight">1</span> pair</li>
+            `;
+            statusList.classList.add('updated');
+            setTimeout(() => {
+              statusList.classList.remove('updated');
+            }, 400); // match the CSS animation time
+          }
         }
         // rebuild the hand
         const nextBtn = document.querySelector('.next-button');

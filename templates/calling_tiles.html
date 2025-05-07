@@ -47,22 +47,28 @@
         <div class="stats">
           <h3>Now you have:</h3>
           <ul id="current-status">
+            {% if step == 3 %}
+            <li><span class="highlight">3</span> straights</li>
+            <li><span class="highlight">0</span> triplet</li>
+            <li><span class="highlight">1</span> pair</li>
+            {% else %}
             <li><span class="highlight">2</span> straights</li>
             <li><span class="highlight">1</span> triplet</li>
             <li><span class="highlight">1</span> pair</li>
+            {% endif %}
           </ul>
         </div>
 
         <div class="prompt">
           {# step‑specific prompt text #}
           {% if step == 1 %}
-            <p>Chi or not?</p>
+            <p>Discarded Tile: <br>Chi it or not?</p>
           {% elif step == 2 %}
-            <p>Chi or not?</p>
+            <p>Discarded Tile: <br>Chi it or not?</p>
           {% elif step == 3 %}
-            <p>Chi or not?</p>
+            <p>Discarded Tile: <br>Chi it or not?</p>
           {% elif step == 4 %}
-            <p>Final decision: Chi or Pong?</p>
+            <p>Discarded Tile: <br>Chi it or Pong?</p>
           {% endif %}
           <img
             src="{{ url_for('static', filename='mahjong_tiles/' ~ discard_tile) }}"
