@@ -25,7 +25,7 @@ This web app helps users learn Mahjong through interactive steps including visua
    git clone https://github.com/dby516/UIDesign_project.git
    ```
    
-2. **Navigate to the project folder. Start the server by running: **
+2. **Navigate to the project folder. Start the server by running:**
 
   ```bash
    python app.py
