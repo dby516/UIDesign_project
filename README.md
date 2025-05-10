@@ -13,22 +13,19 @@ This web app helps users learn Mahjong through interactive steps including visua
 ## Tech Stack
 
 - **Python / Flask** (backend)
-- **HTML / Jinja2** templating
+- **HTML** templating
 - **CSS** + **Bootstrap**
 - **JavaScript** (drag-and-drop, modals, dynamic feedback)
 
 ## How to Run
 
 1. **Clone the repo:**
-
-   ```bash
+```bash
    git clone https://github.com/dby516/UIDesign_project.git
-   ```
-   
+```  
 2. **Navigate to the project folder. Start the server by running:**
 
-  ```bash
+```bash
    python app.py
-  ```
-
+```
 3. **Open your browser and visit: http://127.0.0.1:5000**
