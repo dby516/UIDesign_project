@@ -1,6 +1,7 @@
 # How to Play Mahjong – Interactive Learning App 🀄
 
 This web app helps users learn Mahjong through interactive steps including visual tutorials, drag-and-drop matching quizzes, and a minigame.
+![Homepage Screenshot](homepage.png)
 
 ## Features
 
