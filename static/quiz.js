@@ -407,7 +407,7 @@ const rounds = [
                 score_flag = 1;
                 max_score += 1;
                 
-                setMessage("✅ Correct discard! The tile isn't any part of the set or pair.");
+                setMessage("✅ Correct discard! The tile isn't any part of the set or pair");
                 const discarded = playerHand.splice(clickedIndex, 1)[0];
                 discard_S.push(discarded);
                 addDiscard("S", discarded);
@@ -416,13 +416,13 @@ const rounds = [
             } else {
                 score_flag = 0;
                 const errorMessages = {
-                    0: "❌ Could be a set or a pair.",
-                    1: "❌ Could be a set or a pair.",
-                    2: "❌ Could be a set or a pair.",
-                    3: "❌ Could be a set or a pair.",
-                    4: "❌ Could be a set or a pair.",
-                    5: "❌ Could be a set or a pair.",
-                    6: "❌ Could be a set or a pair."
+                    0: "❌ Already a pair, it could also be a potental set",
+                    1: "❌ Already a pair, it could also be a potental set",
+                    2: "❌ Already a pair, it could also be a potental set",
+                    3: "❌ Already a pair, it could also be a potental set",
+                    4: "❌ Could be a potental set",
+                    5: "❌ Could be a potental set",
+                    6: "❌ Could be a potental set"
                 };
                 setMessage(errorMessages[clickedIndex] || "❌ Already a set");
                 addStrike();
@@ -445,12 +445,12 @@ const rounds = [
         buttonActions: {
             "Chi": () => {
                 score_flag = 0;
-                setMessage("❌ You can't chi now");
+                setMessage("❌ You can't chi this player's discard card");
                 addStrike();
             },
             "Pong": () => {
                 score_flag = 0;
-                setMessage("❌ You can't pong now");
+                setMessage("❌ No set for you to pong now");
                 addStrike();
             },
             "Hu!": () => {
@@ -492,12 +492,12 @@ const rounds = [
         buttonActions: {
             "Chi": () => {
                 score_flag = 0;
-                setMessage("❌ You can't chi now");
+                setMessage("❌ You can't chi this player's discard card");
                 addStrike();
             },
             "Pong": () => {
                 score_flag = 0;
-                setMessage("❌ You can't pong now");
+                setMessage("❌ No set for you to pong now");
                 addStrike();
             },
             "Hu!": () => {
@@ -553,7 +553,7 @@ const rounds = [
             },
             "Pong": () => {
                 score_flag = 0;
-                setMessage("❌ You can't pong now");
+                setMessage("❌ No set for you to pong now");
                 addStrike();
             },
             "Hu!": () => {
@@ -597,8 +597,8 @@ const rounds = [
                 score_flag = 0;
 
                 const errorMessages = {
-                    0: "❌ Could be a set or a pair.",
-                    1: "❌ Could be a set or a pair."
+                    0: "❌ This is a pair.",
+                    1: "❌ This is a pair."
                 };
                 setMessage(errorMessages[clickedIndex] || "❌ Already a set");
                 addStrike();
@@ -621,12 +621,12 @@ const rounds = [
         buttonActions: {
             "Chi": () => {
                 score_flag = 0;
-                setMessage("❌ You can't chi now");
+                setMessage("❌ You can't chi this player's discard card");
                 addStrike();
             },
             "Pong": () => {
                 score_flag = 0;
-                setMessage("❌ You can't pong now");
+                setMessage("❌ No set for you to pong now");
                 addStrike();
             },
             "Hu!": () => {
