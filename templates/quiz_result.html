@@ -1,16 +1,20 @@
 {% extends "layout.html" %}
 {% block content %}
-
-<div class="container py-5 px-4 px-lg-5 mt-5 text-center">
-    <div class="mt-4">
-        <p class="lead">🎉 Well done! You’ve completed the quiz.</p>
-        <p>Your score: {{ score }} / {{max_score}}</p>
-    </div>
-
-    <div class="mt-4">
-        <a href="{{ url_for('quiz', question_id=1) }}" class="btn btn-primary mx-2">Play Again</a>
-        <a href="{{ url_for('home') }}" class="btn btn-secondary mx-2">Back to Home</a>
-    </div>
+<!-- 
+<div class="container py-5 px-4 px-lg-5 mt-5 align-items-center">
+        <h1 class="mt-5">🎉 Well done! You’ve completed the quiz.</h1>
+        <h3>Your score: {{ score }} / {{max_score}}</h3>
+        <img src="{{ url_for('static', filename='certificate.png') }}" style="max-height: 800px;">
+        <a id="finish-btn" href="{{ url_for('home') }}" class="btn btn-success btn-lg mt-4">🏠 Bach to Home</a>
+        <a id="finish-btn" href="{{ url_for('quiz', question_id=1) }}" class="btn btn-success btn-lg mt-4">Play Again</a>
+</div> -->
+<div class="container py-5 px-4 px-lg-5 mt-5 d-flex flex-column align-items-center text-center">
+    <h1 class="mt-5">🎉 Well done! You’ve completed the quiz.</h1>
+    <h3>Your score: {{ score }} / {{ max_score }}</h3>
+    <img src="{{ url_for('static', filename='certificate1.png') }}" style="max-height: 400px;" class="my-4">
+    <a href="{{ url_for('home') }}" class="btn btn-success btn-lg mt-2">🏠 Back to Home</a>
+    <a href="{{ url_for('quiz', question_id=1) }}" class="btn btn-success btn-lg mt-2">🔁 Play Again</a>
 </div>
+
 
 {% endblock %}
