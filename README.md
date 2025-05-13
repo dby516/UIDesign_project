@@ -11,6 +11,12 @@ This web app helps users learn Mahjong through interactive steps including visua
 - Play drag-to-match quizzes with **immediate feedback**
 - Save examples to your own **cheatsheet modal** for review
 
+- Hover over any Mahjong tile to **view its character meaning**, and click to **hear its pronunciation**.
+- In **Game Procedure** and **Quiz** sections, interact with **hand tiles** using **multiple operations**.
+- **Click buttons** to perform actions in a **simulated game**, and receive **immediate visual feedback**.
+- The **Results Page** displays your **number of correct** and **wrong operations**, helping you track progress.
+
+
 ## Tech Stack
 
 - **Python / Flask** (backend)
